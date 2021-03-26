@@ -20,8 +20,8 @@ namespace _2NiteAHI
             fade = new Image
             {
                 Source = "fireName",
-                WidthRequest = 100,
-                HeightRequest = 100
+                WidthRequest = 500,
+                HeightRequest = 500
             };
             AbsoluteLayout.SetLayoutFlags(fade, AbsoluteLayoutFlags.PositionProportional);
             AbsoluteLayout.SetLayoutBounds(fade, new Rectangle(0.5, 0.5, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize));
@@ -34,8 +34,8 @@ namespace _2NiteAHI
         {
             base.OnAppearing();
             await fade.ScaleTo(1, 1000);
-            await fade.ScaleTo(0.9, 5000, Easing.Linear);
-            await fade.ScaleTo(150, 12000, Easing.Linear);
+            await fade.ScaleTo(0.5, 1000, Easing.SpringIn);
+            await fade.ScaleTo(50, 800, Easing.BounceOut);
             Application.Current.MainPage = new NavigationPage(new Page1());
         }
     }
