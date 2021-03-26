@@ -4,7 +4,7 @@
              xmlns:map="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps" xmlns:maps="clr-namespace:Xamarin.Essentials;assembly=Xamarin.Essentials"
              x:Class="_2NiteAHI.MainPage">
 
-    <map:Map IsShowingUser="true" x:Name="map"/>
+    <map:Map IsShowingUser="True" x:Name="map"/>
 
     
 </ContentPage>
