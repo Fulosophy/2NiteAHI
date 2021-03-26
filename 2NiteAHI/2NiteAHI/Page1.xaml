@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="_2NiteAHI.Page1">
+    <!--LOGIN PAGE-->
+    <Grid RowSpacing="0" ColumnSpacing="0">
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0.8,0" EndPoint="0,0.8">
+                <GradientStop Color="Indigo"  Offset="0.05"/>
+                <GradientStop Color="DarkOrchid" Offset="0.08"/>
+                <GradientStop Color="Indigo"  Offset="0.15"/>
+                <GradientStop Color="DarkBlue" Offset="0.3"/>
+                <GradientStop Color="Blue" Offset="0.9"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <!--Logo-->
+            <RowDefinition Height="3*"/>
+            <!--Login-->
+            <RowDefinition Height="4*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <!--Logo-->
+        <Image
+            Source="fireName"
+            Grid.Row="0"
+            VerticalOptions="Center"
+            HorizontalOptions="Center"
+            Grid.Column="0" />
+        <!--Email/password-->
+        <StackLayout
+            Grid.Row="1"
+            VerticalOptions="Start"
+            HorizontalOptions="Center"
+            Spacing="15">
+            <StackLayout HorizontalOptions="Center" Spacing="5">
+                <Label
+                    x:Name="Email"
+                    Text="Email"
+                    TextColor="White"/>
+                <Entry
+                    x:Name="GetEmail"
+                    Text="{Binding Email}"
+                    Keyboard="Email"
+                    WidthRequest="300"
+                    BackgroundColor="#086ef4"/>
+            </StackLayout>
+            <StackLayout>
+                <Label
+                    x:Name="Password"
+                    Text="Password"
+                    TextColor="White"/>
+                <Entry
+                    x:Name="GetPassword"
+                    Text="{Binding Password}"
+                    WidthRequest="300"
+                    IsPassword="True"
+                    BackgroundColor="#086ef4"  />
+            </StackLayout>
+        </StackLayout>
+        <!--Buttons-->
+        <StackLayout
+            Grid.Row="1"
+            VerticalOptions="End"
+            HorizontalOptions="Center"
+            Margin="10,0,0,15"
+            Spacing="15">
+            <Button
+                x:Name="ForgotPassword"
+                Grid.Row="1"
+                Grid.ColumnSpan="2"
+                Text="Forgot Your Password?"
+                TextColor="White"
+                BackgroundColor="Transparent"
+                HorizontalOptions="Center"
+                HeightRequest="35"
+                Clicked="ForgotButtonClicked"/>
+            <Button
+                x:Name="NeedAccount"
+                Grid.Row="1"
+                Grid.ColumnSpan="2"
+                Text="Need an Account?"
+                TextColor="White"
+                BackgroundColor="Transparent"
+                HorizontalOptions="Center"
+                HeightRequest="35"
+                Clicked="RegButtonClicked"/>
+            <Button
+                x:Name="SubmitButton"
+                Grid.Row="1"
+                Grid.ColumnSpan="2"
+                Text="Submit"
+                HorizontalOptions="Center"
+                VerticalOptions="End"
+                BackgroundColor="#086ef4"
+                TextColor="White"
+                Margin="15,10"
+                CornerRadius="10"
+                BorderColor="Transparent"
+                FontSize="Large"
+                Clicked="SubmitButtonClicked"/>
+        </StackLayout>
+    </Grid>
+</ContentPage>

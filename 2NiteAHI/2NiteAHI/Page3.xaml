@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="_2NiteAHI.Page3">
+    <!--REGISTER1 PAGE-->
+    <StackLayout>
+        <Frame BackgroundColor="#2196F3">
+            <Label
+                Text="2Nite Account Register"
+                HorizontalTextAlignment="Center"
+                TextColor="White" FontSize="36"/>
+        </Frame>
+        <!--Name-->
+        <Label
+            Text="Name"
+            TextColor="Black"
+            FontSize="Small"
+            Padding="30,10,30,0"/>
+        <Entry                   
+            x:Name="GetName"
+            Text="{Binding rName}"
+            Keyboard="Email"
+            BackgroundColor="Gainsboro"
+            HorizontalOptions="Center"
+            WidthRequest="300"/>
+        <!--Email-->
+        <Label
+            Text="Email"
+            TextColor="Black"
+            FontSize="Small"
+            Padding="30,10,30,0"/>
+        <Entry                    
+            x:Name="GetEmail"
+            Text="{Binding rEmail}"
+            Keyboard="Email"
+            BackgroundColor="Gainsboro"
+            HorizontalOptions="Center"
+            WidthRequest="300"/>
+        <!--Username-->
+        <Label
+            Text="Username"
+            TextColor="Black"
+            FontSize="Small"
+            Padding="30,10,30,0"/>
+        <Entry                   
+            x:Name="GetUsername"
+            Text="{Binding rUsername}"
+            Keyboard="Email"
+            BackgroundColor="Gainsboro"
+            HorizontalOptions="Center"
+            WidthRequest="300"/>
+        <!--Password-->
+        <Label
+            Text="Password"
+            TextColor="Black"
+            FontSize="Small"
+            Padding="30,10,30,0"/>
+        <Entry                   
+            x:Name="GetPassword"
+            Text="{Binding rPassword}"
+            Keyboard="Email"
+            BackgroundColor="Gainsboro"
+            HorizontalOptions="Center"
+            WidthRequest="300"/>
+        <!--VerifyPassword-->
+        <Label
+            Text="Re-enter Password"
+            TextColor="Black"
+            FontSize="Small"
+            Padding="30,10,30,0"/>
+        <Entry                    
+            x:Name="GetVerifyPassword"
+            Text="{Binding rVerifyPassword}"
+            Keyboard="Email"
+            BackgroundColor="Gainsboro"
+            HorizontalOptions="Center"
+            WidthRequest="300"/>
+        <Button
+            x:Name="rSubmit"
+            HorizontalOptions="Center"
+            CornerRadius="10"
+            Text="Submit"
+            Margin="15,10"
+            Padding="30,0,30,0"
+            Clicked="RegSubmitClicked"/>
+        <Label FontSize="16" Padding="30,5,30,0" VerticalOptions="End">
+            <Label.FormattedText>
+                <FormattedString>
+                    <FormattedString.Spans>
+                        <Span Text="Learn more at "/>
+                        <Span Text="https://2Nite-Usage" FontAttributes="Bold" TextColor="Blue"/>
+                    </FormattedString.Spans>
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+    </StackLayout>
+</ContentPage>
