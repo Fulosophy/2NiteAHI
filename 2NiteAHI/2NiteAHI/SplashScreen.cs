@@ -27,7 +27,8 @@ namespace _2NiteAHI
             AbsoluteLayout.SetLayoutBounds(fade, new Rectangle(0.5, 0.5, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize));
 
             sub.Children.Add(fade);
-            this.BackgroundColor = Color.FromHex("#429de4");
+            this.BackgroundColor = Color.FromHex("#000e4a");
+            //this.BackgroundColor = Color.FromHex("#429de4");
             this.Content = sub;
         }
         protected override async void OnAppearing()
