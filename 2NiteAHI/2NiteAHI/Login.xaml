@@ -11,6 +11,8 @@
                 <GradientStop Color="Indigo"  Offset="0.15"/>
                 <GradientStop Color="DarkBlue" Offset="0.3"/>
                 <GradientStop Color="Blue" Offset="0.9"/>
+    
+              
             </LinearGradientBrush>
         </Grid.Background>
         <Grid.RowDefinitions>

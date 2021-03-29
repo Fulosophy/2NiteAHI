@@ -29,9 +29,6 @@ namespace _2NiteAHI
                 var location = await Geolocation.GetLocationAsync(request);
 
 
-              
-
-
                 if (location != null)
                 {
                     Position p = new Position(location.Latitude, location.Longitude);
