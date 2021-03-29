@@ -10,7 +10,7 @@ namespace _2NiteAHI
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new Page1());
+            MainPage = new NavigationPage(new SplashScreen());
         }
 
         protected override void OnStart()
