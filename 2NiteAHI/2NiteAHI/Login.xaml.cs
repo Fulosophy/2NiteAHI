@@ -10,14 +10,14 @@ using Xamarin.Forms.Xaml;
 namespace _2NiteAHI
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-public partial class Page1 : ContentPage
+public partial class Login : ContentPage
 {
-    public Page1()
+    public Login()
     {
         InitializeComponent();
     }
-        async void ForgotButtonClicked(object sender, EventArgs e) { await Navigation.PushAsync(new Page2()); }
-        async void RegButtonClicked(object sender, EventArgs e) { await Navigation.PushAsync(new Page3()); }
+        async void ForgotButtonClicked(object sender, EventArgs e) { await Navigation.PushAsync(new Recovery()); }
+        async void RegButtonClicked(object sender, EventArgs e) { await Navigation.PushAsync(new Register()); }
         async void SubmitButtonClicked(object sender, EventArgs e) { await Navigation.PushAsync(new MainPage()); }
     }
 }

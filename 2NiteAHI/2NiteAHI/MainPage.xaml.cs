@@ -8,6 +8,9 @@ using Xamarin.Forms;
 using Xamarin.Essentials;
 using System.Threading;
 using Xamarin.Forms.Maps;
+using GoogleApi;
+using GoogleApi.Entities.Places;
+
 namespace _2NiteAHI
 {
     public partial class MainPage : ContentPage
@@ -16,6 +19,7 @@ namespace _2NiteAHI
         {
             InitializeComponent();
             DisplayCurLoc();
+
         }
         public async void DisplayCurLoc()
         {
@@ -23,6 +27,10 @@ namespace _2NiteAHI
             {
                 var request = new GeolocationRequest(GeolocationAccuracy.Medium);
                 var location = await Geolocation.GetLocationAsync(request);
+
+
+              
+
 
                 if (location != null)
                 {
@@ -32,22 +40,31 @@ namespace _2NiteAHI
                     Console.WriteLine($"Latitude: {location.Latitude}, Longitude: {location.Longitude}, Altitude: {location.Altitude}");
                 }
             }
-            catch (FeatureNotSupportedException suppex)
+            catch (FeatureNotSupportedException)
             {
                 // Handle not supported on device exception
             }
-            catch (FeatureNotEnabledException featex)
+            catch (FeatureNotEnabledException)
             {
                 // Handle not enabled on device exception
             }
-            catch (PermissionException permex)
+            catch (PermissionException)
             {
                 // Handle permission exception
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 // Unable to get location
             }
+
+        }
+
+        async private void ToolbarItem_Clicked(object sender, EventArgs e)
+        {
+
+            await Navigation.PushAsync(new Settings());
+            
+            
         }
     }
 }

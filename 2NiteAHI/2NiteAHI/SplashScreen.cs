@@ -11,7 +11,7 @@ namespace _2NiteAHI
 {
     class SplashScreen : ContentPage
     {
-        Image fade;
+        readonly Image fade;
         public SplashScreen()
         {
             NavigationPage.SetHasNavigationBar(this, false);
@@ -37,7 +37,7 @@ namespace _2NiteAHI
             await fade.ScaleTo(1, 1000);
             await fade.ScaleTo(0.5, 1000, Easing.SpringIn);
             await fade.ScaleTo(50, 800, Easing.BounceOut);
-            Application.Current.MainPage = new NavigationPage(new Page1());
+            Application.Current.MainPage = new NavigationPage(new Login());
         }
     }
 }
