@@ -14,12 +14,12 @@
         </Grid.Background>
         <StackLayout>
         
-        <Frame BackgroundColor="#2196F3">
+        
             <Label
                 Text="2Nite Account Register"
                 HorizontalTextAlignment="Center"
                 TextColor="White" FontSize="36"/>
-        </Frame>
+       
         <!--Name-->
         <Label
             Text="Name"
