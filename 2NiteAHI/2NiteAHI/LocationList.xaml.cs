@@ -10,11 +10,17 @@ using Xamarin.Forms.Xaml;
 namespace _2NiteAHI
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-public partial class LocationList : ContentPage
-{
-    public LocationList()
+    
+
+    public partial class LocationList : ContentPage
     {
-        InitializeComponent();
+        public LocationList()
+        {
+            InitializeComponent();
+        }
+        async private void ToolbarItem_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new Settings());        
+        }
     }
-}
 }
