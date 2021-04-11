@@ -2,11 +2,55 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="_2NiteAHI.LocationList">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
-    </ContentPage.Content>
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0.8,0" EndPoint="0,0.8">
+                <GradientStop Color="Indigo"  Offset="0.05"/>
+                <GradientStop Color="DarkOrchid" Offset="0.08"/>
+                <GradientStop Color="Indigo"  Offset="0.15"/>
+                <GradientStop Color="DarkBlue" Offset="0.3"/>
+                <GradientStop Color="Blue" Offset="0.5"/>
+                <GradientStop Color="Indigo"  Offset="0.85"/>
+                <GradientStop Color="DarkOrchid" Offset="0.92"/>
+                <GradientStop Color="Indigo"  Offset="0.95"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="5*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="5*"/>
+        </Grid.ColumnDefinitions>
+        
+        <Image
+            Source="fire"
+            ScaleX="1"
+            ScaleY="1"
+            Grid.Row="0"
+            Grid.Column="0"
+            VerticalOptions="Start"
+            HorizontalOptions="Start"/>
+        <Label 
+            Text="2Nite"
+            FontSize="Title"
+            TextColor="White"
+            TextDecorations="Underline"
+            FontAttributes="Bold"
+            Grid.Row="0"
+            Grid.Column="1"
+            VerticalOptions="Start" 
+            HorizontalOptions="Start" />
+        <Label
+            Text="Nashville, Tenessee"
+            FontSize="Medium"
+            TextColor="White"
+            Grid.Row="0"
+            Grid.Column="1"
+            VerticalOptions="Center"
+            HorizontalOptions="StartAndExpand"
+            />
+
+    </Grid>
 </ContentPage>
