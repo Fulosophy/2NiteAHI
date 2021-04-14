@@ -38,9 +38,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="LocationList.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Update="Login.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
