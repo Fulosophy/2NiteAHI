@@ -20,12 +20,7 @@ namespace _2NiteAHI
         {
             InitializeComponent();
             BindingContext = this;
-            GetUserLoc();
-
-
-           
-
-
+            GetUserLoc(); // Grabbing the users Postal Code and Town Name
 
 
         }
@@ -38,24 +33,18 @@ namespace _2NiteAHI
             // Grabbing User Location and Zip Code
             var request = new GeolocationRequest(GeolocationAccuracy.High); // Requesting a location pull
             var location = await Geolocation.GetLocationAsync(request);
-
             var GetAddy = await Geocoding.GetPlacemarksAsync(location.Latitude, location.Longitude); // Grabbing the users location details as a placemark.
-            var addy = GetAddy?.FirstOrDefault();
-
-         
+            var addy = GetAddy?.FirstOrDefault(); 
             MyLocation = $"{addy.Locality},{addy.PostalCode}"; // Grabs the users current locations Address-Town and Address-PostalCode
-
-
         }
         private string myloc;
-        public string MyLocation
+        public string MyLocation // Property to change the label text on start-up
         {
             get { return myloc; }
             set
-            {
-               
-                myloc = value;
-                OnPropertyChanged(nameof(MyLocation));
+            {          
+                myloc = value; 
+                OnPropertyChanged(nameof(MyLocation)); 
             }
         }
     }
