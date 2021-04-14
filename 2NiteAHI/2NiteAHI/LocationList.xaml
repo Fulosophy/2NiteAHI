@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="_2NiteAHI.LocationList">
+    
+    <ContentPage.ToolbarItems>
+        <ToolbarItem 
+            Text="Settings"
+            Clicked="ToolbarItem_Clicked"/>
+    </ContentPage.ToolbarItems>
+    
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0.8,0" EndPoint="0,0.8">
+                <GradientStop Color="Indigo"  Offset="0.05"/>
+                <GradientStop Color="DarkOrchid" Offset="0.08"/>
+                <GradientStop Color="Indigo"  Offset="0.15"/>
+                <GradientStop Color="DarkBlue" Offset="0.3"/>
+                <GradientStop Color="Blue" Offset="0.5"/>
+                <GradientStop Color="Indigo"  Offset="0.85"/>
+                <GradientStop Color="DarkOrchid" Offset="0.92"/>
+                <GradientStop Color="Indigo"  Offset="0.95"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1.2*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="5*"/>
+        </Grid.ColumnDefinitions>
+        
+        <!--Logo-->
+        <Image
+            Source="fire"
+            ScaleX="1"
+            ScaleY="1"
+            Grid.Row="0"
+            Grid.Column="0"
+            VerticalOptions="Start"
+            HorizontalOptions="Start"/>
+        <!--Title-->
+        <Label 
+            Text="2Nite"
+            FontSize="Title"
+            TextColor="White"
+            TextDecorations="Underline"
+            FontAttributes="Bold"
+            Grid.Row="0"
+            Grid.Column="1"
+            VerticalOptions="Start" 
+            HorizontalOptions="Start" />
+        <!--Location of User-->
+        <Label
+            Text="Nashville, Tenessee"
+            FontSize="Medium"
+            TextColor="White"
+            Grid.Row="0"
+            Grid.Column="1"
+            VerticalOptions="Center"
+            HorizontalOptions="StartAndExpand"/>
+        <!--List box-->
+        <ListView
+            Grid.Row="1"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            Background="black"/>
+        <!--Descending order button-->
+        <Button
+            Text="DESC"
+            TextColor="Black"
+            FontSize="Micro"
+            FontAttributes="Bold"
+            Grid.Row="0"
+            Grid.Column="1"
+            VerticalOptions="End"
+            HorizontalOptions="End"
+            BackgroundColor="GhostWhite"
+            HeightRequest="30"
+            WidthRequest="75"
+            Margin="20,0,30,0"
+            CornerRadius="8"/>
+        <!--Ascending order button-->
+        <Button
+            Text="ASC"
+            TextColor="Black"
+            FontSize="Micro"
+            FontAttributes="Bold"
+            Grid.Row="0"
+            Grid.Column="1"
+            VerticalOptions="End"
+            HorizontalOptions="Center"
+            BackgroundColor="GhostWhite"
+            HeightRequest="30"
+            WidthRequest="75"
+            Margin="30,0,0,0"
+            CornerRadius="8"/>
+        <!--Ping button for checking into a location-->
+        <Button
+            Text="PING-IN"
+            TextColor="Black"
+            FontAttributes="Bold"
+            FontSize="Medium"
+            Grid.Row="2"
+            Grid.Column="1"
+            VerticalOptions="Center"
+            HorizontalOptions="Start"
+            BackgroundColor="Green"
+            HeightRequest="50"
+            WidthRequest="150"
+            Margin="10,0,10,0"
+            CornerRadius="8"/>
+        <!--Peace out button for checking out of a location-->
+        <Button
+            Text="PEACE OUT"
+            TextColor="white"
+            FontAttributes="Bold"
+            FontSize="Medium"
+            Grid.Row="2"
+            Grid.Column="1"
+            VerticalOptions="Center"
+            HorizontalOptions="End"
+            BackgroundColor="DarkRed"
+            HeightRequest="50"
+            WidthRequest="150"
+            Margin="10,0,10,0"
+            CornerRadius="8"/>
+    </Grid>
+</ContentPage>
