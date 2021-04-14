@@ -54,7 +54,8 @@
             HorizontalOptions="Start" />
         <!--Location of User-->
         <Label
-            Text="Nashville, Tenessee"
+            x:Name="UserLocation"
+            Text="{Binding MyLocation}"
             FontSize="Medium"
             TextColor="White"
             Grid.Row="0"
