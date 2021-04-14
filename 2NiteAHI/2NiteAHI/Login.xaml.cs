@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
+//accidental merges suck.. a lot...
 namespace _2NiteAHI
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
