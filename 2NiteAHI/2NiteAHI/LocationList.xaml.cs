@@ -11,7 +11,7 @@ namespace _2NiteAHI
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
     
-
+    //Fixing an accidental merge sucks...
     public partial class LocationList : ContentPage
     {
         public LocationList()
