@@ -11,6 +11,8 @@
                 <GradientStop Color="Indigo"  Offset="0.15"/>
                 <GradientStop Color="DarkBlue" Offset="0.3"/>
                 <GradientStop Color="Blue" Offset="0.9"/>
+    
+              
             </LinearGradientBrush>
         </Grid.Background>
         <Grid.RowDefinitions>
@@ -22,15 +24,13 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        
         <!--Logo-->
         <Image
             Source="fireName"
             Grid.Row="0"
             VerticalOptions="Center"
             HorizontalOptions="Center"
-            Grid.Column="0"/>
-        
+            Grid.Column="0" />
         <!--Email/password-->
         <StackLayout
             Grid.Row="1"
@@ -38,32 +38,30 @@
             HorizontalOptions="Center"
             Spacing="15">
             <StackLayout HorizontalOptions="Center" Spacing="5">
+                <Label
+                    x:Name="Email"
+                    Text="Email"
+                    TextColor="White"/>
                 <Entry
                     x:Name="GetEmail"
                     Text="{Binding Email}"
-                    Placeholder="Email"
                     Keyboard="Email"
-                    ClearButtonVisibility="WhileEditing"
                     WidthRequest="300"
-                    BackgroundColor="#086ef4"
-                    Margin="10,10"
-                    ReturnType="Next"/>
+                    BackgroundColor="#086ef4"/>
             </StackLayout>
             <StackLayout>
+                <Label
+                    x:Name="Password"
+                    Text="Password"
+                    TextColor="White"/>
                 <Entry
                     x:Name="GetPassword"
-                    Text="{Binding Passwords}"
-                    Placeholder="Password"
-                    Keyboard="Text"
-                    ClearButtonVisibility="WhileEditing"
+                    Text="{Binding Password}"
                     WidthRequest="300"
                     IsPassword="True"
-                    BackgroundColor="#086ef4"
-                    Margin="10,10"
-                    ReturnType="Done"/>
+                    BackgroundColor="#086ef4"  />
             </StackLayout>
         </StackLayout>
-        
         <!--Buttons-->
         <StackLayout
             Grid.Row="1"

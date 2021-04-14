@@ -24,58 +24,44 @@
         <!--Email-->
         <Entry                    
             x:Name="GetEmail"
-            Text="{Binding Email}"
             Placeholder="Email"
             Keyboard="Email"
-            ClearButtonVisibility="WhileEditing"
             BackgroundColor="Gainsboro"
             HorizontalOptions="Center"
             WidthRequest="300"
-            Margin="20,10"
-            ReturnType="Next"/>
+            Margin="20,10"/>
             
         <!--Username-->
         <Entry                   
             x:Name="GetUsername"
-            Text="{Binding Username}"
             Placeholder="Username"
             Keyboard="Text"
-            ClearButtonVisibility="WhileEditing"
             BackgroundColor="Gainsboro"
             HorizontalOptions="Center"
             WidthRequest="300"
-            Margin="10,10"
-            ReturnType="Next"/>
+            Margin="10,10"/>
             
         <!--Password-->
         <Entry                   
             x:Name="GetPassword"
-            Text="{Binding Passwords}"
             Placeholder="Password"
             Keyboard="Text"
-            ClearButtonVisibility="WhileEditing"
-            IsPassword="True"
             MaxLength="12"
             BackgroundColor="Gainsboro"
             HorizontalOptions="Center"
             WidthRequest="300"
-            Margin="10,10"
-            ReturnType="Next"/>
+            Margin="10,10"/>
 
         <!--VerifyPassword-->
         <Entry                    
             x:Name="GetVerifyPassword"
-            Text="{Binding RePassword}"
             Placeholder="Confirm Password"
             Keyboard="Text"
-            ClearButtonVisibility="WhileEditing"
-            IsPassword="True"
             MaxLength="12"
             BackgroundColor="Gainsboro"
             HorizontalOptions="Center"
             WidthRequest="300"
-            Margin="10,10"
-            ReturnType="Next"/>
+            Margin="10,10"/>
 
         <!--Password Mismatch warning INVISIBLE-->
         <Label 
@@ -90,16 +76,13 @@
         <!--PhoneNumber-->
         <Entry                   
             x:Name="GetNumber"
-            Text="{Binding PhoneNumber}"
             Placeholder="Phone Number"
             Keyboard="Telephone"
-            ClearButtonVisibility="WhileEditing"
             MaxLength="10"
             BackgroundColor="Gainsboro"
             HorizontalOptions="Center"
             WidthRequest="300"
-            Margin="10,10"
-            ReturnType="Done"/>
+            Margin="10,10"/>
 
         <!--Invalid phone number warning INVISIBLE-->
         <Label 
