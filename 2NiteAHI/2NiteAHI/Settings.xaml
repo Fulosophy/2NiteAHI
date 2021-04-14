@@ -3,81 +3,118 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:map="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps" xmlns:maps="clr-namespace:Xamarin.Essentials;assembly=Xamarin.Essentials"
              x:Class="_2NiteAHI.Settings">
-
-
-
-
-
-
     <Grid RowSpacing="0" ColumnSpacing="0">
-
-
         <Grid.Background>
-            <LinearGradientBrush StartPoint="1,1" EndPoint="0,0">
+            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
                 <!--<GradientStop Color="Aquamarine" Offset="0.0"/>-->
                 <GradientStop Color="CadetBlue" Offset="0.0"/>
-                <GradientStop Color="Cyan" Offset="0.5"/>
-                <GradientStop Color="DarkBlue" Offset="0.9"/>
+                <GradientStop Color="Cyan" Offset="0.2"/>
+                <GradientStop Color="DarkBlue" Offset="0.50"/>
             </LinearGradientBrush>
         </Grid.Background>
-
-       
-            <Grid.RowDefinitions>
-             <!--User Settings-->
+        <Grid.RowDefinitions>
             <RowDefinition Height="2*"/> <!--GPS LOCATION-->
-            <RowDefinition Height="2*"/> <!--NightTheme-->
-            <RowDefinition Height="3*"/>
-            <RowDefinition Height="4*"/>
+            <RowDefinition Height="*"/> <!--NightTheme-->
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
             <RowDefinition Height="2*"/>
-           
-            <!--Switches-->
-            <RowDefinition Height="11*"/> 
-            <RowDefinition Height="10*"/>
-            <RowDefinition Height="10*"/>
-            <RowDefinition Height="9*"/>
-            <RowDefinition Height="1*"/>
-          
+            <RowDefinition Height="*"/> 
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*"/>
+            <!--User Settings-->
+                <ColumnDefinition Width="2*"/>
+            <!--Switches-->
                 <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
         
-        <!--USER SETTINGS-->
-        <Label Text="User Settings" TextColor="DarkGoldenrod"  Grid.Row="0" Grid.Column="0" FontSize="Medium"/>
-        
+        <!--Title-->
+        <Label
+            Text="User Settings" 
+            HorizontalOptions="StartAndExpand" 
+            VerticalOptions="CenterAndExpand"
+            TextColor="Black"  
+            Grid.Row="0" 
+            Grid.Column="0"
+            FontSize="Title"
+            Padding="20,0,20,0"
+            TextDecorations="Underline"/>
+        <Image
+            Source="fire"
+            Grid.Row="0"
+            Grid.Column="1"
+            VerticalOptions="Center"
+            HorizontalOptions="Start"/>
+
         <!--GPS LOCATION--> <!--Location Services-->
-        <Switch x:Name="GPSLOC" IsToggled="False" Grid.Row="1" Grid.Column="1" Toggled="GPSLOC_Toggled" />
-        <Label Text="GPS Location" Grid.Row="1" Grid.Column="0" TextColor="White"  HorizontalOptions="Start" VerticalOptions="Center" Padding="20,0,30,0" FontSize="Medium"/>
+        <Label 
+            Text="GPS Location" 
+            Grid.Row="1" 
+            Grid.Column="0" 
+            TextColor="Black"  
+            HorizontalOptions="Center" 
+            VerticalOptions="Center" 
+            Padding="20,0,30,0" 
+            FontSize="Medium"/>
+        <Switch 
+            x:Name="GPSLOC" 
+            IsToggled="False" 
+            Grid.Row="1" 
+            Grid.Column="1" 
+            VerticalOptions="Center"
+            HorizontalOptions="Center"
+            Toggled="GPSLOC_Toggled" />
+        
         <!--NIGHTTIME THEME-->
-        <Switch x:Name="NightTheme" IsToggled="False" Grid.Row="2" Grid.Column="1" VerticalOptions="Center" Toggled="NightTheme_Toggled" />
-        <Label Text="Night Theme" Grid.Row="2" Grid.Column="0" TextColor="White"  VerticalOptions="Center" Padding="20,1,30,0" FontSize="Medium"/>
-        
+        <Label 
+            Text="Night Theme" 
+            Grid.Row="2" 
+            Grid.Column="0" 
+            TextColor="Black" 
+            HorizontalOptions="Center"
+            VerticalOptions="Center" 
+            Padding="20,1,30,0" 
+            FontSize="Medium"/>
+        <Switch 
+            x:Name="NightTheme" 
+            IsToggled="False" 
+            Grid.Row="2" 
+            Grid.Column="1" 
+            VerticalOptions="Center" 
+            HorizontalOptions="Center"
+            Toggled="NightTheme_Toggled" />
+
         <!--Personal Information-->
-        <Label Text="Personal Information" Grid.Row="3" Grid.Column="0" TextColor="DarkGoldenrod" FontSize="Medium"/>
-        <!--USERNAME-->
-        <Label Text="USERNAME: " Grid.Row="4" Grid.Column="0" FontSize="Medium"/>
-        <Label Text="EMAIL: " Grid.Row="5" Grid.Column="0" FontSize="Medium"/>
-        
-
-
-
-
-
-
-
-
-
-
-
-
-
+        <Label 
+            Text="Personal Information" 
+            Grid.Row="3" 
+            Grid.Column="0" 
+            TextColor="Gold"
+            VerticalOptions="Center"
+            HorizontalOptions="StartAndExpand"
+            FontSize="Title"
+            Padding="20,20,20,0"
+            TextDecorations="Underline"/>
+        <Label 
+            Text="USERNAME: " 
+            Grid.Row="4" 
+            Grid.Column="0" 
+            TextColor="Goldenrod"
+            VerticalTextAlignment="Center"
+            HorizontalTextAlignment="Center"
+            FontSize="Medium"/>
+        <Label 
+            Text="EMAIL: " 
+            Grid.Row="5" 
+            Grid.Column="0" 
+            TextColor="Goldenrod"
+            VerticalTextAlignment="Center"
+            HorizontalTextAlignment="Center"
+            FontSize="Medium"/>
 
 
     </Grid>
-    
-    
-  
-    
-    
 </ContentPage>
