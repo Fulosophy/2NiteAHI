@@ -68,9 +68,25 @@
             Command="{Binding RefreshCommand}"
             Grid.Row="1"
             Grid.Column="0"
-            Grid.ColumnSpan="2">
-            <ListView
-                Background="black"/>
+            Grid.ColumnSpan="2"
+            Margin="10,10,10,10">
+            <ListView 
+                x:Name="barListView"
+                Background="black">
+                <ListView.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Pengilly's</x:String>
+                        <x:String>Cactus</x:String>
+                        <x:String>Handlebar</x:String>
+                        <x:String>SpaceBar</x:String>
+                        <x:String>Neurolux</x:String>
+                        <x:String>Broadway</x:String>
+                        <x:String>Press Pony</x:String>
+                        <x:String>Taphouse</x:String>
+                        <x:String>Mulligans</x:String>
+                    </x:Array>
+                </ListView.ItemsSource>
+            </ListView>
         </RefreshView>
         <!--Descending order button-->
         <Button

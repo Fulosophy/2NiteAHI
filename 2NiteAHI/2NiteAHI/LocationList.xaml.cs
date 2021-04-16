@@ -34,7 +34,6 @@ namespace _2NiteAHI
             var GetAddy = await Geocoding.GetPlacemarksAsync(location.Latitude, location.Longitude); // Grabbing the users location details as a placemark.
             var addy = GetAddy?.FirstOrDefault(); 
             MyLocation = $"{addy.Locality},{addy.AdminArea}"; // Grabs the users current locations Address-Town and Address-PostalCode
-
         }
         private string myloc;
         public string MyLocation // Property to change the label text on start-up
