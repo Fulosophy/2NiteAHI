@@ -21,8 +21,7 @@ namespace _2NiteAHI
             InitializeComponent();
             BindingContext = this;
             GetUserLoc(); // Grabbing the users Postal Code and Town Name
-
-
+            
         }
         async private void ToolbarItem_Clicked(object sender, EventArgs e)
         {
@@ -31,11 +30,11 @@ namespace _2NiteAHI
         async private void GetUserLoc()
         {
             // Grabbing User Location and Zip Code
-            var request = new GeolocationRequest(GeolocationAccuracy.High); // Requesting a location pull
-            var location = await Geolocation.GetLocationAsync(request);
+            var location = await Geolocation.GetLocationAsync(new GeolocationRequest(GeolocationAccuracy.Default, TimeSpan.FromMinutes(1)));
             var GetAddy = await Geocoding.GetPlacemarksAsync(location.Latitude, location.Longitude); // Grabbing the users location details as a placemark.
             var addy = GetAddy?.FirstOrDefault(); 
-            MyLocation = $"{addy.Locality},{GetZipBopCode(addy.PostalCode)}"; // Grabs the users current locations Address-Town and Address-PostalCode
+            MyLocation = $"{addy.Locality},{addy.AdminArea}"; // Grabs the users current locations Address-Town and Address-PostalCode
+
         }
         private string myloc;
         public string MyLocation // Property to change the label text on start-up
@@ -47,7 +46,6 @@ namespace _2NiteAHI
                 OnPropertyChanged(nameof(MyLocation)); 
             }
         }
-        
         public string GetZipBopCode(string zipBopCode)
         {
             int zipCode = Int32.Parse(zipBopCode);
