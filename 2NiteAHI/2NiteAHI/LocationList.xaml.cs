@@ -30,9 +30,7 @@ namespace _2NiteAHI
         }
         async private void GetUserLoc()
         {
-          
-            var request = new GeolocationRequest(GeolocationAccuracy.Best); // Requesting a location pull
-            var location = await Geolocation.GetLocationAsync(request);
+            var location = await Geolocation.GetLocationAsync(new GeolocationRequest(GeolocationAccuracy.Default, TimeSpan.FromMinutes(1)));
             var GetAddy = await Geocoding.GetPlacemarksAsync(location.Latitude, location.Longitude); // Grabbing the users location details as a placemark.
             var addy = GetAddy?.FirstOrDefault();
 
