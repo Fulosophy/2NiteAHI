@@ -47,7 +47,7 @@ namespace _2NiteAHI
                 OnPropertyChanged(nameof(MyLocation)); 
             }
         }
-        //int or string????
+        
         public string GetZipBopCode(string zipBopCode)
         {
             int zipCode = Int32.Parse(zipBopCode);
