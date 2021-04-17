@@ -30,16 +30,13 @@ namespace _2NiteAHI
         }
         async private void GetUserLoc()
         {
-          
-            var request = new GeolocationRequest(GeolocationAccuracy.Best); // Requesting a location pull
-            var location = await Geolocation.GetLocationAsync(request);
+
+            var address = new GeolocationRequest(GeolocationAccuracy.Best); // Requesting a location pull
+            var location = await Geolocation.GetLocationAsync(address);
             var GetAddy = await Geocoding.GetPlacemarksAsync(location.Latitude, location.Longitude); // Grabbing the users location details as a placemark.
             var addy = GetAddy?.FirstOrDefault();
-
-            
-            MyLocation = $"{addy.Locality},{addy.AdminArea}"; // Grabs the users current locations Address-Town and Address-State **Only works in USA**            
-
- 
+   
+            MyLocation = $"{addy.Locality},{addy.AdminArea}"; // Grabs the users current locations Address-Town and Address-State **Only works in USA**  
         }
         private string myloc;
         public string MyLocation // Property to change the label text on start-up
