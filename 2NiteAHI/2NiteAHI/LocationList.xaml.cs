@@ -18,25 +18,27 @@ namespace _2NiteAHI
 
         public LocationList()
         {
-            string x1 = "Pengilly's";
-            string x2 = "Adrian's";
-            string x3 = "Cactus";
-            string x4 = "Handlebar";
-            string x5 = "Spacebar";
-            string x6 = "Neurolux";
-            string x7 = "Broadway";
-            string x8 = "Press & Pony";
-            string x9 = "TapHouse";
-            string x10 = "Mulligans";
-            string x11 = "Mark's Lounge";
-            string x12 = "Stockyard";
-            string x13 = "ThatOtherPlaceThatNoOneGoesTo";
+            Dictionary<string, int> theBars = new Dictionary<string, int>();
+            
 
+            theBars.Add("Pengilly's", 100);
+            theBars.Add("Cactus", 95);
+            theBars.Add("Handlebar", 89);
+            theBars.Add("Spacebar", 76);
+            theBars.Add("Neurolux", 70);
+            theBars.Add("Broadway", 67);
+            theBars.Add("Press & Pony", 38);
+            theBars.Add("TapHouse", 21);
+            theBars.Add("Mulligans", 19);
+            theBars.Add("Mark's Lounge", 13);
+            theBars.Add("Stockyard", 8);
+            theBars.Add("ThatOtherPlaceThatNoOneGoesTo", 1);
+            
             InitializeComponent();
             BindingContext = this;
             GetUserLoc(); // Grabbing the users Postal Code and Town Name
             
-            barListView.ItemsSource = new string[] { x1,x2,x3,x4,x5,x6,x7,x8,x9,x10,x11,x12,x13 };
+            barListView.ItemsSource = theBars;
         }
         
         async private void ToolbarItem_Clicked(object sender, EventArgs e)
