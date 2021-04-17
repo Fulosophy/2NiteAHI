@@ -68,9 +68,12 @@
             Command="{Binding RefreshCommand}"
             Grid.Row="1"
             Grid.Column="0"
-            Grid.ColumnSpan="2">
-            <ListView
-                Background="black"/>
+            Grid.ColumnSpan="2"
+            Margin="50,10,50,10">
+            <ListView 
+                x:Name="barListView"
+                Background="black"
+                />
         </RefreshView>
         <!--Descending order button-->
         <Button
@@ -132,14 +135,5 @@
             WidthRequest="150"
             Margin="10,0,10,0"
             CornerRadius="8"/>
-        <!--Temporary Manual Refresh button-->
-        <!--Will design to be automated TBD-->
-        <Button
-            ImageSource="Refresh_icon"
-            CornerRadius="8"
-            BackgroundColor="Gainsboro"
-            Margin="10,10,0,10"
-            Grid.Row="2"
-            Grid.Column="0"/>
     </Grid>
 </ContentPage>
