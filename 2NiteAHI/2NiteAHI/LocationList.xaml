@@ -68,7 +68,6 @@
             Margin="30,0,0,0"
             VerticalOptions="Center"
             HorizontalOptions="Center"/>
-        
         <!--List box-->
         <RefreshView 
             IsRefreshing="{Binding IsSoRefreshing}"
@@ -80,13 +79,12 @@
             Margin="0,10,20,10">
             <ListView                 
                 x:Name="barListView"
-                Background="black"
-                >
-                
+                BackgroundColor="Gainsboro"
+                SeparatorColor="Black"
+                Header="    BARS        USERS">
+
             </ListView>
         </RefreshView>
-        
-        
         <!--Descending order button-->
         <Button
             Text="DESC"
@@ -101,7 +99,8 @@
             HeightRequest="40"
             WidthRequest="150"
             Margin="0,0,0,0"
-            CornerRadius="8"/>
+            CornerRadius="8"
+            Clicked="OnClick_Ascend"/>
         <!--Ascending order button-->
         <Button
             Text="ASC"
@@ -116,7 +115,8 @@
             HeightRequest="40"
             WidthRequest="150"
             Margin="0,0,0,0"
-            CornerRadius="8"/>
+            CornerRadius="8"
+            Clicked="OnClick_Descend"/>
         <!--Ping button for checking into a location-->
         <Button
             Text="PING-IN"
@@ -131,7 +131,8 @@
             HeightRequest="50"
             WidthRequest="150"
             Margin="0,0,0,0"
-            CornerRadius="8"/>
+            CornerRadius="8"
+            Clicked="OnClick_Ping"/>
         <!--Peace out button for checking out of a location-->
         <Button
             Text="PEACE-OUT"
@@ -146,6 +147,7 @@
             HeightRequest="50"
             WidthRequest="150"
             Margin="0,0,0,0"
-            CornerRadius="8"/>
+            CornerRadius="8"
+            Clicked="OnClick_Peace"/>
     </Grid>
 </ContentPage>

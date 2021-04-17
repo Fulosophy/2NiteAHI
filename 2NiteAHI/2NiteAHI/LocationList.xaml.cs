@@ -15,10 +15,10 @@ namespace _2NiteAHI
     //Fixing an accidental merge sucks...
     public partial class LocationList : ContentPage
     {
-        private Dictionary<string, int> theBars;
+        private Dictionary<string, int> theBars = new Dictionary<string, int>();
         public LocationList()
         {
-            Dictionary<string, int> theBars = new Dictionary<string, int>();
+            //Dictionary<string, int> theBars = new Dictionary<string, int>();
             
             theBars.Add("Pengilly's", 100);
             theBars.Add("Cactus", 95);
@@ -67,18 +67,31 @@ namespace _2NiteAHI
 
         }
 
-        //Asc & Desc Button Functions
-        /*private void ListAsc_Clicked(object sender, EventArgs e)
+        //Ascending sort button
+        //Gets a null error right now
+        private void OnClick_Ascend(object sender, EventArgs e)
         {
-            var result = theBars.OrderByDescending(i => i.Key);
-            barListView.ItemsSource = result;
+            theBars = theBars.OrderBy(i => i.Key).ToDictionary(i => i.Key, i => i.Value);
+            barListView.ItemsSource = theBars;
         }
-        private void ListDesc_Clicked(object sender, EventArgs e)
+        
+        //Descending sort button
+        //Gets a null error
+        private void OnClick_Descend(object sender, EventArgs e)
         {
-            var result = theBars.OrderByAscending(i => i.Key);
-            barListView.ItemsSource = result;
+            theBars = theBars.OrderByDescending(i => i.Key).ToDictionary(i => i.Key, i => i.Value);
+            barListView.ItemsSource = theBars;
         }
-        */
+
+        private void OnClick_Ping(object sender, EventArgs e)
+        {
+
+        }
+
+        private void OnClick_Peace(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }
