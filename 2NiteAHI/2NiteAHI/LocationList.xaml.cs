@@ -15,12 +15,11 @@ namespace _2NiteAHI
     //Fixing an accidental merge sucks...
     public partial class LocationList : ContentPage
     {
-
+        private Dictionary<string, int> theBars;
         public LocationList()
         {
             Dictionary<string, int> theBars = new Dictionary<string, int>();
             
-
             theBars.Add("Pengilly's", 100);
             theBars.Add("Cactus", 95);
             theBars.Add("Handlebar", 89);
@@ -38,9 +37,9 @@ namespace _2NiteAHI
             BindingContext = this;
             GetUserLoc(); // Grabbing the users Postal Code and Town Name
             
-            barListView.ItemsSource = theBars;
+            barListView.ItemsSource = theBars;            
         }
-        
+
         async private void ToolbarItem_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new Settings());        
@@ -56,6 +55,7 @@ namespace _2NiteAHI
                     
         }
         private string myloc;
+        
         public string MyLocation // Property to change the label text on start-up
         {
             get { return myloc; }
@@ -65,8 +65,20 @@ namespace _2NiteAHI
                 OnPropertyChanged(nameof(MyLocation)); 
             }
 
-        }               
+        }
 
+        //Asc & Desc Button Functions
+        /*private void ListAsc_Clicked(object sender, EventArgs e)
+        {
+            var result = theBars.OrderByDescending(i => i.Key);
+            barListView.ItemsSource = result;
+        }
+        private void ListDesc_Clicked(object sender, EventArgs e)
+        {
+            var result = theBars.OrderByAscending(i => i.Key);
+            barListView.ItemsSource = result;
+        }
+        */
     }
-       
+
 }

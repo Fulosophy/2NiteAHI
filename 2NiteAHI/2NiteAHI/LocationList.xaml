@@ -24,12 +24,15 @@
         </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="1.2*"/>
-            <RowDefinition Height="5*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
         
         <!--Logo-->
@@ -49,9 +52,10 @@
             TextDecorations="Underline"
             FontAttributes="Bold"
             Grid.Row="0"
-            Grid.Column="1"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
             VerticalOptions="Start" 
-            HorizontalOptions="Start" />
+            HorizontalOptions="Center" />
         <!--Location of User-->
         <Label
             x:Name="UserLocation"
@@ -59,55 +63,59 @@
             FontSize="Medium"
             TextColor="White"
             Grid.Row="0"
-            Grid.Column="1"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            Margin="30,0,0,0"
             VerticalOptions="Center"
-            HorizontalOptions="StartAndExpand"/>
+            HorizontalOptions="Center"/>
         
         <!--List box-->
         <RefreshView 
             IsRefreshing="{Binding IsSoRefreshing}"
             Command="{Binding RefreshCommand}"
             Grid.Row="1"
-            Grid.Column="0"
-            Grid.ColumnSpan="2"
-            Margin="50,10,50,10">
-            
-            <ListView 
+            Grid.Column="1"
+            Grid.ColumnSpan="1"
+            Grid.RowSpan="5"
+            Margin="0,10,20,10">
+            <ListView                 
                 x:Name="barListView"
-                Background="black"/>
-            
+                Background="black"
+                >
+                
+            </ListView>
         </RefreshView>
         
         
         <!--Descending order button-->
         <Button
             Text="DESC"
-            TextColor="Black"
-            FontSize="Micro"
+            TextColor="Yellow"
+            FontSize="Medium"
             FontAttributes="Bold"
-            Grid.Row="0"
-            Grid.Column="1"
+            Grid.Row="2"
+            Grid.Column="0"
             VerticalOptions="End"
-            HorizontalOptions="End"
-            BackgroundColor="GhostWhite"
-            HeightRequest="30"
-            WidthRequest="75"
-            Margin="20,0,30,0"
+            HorizontalOptions="Center"
+            BackgroundColor="Gray"
+            HeightRequest="40"
+            WidthRequest="150"
+            Margin="0,0,0,0"
             CornerRadius="8"/>
         <!--Ascending order button-->
         <Button
             Text="ASC"
-            TextColor="Black"
-            FontSize="Micro"
+            TextColor="Ivory"
+            FontSize="Medium"
             FontAttributes="Bold"
-            Grid.Row="0"
-            Grid.Column="1"
-            VerticalOptions="End"
+            Grid.Row="3"
+            Grid.Column="0"
+            VerticalOptions="Start"
             HorizontalOptions="Center"
-            BackgroundColor="GhostWhite"
-            HeightRequest="30"
-            WidthRequest="75"
-            Margin="30,0,0,0"
+            BackgroundColor="Gray"
+            HeightRequest="40"
+            WidthRequest="150"
+            Margin="0,0,0,0"
             CornerRadius="8"/>
         <!--Ping button for checking into a location-->
         <Button
@@ -115,29 +123,29 @@
             TextColor="Black"
             FontAttributes="Bold"
             FontSize="Medium"
-            Grid.Row="2"
-            Grid.Column="1"
-            VerticalOptions="Center"
-            HorizontalOptions="Start"
+            Grid.Row="4"
+            Grid.Column="0"
+            VerticalOptions="End"
+            HorizontalOptions="Center"
             BackgroundColor="Green"
             HeightRequest="50"
             WidthRequest="150"
-            Margin="10,0,10,0"
+            Margin="0,0,0,0"
             CornerRadius="8"/>
         <!--Peace out button for checking out of a location-->
         <Button
-            Text="PEACE OUT"
+            Text="PEACE-OUT"
             TextColor="white"
             FontAttributes="Bold"
             FontSize="Medium"
-            Grid.Row="2"
-            Grid.Column="1"
-            VerticalOptions="Center"
-            HorizontalOptions="End"
+            Grid.Row="5"
+            Grid.Column="0"
+            VerticalOptions="Start"
+            HorizontalOptions="Center"
             BackgroundColor="DarkRed"
             HeightRequest="50"
             WidthRequest="150"
-            Margin="10,0,10,0"
+            Margin="0,0,0,0"
             CornerRadius="8"/>
     </Grid>
 </ContentPage>
