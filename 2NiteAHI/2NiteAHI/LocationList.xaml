@@ -62,6 +62,7 @@
             Grid.Column="1"
             VerticalOptions="Center"
             HorizontalOptions="StartAndExpand"/>
+        
         <!--List box-->
         <RefreshView 
             IsRefreshing="{Binding IsSoRefreshing}"
@@ -70,11 +71,14 @@
             Grid.Column="0"
             Grid.ColumnSpan="2"
             Margin="50,10,50,10">
+            
             <ListView 
                 x:Name="barListView"
-                Background="black"
-                />
+                Background="black"/>
+            
         </RefreshView>
+        
+        
         <!--Descending order button-->
         <Button
             Text="DESC"
