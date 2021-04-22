@@ -79,12 +79,16 @@
             Grid.ColumnSpan="2"
             Grid.RowSpan="4"
             Margin="50,0,50,10">
-            <ListView                
+            <ListView           
+                
                 x:Name="barListView"
+                ItemsSource="{Binding Barlist}"
+                HasUnevenRows="True"
                 SelectionMode="Single"
                 CachingStrategy="RecycleElement"
                 BackgroundColor="Black"
                 SeparatorColor="White">
+
             </ListView>
         </RefreshView>
         <!--Descending order button-->
