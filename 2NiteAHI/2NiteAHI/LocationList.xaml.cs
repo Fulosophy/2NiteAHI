@@ -15,11 +15,17 @@ namespace _2NiteAHI
     //Fixing an accidental merge sucks...
     public partial class LocationList : ContentPage
     {
+        //variables
         private Dictionary<string, int> theBars = new Dictionary<string, int>();
+        private string myloc;
+        private int searchRadius = 1000;
+        private string searchType = "bar";
+        private object item;
+        private bool hasbeen;
+
         public LocationList()
         {
             //Dictionary<string, int> theBars = new Dictionary<string, int>();
-            
             theBars.Add("Pengilly's", 100);
             theBars.Add("Cactus", 95);
             theBars.Add("Handlebar", 89);
@@ -37,7 +43,20 @@ namespace _2NiteAHI
             BindingContext = this;
             GetUserLoc(); // Grabbing the users Postal Code and Town Name
             
-            barListView.ItemsSource = theBars;            
+            barListView.ItemsSource = theBars;
+            barListView.ItemSelected += (object sender, SelectedItemChangedEventArgs e) =>
+            {
+                item = e.SelectedItem;
+                if (hasbeen == false)
+                {
+                    DisplayAlert("Yo! Bar Selected!", e.SelectedItem.ToString(), "OK", "Cancel");
+                    hasbeen = true;
+                }
+                else if(hasbeen == true)
+                {
+                    DisplayAlert("Yo! New Bar?", e.SelectedItem.ToString(), "OK", "Cancel");
+                }
+            };
         }
 
         async private void ToolbarItem_Clicked(object sender, EventArgs e)
@@ -54,8 +73,6 @@ namespace _2NiteAHI
             MyLocation = $"{addy.Locality},{addy.AdminArea}"; // Grabs the users current locations Address-Town and Address-State **Only works in USA**  
                     
         }
-        private string myloc;
-        
         public string MyLocation // Property to change the label text on start-up
         {
             get { return myloc; }
@@ -66,23 +83,20 @@ namespace _2NiteAHI
             }
 
         }
-
         //Ascending sort button
         //Gets a null error right now
         private void OnClick_Ascend(object sender, EventArgs e)
         {
-            theBars = theBars.OrderBy(i => i.Key).ToDictionary(i => i.Key, i => i.Value);
+            theBars = theBars.OrderBy(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
             barListView.ItemsSource = theBars;
         }
-        
         //Descending sort button
         //Gets a null error
         private void OnClick_Descend(object sender, EventArgs e)
         {
-            theBars = theBars.OrderByDescending(i => i.Key).ToDictionary(i => i.Key, i => i.Value);
+            theBars = theBars.OrderByDescending(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
             barListView.ItemsSource = theBars;
         }
-
         private void OnClick_Ping(object sender, EventArgs e)
         {
 
