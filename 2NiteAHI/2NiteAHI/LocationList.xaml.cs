@@ -7,6 +7,8 @@ using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using GoogleApi;
+using System.Net;
+using System.IO;
 
 namespace _2NiteAHI
 {
@@ -44,6 +46,7 @@ namespace _2NiteAHI
             GetUserLoc(); // Grabbing the users Postal Code and Town Name
             
             barListView.ItemsSource = theBars;
+            //ListView ItemSelected options
             barListView.ItemSelected += (object sender, SelectedItemChangedEventArgs e) =>
             {
                 item = e.SelectedItem;
@@ -69,7 +72,20 @@ namespace _2NiteAHI
             var location = await Geolocation.GetLocationAsync(new GeolocationRequest(GeolocationAccuracy.Default, TimeSpan.FromMinutes(1)));
             var GetAddy = await Geocoding.GetPlacemarksAsync(location.Latitude, location.Longitude); // Grabbing the users location details as a placemark.
             var addy = GetAddy?.FirstOrDefault();
-   
+
+            //Web Request URL using variables for location(location.Latitude, location.Longitude), radius(searchRadius), and type(searchType)
+            //Adding this code incase we can get it working without charging anything...
+            string restUrl = $"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" +
+                location.Latitude + "," + location.Longitude +
+                "&radius=" + searchRadius + "&type=" +
+                searchType + "&key=AIzaSyAR55DfsuhAWriupO5t_uzWl-FwddZiBhY";
+
+            //Web  Request
+            HttpWebRequest webRequest = WebRequest.Create(restUrl) as HttpWebRequest;
+            webRequest.Timeout = 2000;
+            webRequest.Method = "GET";
+            webRequest.BeginGetResponse(new AsyncCallback(RequestCompleted), webRequest);
+
             MyLocation = $"{addy.Locality},{addy.AdminArea}"; // Grabs the users current locations Address-Town and Address-State **Only works in USA**  
                     
         }
@@ -96,10 +112,6 @@ namespace _2NiteAHI
         {
             theBars = theBars.OrderByDescending(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
             barListView.ItemsSource = theBars;
-        }
-        private void OnClick_Ping(object sender, EventArgs e)
-        {
-
         }
 
         private void OnClick_Peace(object sender, EventArgs e)
