@@ -128,6 +128,7 @@ namespace _2NiteAHI
         //Gets a null error right now
         private void OnClick_Ascend(object sender, EventArgs e)
         {
+            //OrderBy Value
             theBars = theBars.OrderBy(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
             barListView.ItemsSource = theBars;
         }
@@ -135,6 +136,7 @@ namespace _2NiteAHI
         //Gets a null error
         private void OnClick_Descend(object sender, EventArgs e)
         {
+            //OrderBy Value
             theBars = theBars.OrderByDescending(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
             barListView.ItemsSource = theBars;
         }
