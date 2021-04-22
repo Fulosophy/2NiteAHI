@@ -8,146 +8,260 @@
             Text="Settings"
             Clicked="ToolbarItem_Clicked"/>
     </ContentPage.ToolbarItems>
-    
+
     <Grid>
+
         <Grid.Background>
+
             <LinearGradientBrush StartPoint="0.8,0" EndPoint="0,0.8">
+
                 <GradientStop Color="Indigo"  Offset="0.05"/>
+
                 <GradientStop Color="DarkOrchid" Offset="0.08"/>
+
                 <GradientStop Color="Indigo"  Offset="0.15"/>
+
                 <GradientStop Color="DarkBlue" Offset="0.3"/>
+
                 <GradientStop Color="Blue" Offset="0.5"/>
+
                 <GradientStop Color="Indigo"  Offset="0.85"/>
+
                 <GradientStop Color="DarkOrchid" Offset="0.92"/>
+
                 <GradientStop Color="Indigo"  Offset="0.95"/>
+
             </LinearGradientBrush>
+
         </Grid.Background>
+
         <Grid.RowDefinitions>
+
             <RowDefinition Height="1.2*"/>
+
             <RowDefinition Height="1*"/>
+
             <RowDefinition Height="1*"/>
+
             <RowDefinition Height="1*"/>
+
             <RowDefinition Height="1*"/>
+
             <RowDefinition Height="1*"/>
+
         </Grid.RowDefinitions>
+
         <Grid.ColumnDefinitions>
+
             <ColumnDefinition Width="3*"/>
+
             <ColumnDefinition Width="3*"/>
+
         </Grid.ColumnDefinitions>
-        
+
+
+
         <!--Logo-->
+
         <Image
+
             Source="fire"
+
             ScaleX="1"
+
             ScaleY="1"
+
             Grid.Row="0"
+
             Grid.Column="0"
+
             VerticalOptions="Start"
+
             HorizontalOptions="Start"/>
+
         <!--Title-->
-        <Label 
-            Text="2Nite"
-            FontSize="Title"
-            TextColor="White"
-            TextDecorations="Underline"
-            FontAttributes="Bold"
-            Grid.Row="0"
-            Grid.Column="0"
-            Grid.ColumnSpan="2"
-            VerticalOptions="Start" 
-            HorizontalOptions="Center" />
-        <!--Location of User-->
+
         <Label
-            x:Name="UserLocation"
-            Text="{Binding MyLocation}"
-            FontSize="Medium"
+
+            Text="2Nite"
+
+            FontSize="Title"
+
             TextColor="White"
+
+            TextDecorations="Underline"
+
+            FontAttributes="Bold"
+
             Grid.Row="0"
+
             Grid.Column="0"
+
             Grid.ColumnSpan="2"
+
+            VerticalOptions="Start"
+
+            HorizontalOptions="Center" />
+
+        <!--Location of User-->
+
+        <Label
+
+            x:Name="UserLocation"
+
+            Text="{Binding MyLocation}"
+
+            FontSize="Medium"
+
+            TextColor="White"
+
+            Grid.Row="0"
+
+            Grid.Column="0"
+
+            Grid.ColumnSpan="2"
+
             Margin="30,0,0,0"
+
             VerticalOptions="Center"
+
             HorizontalOptions="Center"/>
+
         <!--List box-->
-        <RefreshView 
+
+        <RefreshView
+
             IsRefreshing="{Binding IsSoRefreshing}"
+
             Command="{Binding RefreshCommand}"
+
             Grid.Row="1"
-            Grid.Column="1"
-            Grid.ColumnSpan="1"
-            Grid.RowSpan="5"
-            Margin="0,10,20,10">
-            <ListView                 
+
+            Grid.Column="0"
+
+            Grid.ColumnSpan="2"
+
+            Grid.RowSpan="4"
+
+            Margin="50,0,50,10">
+
+            <ListView                
+
                 x:Name="barListView"
-                BackgroundColor="Gainsboro"
-                SeparatorColor="Black"
-                Header="    BARS        USERS">
+
+                SelectionMode="Single"
+
+                CachingStrategy="RecycleElement"
+
+                BackgroundColor="Black"
+
+                SeparatorColor="White"
+
+                >
 
             </ListView>
+
         </RefreshView>
+
         <!--Descending order button-->
+
         <Button
+
             Text="DESC"
+
             TextColor="Yellow"
-            FontSize="Medium"
+
+            FontSize="Micro"
+
             FontAttributes="Bold"
-            Grid.Row="2"
-            Grid.Column="0"
+
+            Grid.Row="0"
+
+            Grid.Column="1"
+
             VerticalOptions="End"
-            HorizontalOptions="Center"
+
+            HorizontalOptions="Start"
+
             BackgroundColor="Gray"
-            HeightRequest="40"
-            WidthRequest="150"
-            Margin="0,0,0,0"
+
+            HeightRequest="30"
+
+            WidthRequest="90"
+
+            Margin="0,0,10,0"
+
             CornerRadius="8"
-            Clicked="OnClick_Ascend"/>
+
+           Clicked="OnClick_Ascend"/>
+
         <!--Ascending order button-->
+
         <Button
+
             Text="ASC"
+
             TextColor="Ivory"
-            FontSize="Medium"
+
+            FontSize="Micro"
+
             FontAttributes="Bold"
-            Grid.Row="3"
+
+            Grid.Row="0"
+
             Grid.Column="0"
-            VerticalOptions="Start"
-            HorizontalOptions="Center"
-            BackgroundColor="Gray"
-            HeightRequest="40"
-            WidthRequest="150"
-            Margin="0,0,0,0"
-            CornerRadius="8"
-            Clicked="OnClick_Descend"/>
-        <!--Ping button for checking into a location-->
-        <Button
-            Text="PING-IN"
-            TextColor="Black"
-            FontAttributes="Bold"
-            FontSize="Medium"
-            Grid.Row="4"
-            Grid.Column="0"
+
             VerticalOptions="End"
-            HorizontalOptions="Center"
-            BackgroundColor="Green"
-            HeightRequest="50"
-            WidthRequest="150"
+
+            HorizontalOptions="End"
+
+            BackgroundColor="Gray"
+
+            HeightRequest="30"
+
+            WidthRequest="90"
+
             Margin="0,0,0,0"
+
             CornerRadius="8"
-            Clicked="OnClick_Ping"/>
+
+            Clicked="OnClick_Descend"/>
+
+
+
         <!--Peace out button for checking out of a location-->
+
         <Button
+
             Text="PEACE-OUT"
+
             TextColor="white"
+
             FontAttributes="Bold"
+
             FontSize="Medium"
+
             Grid.Row="5"
+
             Grid.Column="0"
-            VerticalOptions="Start"
+
+            Grid.ColumnSpan="2"
+
+            VerticalOptions="Center"
+
             HorizontalOptions="Center"
+
             BackgroundColor="DarkRed"
+
             HeightRequest="50"
+
             WidthRequest="150"
+
             Margin="0,0,0,0"
+
             CornerRadius="8"
+
             Clicked="OnClick_Peace"/>
+
     </Grid>
 </ContentPage>
