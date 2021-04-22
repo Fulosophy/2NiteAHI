@@ -89,6 +89,31 @@ namespace _2NiteAHI
             MyLocation = $"{addy.Locality},{addy.AdminArea}"; // Grabs the users current locations Address-Town and Address-State **Only works in USA**  
                     
         }
+        private void RequestCompleted(IAsyncResult result)
+        {
+            var request = (HttpWebRequest)result.AsyncState;
+            var response = (HttpWebResponse)request.EndGetResponse(result);
+
+            using(var stream = response.GetResponseStream())
+            {
+                Encoding encode = System.Text.Encoding.GetEncoding("utf-8");
+                var r = new StreamReader(stream, encode);
+                Char[] read = new char[256];
+                int count = r.Read(read, 0, 256);
+
+                while(count > 0)
+                {
+                    String str = new string(read, 0, count);
+                    Console.Write(str);
+                    count = r.Read(read, 0, 256);
+                }
+                Console.WriteLine("");
+                r.Close();
+                
+                //Old readToEnd might be an alternative to the Char array...
+                //var resp = r.ReadToEnd();
+            }
+        }
         public string MyLocation // Property to change the label text on start-up
         {
             get { return myloc; }
