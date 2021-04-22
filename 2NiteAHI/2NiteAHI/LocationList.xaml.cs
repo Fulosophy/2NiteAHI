@@ -147,5 +147,33 @@ namespace _2NiteAHI
 
         }
     }
+    public class Bars
+    {
+        public string Bar { get; set; }
+        public int Users { get; set; }
+        public int BarLat { get; set; }
+        public int BarLong { get; set; }
+        public Bars(string _Bar, int _Users, int _BarLat, int _BarLong)
+        {
+            Bar = _Bar;
+            Users = _Users;
+            BarLat = _BarLat;
+            BarLong = _BarLong;
+        }
+    }
+    public class Foods
+    {
+        public string Food { get; set; }
+        public int Users { get; set; }
+        public int FoodLat { get; set; }
+        public int FoodLong { get; set; }
+        public Foods(string _Food, int _Users, int _FoodLat, int _FoodLong)
+        {
+            Food = _Food;
+            Users = _Users;
+            FoodLat = _FoodLat;
+            FoodLong = _FoodLong;
+        }
+    }
 
 }
