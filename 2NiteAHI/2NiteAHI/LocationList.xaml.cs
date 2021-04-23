@@ -28,6 +28,11 @@ namespace _2NiteAHI
         public List<Bars> BoiseBarList = new List<Bars>();
         public List<Foods> WinterFoodsList = new List<Foods>();
         public List<Foods> BoiseFoodsList = new List<Foods>();
+        public List<string> ListOLocations = new List<string>
+        {
+            "Bars",
+            "Restaurant"
+        };
 
         private string myloc;
         private int locale;
@@ -45,6 +50,7 @@ namespace _2NiteAHI
             InitializeComponent();
             BindingContext = this;
             GetUserLoc(); // Grabbing the users Postal Code and Town Name
+            barOrFood.ItemsSource = ListOLocations;
             
             //LISTVIEW SELECTION OPERATIONS
             barListView.ItemSelected += (object sender, SelectedItemChangedEventArgs e) =>
@@ -55,22 +61,22 @@ namespace _2NiteAHI
                     DisplayAlert("Yo! Bar Selected!", e.SelectedItem.ToString(), "OK", "Cancel");
                     hasbeen = true;
                     //INCREMENT BAR COUNT
-                    winterParkBars.TryGetValue((e.SelectedItem.ToString()), out count);
-                    winterParkBars[e.SelectedItem.ToString()] = count++;
-                    barListView.ItemsSource = winterParkBars;
-                    previousBar = e.SelectedItem.ToString();
+                    //winterParkBars.TryGetValue((e.SelectedItem.ToString()), out count);
+                    //winterParkBars[e.SelectedItem.ToString()] = count++;
+                    //barListView.ItemsSource = winterParkBars;
+                    //previousBar = e.SelectedItem.ToString();
                 }
                 else if(hasbeen == true)
                 {
                     //DEINCREMENT COUNT
-                    winterParkBars.TryGetValue((previousBar), out count);
-                    winterParkBars[previousBar] = count--;
+                    //winterParkBars.TryGetValue((previousBar), out count);
+                    //winterParkBars[previousBar] = count--;
                     //INCREMENT NEW BAR COUNT
                     DisplayAlert("Yo! New Bar?", e.SelectedItem.ToString(), "OK", "Cancel");
-                    winterParkBars.TryGetValue((e.SelectedItem.ToString()), out count);
-                    winterParkBars[e.SelectedItem.ToString()] = count++;
-                    barListView.ItemsSource = winterParkBars;
-                    previousBar = e.SelectedItem.ToString();
+                    //winterParkBars.TryGetValue((e.SelectedItem.ToString()), out count);
+                    //winterParkBars[e.SelectedItem.ToString()] = count++;
+                    //barListView.ItemsSource = winterParkBars;
+                    // = e.SelectedItem.ToString();
                 }
             };
         }
