@@ -416,12 +416,13 @@ namespace _2NiteAHI
             {
                 winterParkBars = winterParkBars.OrderBy(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
                 barListView.ItemsSource = winterParkBars;
+                winParkBarsProx.Clear();
             }
             else if (locale == 1)
             {
                 boiseBars = boiseBars.OrderBy(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
                 barListView.ItemsSource = boiseBars;
-
+                boiseBarsProx.Clear();
             }
 
         }
