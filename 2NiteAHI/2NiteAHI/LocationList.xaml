@@ -45,7 +45,8 @@
             Grid.Row="0"
             Grid.Column="0"
             VerticalOptions="Start"
-            HorizontalOptions="Start"/>
+            HorizontalOptions="Start"
+            Margin="10,0,0,0"/>
         <!--Title-->
         <Label
             Text="2Nite"
@@ -99,7 +100,7 @@
             BackgroundColor="Gray"
             HeightRequest="30"
             WidthRequest="90"
-            Margin="0,0,10,0"
+            Margin="0,0,20,0"
             CornerRadius="8"
            Clicked="OnClick_Ascend"/>
         <!--Ascending order button-->
@@ -115,7 +116,7 @@
             BackgroundColor="Gray"
             HeightRequest="30"
             WidthRequest="90"
-            Margin="10,0,0,0"
+            Margin="20,0,0,0"
             CornerRadius="8"
             Clicked="OnClick_Descend"/>
         <Picker
@@ -125,7 +126,9 @@
             HeightRequest="5"
             WidthRequest="100"
             TextColor="White"
-            Margin="40,70,70,0"/>
+            Margin="40,70,30,0"
+            HorizontalOptions="Center"
+            HorizontalTextAlignment="Center"/>
         <!--Peace out button for checking out of a location-->
         <Button
             Text="PEACE-OUT"

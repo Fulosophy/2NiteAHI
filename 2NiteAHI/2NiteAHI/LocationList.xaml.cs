@@ -50,8 +50,11 @@ namespace _2NiteAHI
             InitializeComponent();
             BindingContext = this;
             GetUserLoc(); // Grabbing the users Postal Code and Town Name
-            barOrFood.ItemsSource = ListOLocations;
             
+            //BAR/FOOD PICKER
+            barOrFood.ItemsSource = ListOLocations;
+            barOrFood.SelectedItem = "Bars";
+
             //LISTVIEW SELECTION OPERATIONS
             barListView.ItemSelected += (object sender, SelectedItemChangedEventArgs e) =>
             {
@@ -102,7 +105,7 @@ namespace _2NiteAHI
             webRequest.BeginGetResponse(new AsyncCallback(RequestCompleted), webRequest);*/
 
             MyLocation = $"{addy.Locality},{addy.AdminArea}"; // Grabs the users current locations Address-Town and Address-State **Only works in USA**  
-            if(addy.Locality == "Winter Park")
+            if(addy.Locality == "Winter Park" && barOrFood.SelectedItem == "Bars")
             {
                 locale = 0;
                 BuildWinterParkBars();

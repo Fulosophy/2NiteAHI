@@ -26,18 +26,14 @@ namespace _2NiteAHI
             "Bar",
             "Food"
         };
-        private List<string> LocationOpt = new List<string>
-        {
-            "Winter Park, Florida",
-            "Boise, Idaho"
-        };
+        
         public Settings()
         {
             
             InitializeComponent();
             radiusPicker.ItemsSource = RadialOpt;
             placePicker.ItemsSource = PlaceOpt;
-            locPicker.ItemsSource = LocationOpt;
+            
         }
 
         private void GPSLOC_Toggled(object sender, ToggledEventArgs e)
