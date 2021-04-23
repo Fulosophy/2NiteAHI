@@ -6,21 +6,21 @@
     
     <Grid RowSpacing="0" ColumnSpacing="0">
         <Grid.Background>
-            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+            <LinearGradientBrush StartPoint="1,0" EndPoint="0,1">
                 <!--<GradientStop Color="Aquamarine" Offset="0.0"/>-->
-                <GradientStop Color="CadetBlue" Offset="0.0"/>
-                <GradientStop Color="Cyan" Offset="0.2"/>
-                <GradientStop Color="DarkBlue" Offset="0.50"/>
+                <GradientStop Color="CadetBlue" Offset="0.2"/>
+                <GradientStop Color="Cyan" Offset="0.5"/>
+                <GradientStop Color="DarkBlue" Offset="0.70"/>
             </LinearGradientBrush>
         </Grid.Background>
         <Grid.RowDefinitions>
-            <RowDefinition Height="2*"/>
+            <RowDefinition Height="*"/>
             <!--GPS LOCATION-->
             <RowDefinition Height="*"/>
             <!--NightTheme-->
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="2*"/>
+            <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
@@ -90,8 +90,72 @@
             VerticalOptions="Center" 
             HorizontalOptions="Center"
             Toggled="NightTheme_Toggled" />
+        
+        <!--SEARCH OPTIONS-->
+        <Label
+            Text="SEARCH OPTIONS"
+            Grid.Row="3"
+            Grid.Column="0"
+            Grid.ColumnSpan="1"
+            FontSize="Title"
+            TextColor="Black"
+            HorizontalOptions="StartAndExpand" 
+            VerticalOptions="CenterAndExpand"
+            TextDecorations="Underline"
+            Margin="20,0,0,0"/>
+        <Label
+            Text="Radius"
+            Grid.Row="4"
+            Grid.Column="0"
+            TextColor="Black" 
+            VerticalOptions="Center" 
+            HorizontalOptions="Center"
+            FontSize="Medium"/>
+        <Picker
+            x:Name="radiusPicker"
+            Grid.Row="4"
+            Grid.Column="1"
+            VerticalOptions="Center" 
+            HorizontalOptions="Start"
+            WidthRequest="100"
+            Margin="0,0,30,0"
+            BackgroundColor="Gainsboro"/>
+        <Label
+            Text="Bar Or Food"
+            Grid.Row="5"
+            Grid.Column="0"
+            TextColor="Black" 
+            VerticalOptions="Center" 
+            HorizontalOptions="Center"
+            FontSize="Medium"/>
+        <Picker
+            x:Name="placePicker"
+            Grid.Row="5"
+            Grid.Column="1"
+            VerticalOptions="Center" 
+            HorizontalOptions="Start"
+            WidthRequest="100"
+            Margin="0,0,30,0"
+            BackgroundColor="Gainsboro"/>
+        <Label
+            Text="Location"
+            Grid.Row="6"
+            Grid.Column="0"
+            TextColor="Black" 
+            VerticalOptions="Center" 
+            HorizontalOptions="Center"
+            FontSize="Medium"/>
+        <Picker
+            x:Name="locPicker"
+            Grid.Row="6"
+            Grid.Column="1"
+            VerticalOptions="Center" 
+            HorizontalOptions="Start"
+            WidthRequest="100"
+            Margin="0,0,30,0"
+            BackgroundColor="Gainsboro"/>
 
-        <!--Personal Information-->
+        <!--Next Expansion  Personal Information
         <Label 
             Text="Personal Information" 
             Grid.Row="3" 
@@ -117,6 +181,6 @@
             TextColor="Goldenrod"
             VerticalTextAlignment="Center"
             HorizontalTextAlignment="Center"
-            FontSize="Medium"/>
+            FontSize="Medium"/>-->
     </Grid>
 </ContentPage>

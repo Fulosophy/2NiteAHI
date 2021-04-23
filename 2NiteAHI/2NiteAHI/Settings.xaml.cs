@@ -13,16 +13,32 @@ using GoogleApi.Entities.Places;
 
 namespace _2NiteAHI
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-public partial class Settings : ContentPage
-{
-    public Settings()
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class Settings : ContentPage
     {
-        InitializeComponent();
-    }
-
-   
-    
+        private List<int> RadialOpt = new List<int>
+        {
+            1000,
+            3000
+        };
+        private List<string> PlaceOpt = new List<string>
+        {
+            "Bar",
+            "Food"
+        };
+        private List<string> LocationOpt = new List<string>
+        {
+            "Winter Park, Florida",
+            "Boise, Idaho"
+        };
+        public Settings()
+        {
+            
+            InitializeComponent();
+            radiusPicker.ItemsSource = RadialOpt;
+            placePicker.ItemsSource = PlaceOpt;
+            locPicker.ItemsSource = LocationOpt;
+        }
 
         private void GPSLOC_Toggled(object sender, ToggledEventArgs e)
         {

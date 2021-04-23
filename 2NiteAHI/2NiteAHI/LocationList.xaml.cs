@@ -10,6 +10,8 @@ using GoogleApi;
 using System.Net;
 using System.IO;
 using System.Collections.ObjectModel;
+using _2NiteAHI;
+using System.Windows.Input;
 
 namespace _2NiteAHI
 {
@@ -35,6 +37,8 @@ namespace _2NiteAHI
         private string searchType = "bar";
         private object item;
         private bool hasbeen;
+        private bool _isSoRefreshing = false;
+        
 
         public LocationList()
         {
@@ -144,6 +148,36 @@ namespace _2NiteAHI
                 OnPropertyChanged(nameof(MyLocation)); 
             }
 
+        }
+
+        //LISTVIEW REFRESH PROPERTIES
+        public bool IsSoRefreshing
+        {
+            get { return _isSoRefreshing; }
+            set
+            {
+                _isSoRefreshing = value;
+                OnPropertyChanged(nameof(IsSoRefreshing));
+            }
+        }
+        public ICommand RefreshCommand
+        {
+            get
+            {
+                return new Command(async () =>
+                {
+                    if (locale == 0)
+                    {
+                        barListView.ItemsSource = winterParkBars;
+                        IsSoRefreshing = false;
+                    }
+                    else if (locale == 1)
+                    {
+                        barListView.ItemsSource = boiseBars;
+                        IsSoRefreshing = false;
+                        }
+                });
+            }
         }
 
         //DICTIONARIES
@@ -347,4 +381,5 @@ namespace _2NiteAHI
             FoodLong = _FoodLong;
         }
     }
+
 }

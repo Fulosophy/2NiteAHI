@@ -71,26 +71,21 @@
             VerticalOptions="Center"
             HorizontalOptions="Center"/>
         <!--List box-->
-        <RefreshView
-            IsRefreshing="{Binding IsSoRefreshing}"
-            Command="{Binding RefreshCommand}"
+        <ListView           
             Grid.Row="1"
             Grid.Column="0"
             Grid.ColumnSpan="2"
             Grid.RowSpan="4"
-            Margin="50,0,50,10">
-            <ListView           
-                
-                x:Name="barListView"
-                ItemsSource="{Binding Barlist}"
-                HasUnevenRows="True"
-                SelectionMode="Single"
-                CachingStrategy="RecycleElement"
-                BackgroundColor="Black"
-                SeparatorColor="White">
-
-            </ListView>
-        </RefreshView>
+            Margin="50,0,50,10"
+            IsPullToRefreshEnabled="True"
+            RefreshCommand="{Binding RefreshCommand}"
+            IsRefreshing="{Binding IsSoRefreshing}"
+            x:Name="barListView"
+            HasUnevenRows="True"
+            SelectionMode="Single"
+            CachingStrategy="RecycleElement"
+            BackgroundColor="Black"
+            SeparatorColor="White"/>
         <!--Descending order button-->
         <Button
             Text="DESC"
