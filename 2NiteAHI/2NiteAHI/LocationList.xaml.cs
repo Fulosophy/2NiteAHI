@@ -161,7 +161,7 @@ namespace _2NiteAHI
             webRequest.BeginGetResponse(new AsyncCallback(RequestCompleted), webRequest);*/
 
             MyLocation = $"{addy.Locality},{addy.AdminArea}"; // Grabs the users current locations Address-Town and Address-State **Only works in USA**  
-            if (addy.Locality == "Winter Park" && barOrFood.SelectedItem == "Bars")
+            if (addy.Locality == "Winter Park")
             {
                 locale = 0;
                 BuildWinterParkBars();
