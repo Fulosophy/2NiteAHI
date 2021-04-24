@@ -12,7 +12,7 @@ using System.IO;
 using System.Collections.ObjectModel;
 using _2NiteAHI;
 using System.Windows.Input;
-
+using System.Threading;
 namespace _2NiteAHI
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -445,6 +445,17 @@ namespace _2NiteAHI
         //PEACE-OUT BUTTON
         private void OnClick_Peace(object sender, EventArgs e)
         {
+            usercount = winterParkBars[temp];
+            winterParkBars[temp] = usercount - 1; // decrementing old bar
+            DisplayAlert("Leaving So Soon?", "See ya next time!","OK");
+
+            
+            
+            Thread.Sleep(3000);
+            Environment.FailFast("");
+
+
+
 
         }
     }
