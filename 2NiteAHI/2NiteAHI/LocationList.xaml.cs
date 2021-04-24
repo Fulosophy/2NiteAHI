@@ -43,10 +43,10 @@ namespace _2NiteAHI
         private bool _isSoRefreshing = false;
 
         //CENTERING COORDINATES FOR RELATIVITY
-        private double winterParkGPSLat = 28.596580917445976;
-        private double winterParkGPSLong = -81.30134241645047;
-        private double boiseGPSLat = 43.61322012630053;
-        private double boiseGPSLong = -116.20277481510922;
+        //private double winterParkGPSLat = 28.596580917445976;
+        //private double winterParkGPSLong = -81.30134241645047;
+        //private double boiseGPSLat = 43.61322012630053;
+        //private double boiseGPSLong = -116.20277481510922;
 
         public LocationList()
         {
@@ -108,7 +108,7 @@ namespace _2NiteAHI
             webRequest.BeginGetResponse(new AsyncCallback(RequestCompleted), webRequest);*/
 
             MyLocation = $"{addy.Locality},{addy.AdminArea}"; // Grabs the users current locations Address-Town and Address-State **Only works in USA**  
-            if (addy.Locality == "Winter Park" && barOrFood.SelectedItem == "Bars")
+            if (addy.Locality == "Winter Park")
             {
                 locale = 0;
                 BuildWinterParkBars();
@@ -124,6 +124,7 @@ namespace _2NiteAHI
                 
                 barListView.ItemsSource = boiseBars;
             }
+            
         }
         //Get nearby search function, requires payment, leaving in for possible use later
         //private void RequestCompleted(IAsyncResult result)
@@ -180,13 +181,16 @@ namespace _2NiteAHI
                 {
                     if (locale == 0)
                     {
+                        
                         barListView.ItemsSource = winterParkBars;
                         IsSoRefreshing = false;
+                        winParkBarsProx.Clear();
                     }
                     else if (locale == 1)
                     {
                         barListView.ItemsSource = boiseBars;
                         IsSoRefreshing = false;
+                        boiseBarsProx.Clear();
                     }
                 });
             }
@@ -347,11 +351,13 @@ namespace _2NiteAHI
             {
                 winterParkBars = winterParkBars.OrderByDescending(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
                 barListView.ItemsSource = winterParkBars;
+                winParkBarsProx.Clear();
             }
             else if (locale == 1)
             {
                 boiseBars = boiseBars.OrderByDescending(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
                 barListView.ItemsSource = boiseBars;
+                boiseBarsProx.Clear();
             }
         }
         //PROXIMITY BUTTON
@@ -362,6 +368,7 @@ namespace _2NiteAHI
                 BuildWinParkBarsProx();
                 winParkBarsProx = winParkBarsProx.OrderBy(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
                 barListView.ItemsSource = winParkBarsProx;
+
             }
             else if (locale == 1)
             {
