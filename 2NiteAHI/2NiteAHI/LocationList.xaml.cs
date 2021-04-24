@@ -34,19 +34,21 @@ namespace _2NiteAHI
 
         private string myloc;
         private int locale;
-        private int count;
+        private string selecteditem;
+        private int usercount;
         private string previousBar;
         private int searchRadius = 1000;
         private string searchType = "bar";
         private object item;
         private bool hasbeen;
         private bool _isSoRefreshing = false;
-
+        private string temp;
         //CENTERING COORDINATES FOR RELATIVITY
         private double winterParkGPSLat = 28.596580917445976;
         private double winterParkGPSLong = -81.30134241645047;
         private double boiseGPSLat = 43.61322012630053;
         private double boiseGPSLong = -116.20277481510922;
+        
 
         public LocationList()
         {
@@ -59,34 +61,85 @@ namespace _2NiteAHI
             barOrFood.SelectedItem = "Bars";
 
             //LISTVIEW SELECTION OPERATIONS
-            barListView.ItemSelected += (object sender, SelectedItemChangedEventArgs e) =>
-            {
-                item = e.SelectedItem;
-                if (hasbeen == false)
-                {
-                    DisplayAlert("Yo! Bar Selected!", e.SelectedItem.ToString(), "OK", "Cancel");
-                    hasbeen = true;
-                    //INCREMENT BAR COUNT
-                    //winterParkBars.TryGetValue((e.SelectedItem.ToString()), out count);
-                    //winterParkBars[e.SelectedItem.ToString()] = count++;
-                    //barListView.ItemsSource = winterParkBars;
-                    //previousBar = e.SelectedItem.ToString();
-                }
-                else if (hasbeen == true)
-                {
-                    //DEINCREMENT COUNT
-                    //winterParkBars.TryGetValue((previousBar), out count);
-                    //winterParkBars[previousBar] = count--;
-                    //INCREMENT NEW BAR COUNT
-                    DisplayAlert("Yo! New Bar?", e.SelectedItem.ToString(), "OK", "Cancel");
-                    //winterParkBars.TryGetValue((e.SelectedItem.ToString()), out count);
-                    //winterParkBars[e.SelectedItem.ToString()] = count++;
-                    //barListView.ItemsSource = winterParkBars;
-                    // = e.SelectedItem.ToString();
-                }
-            };
+
+
+            barListView.ItemSelected += async (object sender, SelectedItemChangedEventArgs e) =>
+             {
+                 
+                 if (hasbeen == false)
+                 {
+                     var ans = await DisplayAlert("Yo New Bar?", "Would You Like To Check In?", "Yes", "Cancel");
+                     if (ans == true) // pressing OK
+                     {                        
+                         selecteditem = e.SelectedItem.ToString(); // Changing event handler to string
+                         selecteditem = selecteditem.Trim('[', ']'); // triming brackets
+                         string[] splititems = selecteditem.Split(','); // delim comma
+                         usercount = winterParkBars[splititems[0]]; // Grabbing current user count of bar/rest
+                         winterParkBars[splititems[0]] = usercount + 1; // increment from current bar/rest count
+                         temp = splititems[0]; // Saving the selected data for decrements                       
+                         hasbeen = true;
+                     }
+                     else
+                     {
+                         return;
+                     }
+                 }
+                 else if (hasbeen == true)
+                 {
+                    var anss = await DisplayAlert("Changing bars???", "Would You Like To Check In?", "Yes", "Cancel");
+                     if (anss == true) // pressing OK
+                     {
+                         usercount = winterParkBars[temp];
+                         winterParkBars[temp] = usercount - 1; // decrementing old bar
+                         selecteditem = e.SelectedItem.ToString(); // Changing event handler to string
+                         selecteditem = selecteditem.Trim('[', ']'); // triming brackets
+                         string[] splititems = selecteditem.Split(','); // delim comma
+
+                         usercount = winterParkBars[splititems[0]]; // Grabbing current user count of bar/rest
+                         winterParkBars[splititems[0]] = usercount + 1; // Incrementing CHANGED bar
+                         temp = splititems[0];
+                     }
+                     else
+                     {
+                         return;
+                     }
+                 }
+
+             };
+
+            Console.WriteLine("Test");
+
+
+            //barListView.ItemSelected += (object sender, SelectedItemChangedEventArgs e) =>
+            // {
+            //     item = e.SelectedItem;
+
+            //     if (hasbeen == false)
+            //     {
+            //          DisplayAlert("Yo! Bar Selected!", e.SelectedItem.ToString(), "OK");
+
+            //         if (ans == true)
+            //         {
+
+            //         }
+
+
+            //     }
+            //     else if (hasbeen == true)
+            //     {
+
+            //         DisplayAlert("Yo! New Bar?", e.SelectedItem.ToString(), "OK");
+
+            //     }
+            // };
         }
 
+        private void listSelected()
+        {
+            throw new NotImplementedException();
+        }
+
+        
         async private void ToolbarItem_Clicked(object sender, EventArgs e) { await Navigation.PushAsync(new Settings()); }
         async private void GetUserLoc()
         {
@@ -196,24 +249,43 @@ namespace _2NiteAHI
         //DICTIONARIES
         private void BuildWinterParkBars()
         {
-            winterParkBars.Add("Chili's Bar & Grill", rng.Next() % 150); winterParkBars.Add("Firehouse Subs", rng.Next() % 150);
-            winterParkBars.Add("Arooga's", rng.Next() % 150); winterParkBars.Add("Chewy Boba", rng.Next() % 150);
-            winterParkBars.Add("The Geek Easy", rng.Next() % 150); winterParkBars.Add("Steak 'n Shake", rng.Next() % 150);
-            winterParkBars.Add("The Haven At Forsyth", rng.Next() % 150); winterParkBars.Add("El Pueblo Mexicqan", rng.Next() % 150);
-            winterParkBars.Add("Debbie's Bar", rng.Next() % 150); winterParkBars.Add("Ain't Misbehavin'", rng.Next() % 150);
-            winterParkBars.Add("Miller's Ale House", rng.Next() % 150); winterParkBars.Add("Devaney's Sports Pub", rng.Next() % 150);
-            winterParkBars.Add("The Next", rng.Next() % 150); winterParkBars.Add("Admiral Cigar Club", rng.Next() % 150);
-            winterParkBars.Add("Gator's Dockside", rng.Next() % 150); winterParkBars.Add("Cork & Plate", rng.Next() % 150);
-            winterParkBars.Add("Tactical Brewing Co.", rng.Next() % 150); winterParkBars.Add("The Brass Tap", rng.Next() % 150);
-            winterParkBars.Add("Sonny's BBQ", rng.Next() % 150); winterParkBars.Add("La Placita 19'", rng.Next() % 150);
-            winterParkBars.Add("Rincon Latino", rng.Next() % 150); winterParkBars.Add("Starbucks", rng.Next() % 150);
-            winterParkBars.Add("Tequila Lounge Club", rng.Next() % 150); winterParkBars.Add("Muldoons Saloon", rng.Next() % 150);
-            winterParkBars.Add("Texas Roadhous", rng.Next() % 150); winterParkBars.Add("Majijis Hookah Lounge", rng.Next() % 150);
-            winterParkBars.Add("Thirsty Gator", rng.Next() % 150); winterParkBars.Add("Don Julio Mexican Kitchen and Tequila Bar", rng.Next() % 150);
-            winterParkBars.Add("Fire on the Bayou", rng.Next() % 150); winterParkBars.Add("Rock and Brews", rng.Next() % 150);
-            winterParkBars.Add("BJ's Restaurant and Brewhouse", rng.Next() % 150); winterParkBars.Add("Oviedo Brewing Company", rng.Next() % 150);
-            winterParkBars.Add("Buffalo Wild WIngs", rng.Next() % 150); winterParkBars.Add("The Green Bar", rng.Next() % 150);
-            winterParkBars.Add("The Green Parrot", rng.Next() % 150); winterParkBars.Add("Luke's Kitchen and Bar", rng.Next() % 150);
+            
+            winterParkBars.Add("Chili's Bar & Grill", usercount); 
+            winterParkBars.Add("Firehouse Subs", usercount);
+            winterParkBars.Add("Arooga's", usercount); 
+            winterParkBars.Add("Chewy Boba", usercount);
+            winterParkBars.Add("The Geek Easy", usercount);
+            winterParkBars.Add("Steak 'n Shake", usercount);
+            winterParkBars.Add("The Haven At Forsyth", usercount);
+            winterParkBars.Add("El Pueblo Mexicqan", usercount);
+            winterParkBars.Add("Debbie's Bar", usercount); 
+            winterParkBars.Add("Ain't Misbehavin'", usercount);
+            winterParkBars.Add("Miller's Ale House", usercount); 
+            winterParkBars.Add("Devaney's Sports Pub", usercount);
+            winterParkBars.Add("The Next", usercount); 
+            winterParkBars.Add("Admiral Cigar Club", usercount);
+            winterParkBars.Add("Gator's Dockside", usercount); 
+            winterParkBars.Add("Cork & Plate", usercount);
+            winterParkBars.Add("Tactical Brewing Co.", usercount); 
+            winterParkBars.Add("The Brass Tap", usercount);
+            winterParkBars.Add("Sonny's BBQ", usercount); 
+            winterParkBars.Add("La Placita 19'", usercount);
+            winterParkBars.Add("Rincon Latino", usercount);
+            winterParkBars.Add("Starbucks", usercount);
+            winterParkBars.Add("Tequila Lounge Club", usercount); 
+            winterParkBars.Add("Muldoons Saloon", usercount);
+            winterParkBars.Add("Texas Roadhous", usercount); 
+            winterParkBars.Add("Majijis Hookah Lounge", usercount);
+            winterParkBars.Add("Thirsty Gator", usercount); 
+            winterParkBars.Add("Don Julio Mexican Kitchen and Tequila Bar", usercount);
+            winterParkBars.Add("Fire on the Bayou", usercount); 
+            winterParkBars.Add("Rock and Brews", usercount);
+            winterParkBars.Add("BJ's Restaurant and Brewhouse", usercount); 
+            winterParkBars.Add("Oviedo Brewing Company", usercount);
+            winterParkBars.Add("Buffalo Wild WIngs", usercount); 
+            winterParkBars.Add("The Green Bar", usercount);
+            winterParkBars.Add("The Green Parrot", usercount); 
+            winterParkBars.Add("Luke's Kitchen and Bar", usercount);
         }
         private void BuildWinParkBarsProx()
         {
