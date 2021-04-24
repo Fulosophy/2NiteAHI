@@ -43,12 +43,12 @@ namespace _2NiteAHI
         private bool hasbeen;
         private bool _isSoRefreshing = false;
         private string temp;
+
         //CENTERING COORDINATES FOR RELATIVITY
-        private double winterParkGPSLat = 28.596580917445976;
-        private double winterParkGPSLong = -81.30134241645047;
-        private double boiseGPSLat = 43.61322012630053;
-        private double boiseGPSLong = -116.20277481510922;
-        
+        //private double winterParkGPSLat = 28.596580917445976;
+        //private double winterParkGPSLong = -81.30134241645047;
+        //private double boiseGPSLat = 43.61322012630053;
+        //private double boiseGPSLong = -116.20277481510922;
 
         public LocationList()
         {
@@ -139,7 +139,6 @@ namespace _2NiteAHI
             throw new NotImplementedException();
         }
 
-        
         async private void ToolbarItem_Clicked(object sender, EventArgs e) { await Navigation.PushAsync(new Settings()); }
         async private void GetUserLoc()
         {
@@ -235,11 +234,13 @@ namespace _2NiteAHI
                     {
                         barListView.ItemsSource = winterParkBars;
                         IsSoRefreshing = false;
+                        winParkBarsProx.Clear();
                     }
                     else if (locale == 1)
                     {
                         barListView.ItemsSource = boiseBars;
                         IsSoRefreshing = false;
+                        boiseBarsProx.Clear();
                     }
                 });
             }
