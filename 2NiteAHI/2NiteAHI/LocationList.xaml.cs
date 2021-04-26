@@ -50,6 +50,8 @@ namespace _2NiteAHI
             InitializeComponent();
             BindingContext = this;
             GetUserLoc(); // Grabbing the users Postal Code and Town Name
+           
+            
             
             //BAR/FOOD PICKER
             barOrFood.ItemsSource = ListOLocations;

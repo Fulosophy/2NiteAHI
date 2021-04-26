@@ -6,9 +6,9 @@
     <Grid>
         <Grid.Background>
             <LinearGradientBrush StartPoint="1,1" EndPoint="0,0">
-                <GradientStop Color="CadetBlue" Offset="0.0"/>
-                <GradientStop Color="Cyan" Offset="0.5"/>
-                <GradientStop Color="DarkBlue" Offset="0.9"/>
+                <GradientStop Color="{AppThemeBinding Dark=CadetBlue, Light=white}" Offset="0.0"/>
+                <GradientStop Color="{AppThemeBinding Dark=Cyan, Light=Violet}" Offset="0.5"/>
+                <GradientStop Color="{AppThemeBinding Dark=DarkBlue, Default=Light}" Offset="0.9"/>
             </LinearGradientBrush>
         </Grid.Background>
         <Grid.RowDefinitions>

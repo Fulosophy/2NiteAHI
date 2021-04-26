@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="_2NiteAHI.DayModeTheme" BackgroundColor="Transparent">
+    <ContentPage.Content>
+        <StackLayout>
+            <Frame BackgroundColor="{AppThemeBinding Light='#2196F3', Dark=black}" Padding="24" CornerRadius="0">
+                <Label Margin="0,20,0,0" Text="DarkMode" HorizontalTextAlignment="Center" TextColor="{AppThemeBinding Dark=Black, Light=White}" FontSize="36"/>
+            </Frame>
+            <Label Text="Start developing now" FontSize="Title" Padding=" 30,10,30,10"/>
+            <Label Text="Make changes to your XAML file and save your UI update in the running App with XAML Hot Reload. Give it a try!" FontSize="16" Padding="30,0,30,0"/>
+            <Label FontSize="18" Padding="30,24,30,0">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Learn More at "/>
+                        <Span Text="http://aka.ms/xamarin-quickstart" FontAttributes="Bold"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label x:Name="currentThemeLabel" Text="Light" FontSize="Title" Padding="30,10,30,10"/>
+            <Switch IsToggled="{Binding NightTheme}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
