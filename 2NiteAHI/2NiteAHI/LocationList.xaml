@@ -73,6 +73,7 @@
             HorizontalOptions="Center"/>
         <!--List box-->
         <ListView           
+            x:Name="barListView"
             Grid.Row="1"
             Grid.Column="0"
             Grid.ColumnSpan="2"
@@ -80,8 +81,7 @@
             Margin="50,20,50,0"
             IsPullToRefreshEnabled="True"
             RefreshCommand="{Binding RefreshCommand}"
-            IsRefreshing="{Binding IsSoRefreshing}"
-            x:Name="barListView"
+            IsRefreshing="{Binding IsSoRefreshing}"          
             HasUnevenRows="True"
             SelectionMode="Single"
             CachingStrategy="RecycleElement"

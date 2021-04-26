@@ -110,28 +110,7 @@ namespace _2NiteAHI
             Console.WriteLine("Test");
 
 
-            //barListView.ItemSelected += (object sender, SelectedItemChangedEventArgs e) =>
-            // {
-            //     item = e.SelectedItem;
-
-            //     if (hasbeen == false)
-            //     {
-            //          DisplayAlert("Yo! Bar Selected!", e.SelectedItem.ToString(), "OK");
-
-            //         if (ans == true)
-            //         {
-
-            //         }
-
-
-            //     }
-            //     else if (hasbeen == true)
-            //     {
-
-            //         DisplayAlert("Yo! New Bar?", e.SelectedItem.ToString(), "OK");
-
-            //     }
-            // };
+            
         }
 
         private void listSelected()
@@ -146,18 +125,7 @@ namespace _2NiteAHI
             var GetAddy = await Geocoding.GetPlacemarksAsync(location.Latitude, location.Longitude); // Grabbing the users location details as a placemark.
             var addy = GetAddy?.FirstOrDefault();
 
-            /*Web Request URL using variables for location(location.Latitude, location.Longitude), radius(searchRadius), and type(searchType)
-            Adding this code incase we can get it working without charging anything...
-            string restUrl = $"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" +
-                location.Latitude + "," + location.Longitude +
-                "&radius=" + searchRadius + "&type=" +
-                searchType + "&key=AIzaSyAR55DfsuhAWriupO5t_uzWl-FwddZiBhY";
-
-            //Web  Request
-            HttpWebRequest webRequest = WebRequest.Create(restUrl) as HttpWebRequest;
-            webRequest.Timeout = 2000;
-            webRequest.Method = "GET";
-            webRequest.BeginGetResponse(new AsyncCallback(RequestCompleted), webRequest);*/
+         
 
             MyLocation = $"{addy.Locality},{addy.AdminArea}"; // Grabs the users current locations Address-Town and Address-State **Only works in USA**  
             if (addy.Locality == "Winter Park")
@@ -177,32 +145,7 @@ namespace _2NiteAHI
                 barListView.ItemsSource = boiseBars;
             }
         }
-        //Get nearby search function, requires payment, leaving in for possible use later
-        //private void RequestCompleted(IAsyncResult result)
-        //{
-        //    var request = (HttpWebRequest)result.AsyncState;
-        //    var response = (HttpWebResponse)request.EndGetResponse(result);
-
-        //    using(var stream = response.GetResponseStream())
-        //    {
-        //        Encoding encode = System.Text.Encoding.GetEncoding("utf-8");
-        //        var r = new StreamReader(stream, encode);
-        //        Char[] read = new char[256];
-        //        int count = r.Read(read, 0, 256);
-
-        //        while(count > 0)
-        //        {
-        //            String str = new string(read, 0, count);
-        //            Console.Write(str);
-        //            count = r.Read(read, 0, 256);
-        //        }
-        //        Console.WriteLine("");
-        //        r.Close();
-
-        //        //Old readToEnd might be an alternative to the Char array...
-        //        //var resp = r.ReadToEnd();
-        //    }
-        //}
+        
         public string MyLocation // Property to change the label text on start-up
         {
             get { return myloc; }
@@ -226,18 +169,23 @@ namespace _2NiteAHI
         }
         public ICommand RefreshCommand // Refreshing List View
         {
+            
             get
             {
-                return new Command(async () =>
+                return new Command(() =>
                 {
+                 
                     if (locale == 0)
                     {
+                        barListView.ItemsSource = null;
                         barListView.ItemsSource = winterParkBars;
                         IsSoRefreshing = false;
+                    
                         winParkBarsProx.Clear();
                     }
                     else if (locale == 1)
                     {
+                        barListView.ItemsSource = null;
                         barListView.ItemsSource = boiseBars;
                         IsSoRefreshing = false;
                         boiseBarsProx.Clear();
