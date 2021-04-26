@@ -13,6 +13,8 @@ using System.Collections.ObjectModel;
 using _2NiteAHI;
 using System.Windows.Input;
 using System.Threading;
+using System.ComponentModel;
+
 namespace _2NiteAHI
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -35,8 +37,7 @@ namespace _2NiteAHI
         private string myloc;
         private int locale;
         private string selecteditem;
-        private int usercount;
-        private string previousBar;
+        private int usercount; 
         private int searchRadius = 1000;
         private string searchType = "bar";
         private object item;
@@ -61,7 +62,7 @@ namespace _2NiteAHI
             barOrFood.SelectedItem = "Bars";
 
             //LISTVIEW SELECTION OPERATIONS
-
+            
 
             barListView.ItemSelected += async (object sender, SelectedItemChangedEventArgs e) =>
              {
@@ -70,7 +71,8 @@ namespace _2NiteAHI
                  {
                      var ans = await DisplayAlert("Yo New Bar?", "Would You Like To Check In?", "Yes", "Cancel");
                      if (ans == true) // pressing OK
-                     {                        
+                     {
+                         
                          selecteditem = e.SelectedItem.ToString(); // Changing event handler to string
                          selecteditem = selecteditem.Trim('[', ']'); // triming brackets
                          string[] splititems = selecteditem.Split(','); // delim comma
@@ -113,6 +115,9 @@ namespace _2NiteAHI
             
         }
 
+       
+
+
         private void listSelected()
         {
             throw new NotImplementedException();
@@ -125,8 +130,8 @@ namespace _2NiteAHI
             var GetAddy = await Geocoding.GetPlacemarksAsync(location.Latitude, location.Longitude); // Grabbing the users location details as a placemark.
             var addy = GetAddy?.FirstOrDefault();
 
-         
-
+           
+            
             MyLocation = $"{addy.Locality},{addy.AdminArea}"; // Grabs the users current locations Address-Town and Address-State **Only works in USA**  
             if (addy.Locality == "Winter Park")
             {
@@ -177,16 +182,16 @@ namespace _2NiteAHI
                  
                     if (locale == 0)
                     {
-                        barListView.ItemsSource = null;
-                        barListView.ItemsSource = winterParkBars;
+                        barListView.ItemsSource = null; // resets the list back to null 
+                        barListView.ItemsSource = winterParkBars; // refactors updated list
                         IsSoRefreshing = false;
                     
                         winParkBarsProx.Clear();
                     }
                     else if (locale == 1)
                     {
-                        barListView.ItemsSource = null;
-                        barListView.ItemsSource = boiseBars;
+                        barListView.ItemsSource = null; // resets the list back to null 
+                        barListView.ItemsSource = boiseBars; // refactors updated list
                         IsSoRefreshing = false;
                         boiseBarsProx.Clear();
                     }
@@ -392,20 +397,30 @@ namespace _2NiteAHI
             }
         }
         //PEACE-OUT BUTTON
-        private void OnClick_Peace(object sender, EventArgs e)
+        private async void OnClick_Peace(object sender, EventArgs e)
         {
             usercount = winterParkBars[temp];
             winterParkBars[temp] = usercount - 1; // decrementing old bar
-            DisplayAlert("Leaving So Soon?", "See ya next time!","OK");
 
-            
-            
-            Thread.Sleep(3000);
-            Environment.FailFast("");
+           
+             var excode = await DisplayAlert("Leaving So Soon?", "Would You Like To Close The App?","Yes","No");
+
+            if (excode == true)
+            {
+                Thread.Sleep(3000);
+                Environment.FailFast("");
+            }
+            else
+            {
+                return;
+            }
+           
 
 
 
 
         }
+
+       
     }
 }

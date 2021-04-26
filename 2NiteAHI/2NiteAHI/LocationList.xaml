@@ -72,8 +72,13 @@
             VerticalOptions="Center"
             HorizontalOptions="Center"/>
         <!--List box-->
+
         <ListView           
             x:Name="barListView"
+         
+           
+          
+            
             Grid.Row="1"
             Grid.Column="0"
             Grid.ColumnSpan="2"
@@ -83,10 +88,11 @@
             RefreshCommand="{Binding RefreshCommand}"
             IsRefreshing="{Binding IsSoRefreshing}"          
             HasUnevenRows="True"
-            SelectionMode="Single"
+             
             CachingStrategy="RecycleElement"
             BackgroundColor="Black"
             SeparatorColor="White"/>
+        
         <!--Descending order button-->
         <Button
             Text="DESC"
