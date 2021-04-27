@@ -8,20 +8,20 @@
         <Grid.Background>
             <LinearGradientBrush StartPoint="1,0" EndPoint="0,1">
                 <!--<GradientStop Color="Aquamarine" Offset="0.0"/>-->
-                <GradientStop Color="{AppThemeBinding Dark=CadetBlue,Light=violet}" Offset="0.2"/>
-                <GradientStop Color="{AppThemeBinding Dark=Cyan,Light= white}" Offset="0.5"/>
-                <GradientStop Color="{AppThemeBinding Dark=DarkBlue, Light=cyan}" Offset="0.70"/>
+                <GradientStop Color="{AppThemeBinding Dark=CadetBlue,Light=cyan}" Offset="0.2"/>
+                <GradientStop Color="{AppThemeBinding Dark=PURPLE,Light= white}" Offset="0.5"/>
+                <GradientStop Color="{AppThemeBinding Dark=DarkBlue, Light=violet}" Offset="0.70"/>
             </LinearGradientBrush>
         </Grid.Background>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="120"/>
             <!--GPS LOCATION-->
-            <RowDefinition Height="*"/>
+           <RowDefinition Height="*"/>
             <!--NightTheme-->
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="100"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
@@ -36,25 +36,32 @@
 
         <!--Title-->
         <Label
-            Text="User Settings" 
+            Text="USER SETTINGS" 
+            FontAttributes="Bold"
+            Visual="Material"
             HorizontalOptions="StartAndExpand" 
-            VerticalOptions="CenterAndExpand"
-            TextColor="Black"  
+            VerticalOptions="EndAndExpand"
+            TextColor="{AppThemeBinding Dark=WHITE, Light=Black}"  
             Grid.Row="0" 
             Grid.Column="0"
             FontSize="Title"
-            Padding="20,0,20,0"
-            TextDecorations="Underline"/>
+            Padding="45,0,20,0"
+            TextDecorations="Underline"
+            WidthRequest="1150"
+            HeightRequest="60"/>
         <Image
             Source="fire"
             Grid.Row="0"
             Grid.Column="1"
+            WidthRequest="90"
             VerticalOptions="Center"
+            Aspect="AspectFill"
             HorizontalOptions="Start"/>
+        
 
         <!--GPS LOCATION-->
         <!--Location Services-->
-        <Label 
+        <!--<Label 
             Text="GPS Location" 
             Grid.Row="1" 
             Grid.Column="0" 
@@ -70,25 +77,26 @@
             Grid.Column="1" 
             VerticalOptions="Center"
             HorizontalOptions="Center"
-            Toggled="GPSLOC_Toggled" />
+            Toggled="GPSLOC_Toggled" />-->
 
         <!--NIGHTTIME THEME-->
         <Label 
-            Text="Night Theme" 
+            Text="Day/Nite Mode" 
             Grid.Row="2" 
             Grid.Column="0" 
-            TextColor="Black" 
-            HorizontalOptions="Center"
-            VerticalOptions="Center" 
-            Padding="20,1,30,0" 
-            FontSize="Medium"/>
+            TextColor="{AppThemeBinding Dark=YELLOW, Light=DarkBlue}" 
+            HorizontalOptions="StartAndExpand"
+            VerticalOptions="CenterAndExpand" 
+            FontAttributes="None"
+            Padding="70,1,30,0" 
+            FontSize="Title"/>
         <Switch 
-            x:Name="NightTheme" 
+            x:Name="Day/Nite Mode" 
             IsToggled="{Binding NightTheme}" 
             Grid.Row="2" 
             Grid.Column="1" 
-            VerticalOptions="Center" 
-            HorizontalOptions="Center"
+            VerticalOptions="CenterAndExpand" 
+            HorizontalOptions="CenterAndExpand"
             Toggled="NightTheme_Toggled" />
         
         <!--SEARCH OPTIONS-->
@@ -96,21 +104,23 @@
             Text="SEARCH OPTIONS"
             Grid.Row="3"
             Grid.Column="0"
+            FontAttributes="Bold"
             Grid.ColumnSpan="1"
             FontSize="Title"
-            TextColor="Black"
+            TextColor="{AppThemeBinding Dark=WHITE, Light=Black}"
             HorizontalOptions="StartAndExpand" 
             VerticalOptions="CenterAndExpand"
             TextDecorations="Underline"
-            Margin="20,0,0,0"/>
+            Margin="40,0,0,0"/>
         <Label
             Text="Radius"
             Grid.Row="4"
             Grid.Column="0"
-            TextColor="Black" 
+            TextColor="{AppThemeBinding Dark=YELLOW, Light=DarkBlue}" 
+            FontAttributes="None"
             VerticalOptions="Center" 
             HorizontalOptions="Center"
-            FontSize="Medium"/>
+            FontSize="Large"/>
         <Picker
             x:Name="radiusPicker"
             Grid.Row="4"
@@ -124,10 +134,11 @@
             Text="Bar Or Food"
             Grid.Row="5"
             Grid.Column="0"
-            TextColor="Black" 
+            TextColor="{AppThemeBinding Dark=YELLOW, Light=DarkBlue}" 
+            FontAttributes="None"
             VerticalOptions="Center" 
             HorizontalOptions="Center"
-            FontSize="Medium"/>
+            FontSize="Large"/>
         <Picker
             x:Name="placePicker"
             Grid.Row="5"

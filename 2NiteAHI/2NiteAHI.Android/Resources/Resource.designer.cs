@@ -153,10 +153,10 @@ namespace _2NiteAHI.Droid
 			global::Xamarin.Essentials.Resource.Id.text2 = global::_2NiteAHI.Droid.Resource.Id.text2;
 			global::Xamarin.Essentials.Resource.Id.time = global::_2NiteAHI.Droid.Resource.Id.time;
 			global::Xamarin.Essentials.Resource.Id.title = global::_2NiteAHI.Droid.Resource.Id.title;
-			//global::Xamarin.Essentials.Resource.Integer.status_bar_notification_info_maxnum = global::_2NiteAHI.Droid.Resource.Integer.status_bar_notification_info_maxnum;
+			global::Xamarin.Essentials.Resource.Integer.status_bar_notification_info_maxnum = global::_2NiteAHI.Droid.Resource.Integer.status_bar_notification_info_maxnum;
 			global::Xamarin.Essentials.Resource.Layout.browser_actions_context_menu_page = global::_2NiteAHI.Droid.Resource.Layout.browser_actions_context_menu_page;
 			global::Xamarin.Essentials.Resource.Layout.browser_actions_context_menu_row = global::_2NiteAHI.Droid.Resource.Layout.browser_actions_context_menu_row;
-			//global::Xamarin.Essentials.Resource.Layout.custom_dialog = global::_2NiteAHI.Droid.Resource.Layout.custom_dialog;
+			global::Xamarin.Essentials.Resource.Layout.custom_dialog = global::_2NiteAHI.Droid.Resource.Layout.custom_dialog;
 			global::Xamarin.Essentials.Resource.Layout.notification_action = global::_2NiteAHI.Droid.Resource.Layout.notification_action;
 			global::Xamarin.Essentials.Resource.Layout.notification_action_tombstone = global::_2NiteAHI.Droid.Resource.Layout.notification_action_tombstone;
 			global::Xamarin.Essentials.Resource.Layout.notification_template_custom_big = global::_2NiteAHI.Droid.Resource.Layout.notification_template_custom_big;
