@@ -36,14 +36,14 @@ namespace _2NiteAHI
             
         }
 
-        private void GPSLOC_Toggled(object sender, ToggledEventArgs e)
-        {
+        //private void GPSLOC_Toggled(object sender, ToggledEventArgs e)
+        //{
            
-            if (GPSLOC.IsToggled == false)
-            {
-               // logic here to disable GPS LOCATION
-            }
-        }
+        //    if (GPSLOC.IsToggled == false)
+        //    {
+        //       // logic here to disable GPS LOCATION
+        //    }
+        //}
 
         private void NightTheme_Toggled(object sender, ToggledEventArgs e)
         {
