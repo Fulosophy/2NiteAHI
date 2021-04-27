@@ -37,7 +37,11 @@ namespace _2NiteAHI
             await fade.ScaleTo(1, 1000);
             await fade.ScaleTo(0.5, 1000, Easing.SpringIn);
             await fade.ScaleTo(50, 800, Easing.BounceOut);
-            Application.Current.MainPage = new NavigationPage(new LocationList());
+            Application.Current.MainPage = new NavigationPage(new LocationList()) 
+            { 
+                BarBackgroundColor = Color.Black,
+                BarTextColor = Color.DarkOrchid
+            };
         }
     }
 }
