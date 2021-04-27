@@ -373,11 +373,13 @@ namespace _2NiteAHI
             {
                 winterParkBars = winterParkBars.OrderByDescending(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
                 barListView.ItemsSource = winterParkBars;
+                winParkBarsProx.Clear();
             }
             else if (locale == 1)
             {
                 boiseBars = boiseBars.OrderByDescending(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
                 barListView.ItemsSource = boiseBars;
+                boiseBarsProx.Clear();
             }
         }
         //PROXIMITY BUTTON
