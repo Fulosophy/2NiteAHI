@@ -1,61 +1,54 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using GoogleApi;
-using System.Net;
-using System.IO;
-using System.Collections.ObjectModel;
-using _2NiteAHI;
 using System.Windows.Input;
 using System.Threading;
-using System.ComponentModel;
 
 namespace _2NiteAHI
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LocationList : ContentPage
     {
-        //variables
+        //CONTAINERS
         public Dictionary<String, int> winterParkBars = new Dictionary<string, int>();
         public Dictionary<string, double> winParkBarsProx = new Dictionary<string, double>();
         public Dictionary<String, int> boiseBars = new Dictionary<string, int>();
         public Dictionary<string, double> boiseBarsProx = new Dictionary<string, double>();
         public Dictionary<String, int> winterParkFoods = new Dictionary<string, int>();
         public Dictionary<String, int> boiseFoods = new Dictionary<string, int>();
-        Random rng = new Random();
         public List<string> ListOLocations = new List<string>
         {
             "Bars",
             "Restaurant"
         };
 
+        //VARIABLES
         private string myloc;
         private int locale;
         private string selecteditem;
         private int usercount; 
-        private int searchRadius = 1000;
-        private string searchType = "bar";
-        private object item;
         private bool hasbeen;
         private bool _isSoRefreshing = false;
         private string temp;
 
-        //CENTERING COORDINATES FOR RELATIVITY
-        //private double winterParkGPSLat = 28.596580917445976;
-        //private double winterParkGPSLong = -81.30134241645047;
-        //private double boiseGPSLat = 43.61322012630053;
-        //private double boiseGPSLong = -116.20277481510922;
+        //OBJECTS
+        Random rng = new Random();
 
+        //CENTERING COORDINATES FOR RELATIVITY
+            //private double winterParkGPSLat = 28.596580917445976;
+            //private double winterParkGPSLong = -81.30134241645047;
+            //private double boiseGPSLat = 43.61322012630053;
+            //private double boiseGPSLong = -116.20277481510922;
+
+        //MAIN
         public LocationList()
         {
             InitializeComponent();
             BindingContext = this;
-            GetUserLoc(); // Grabbing the users Postal Code and Town Name
+            GetUserLoc(); 
 
             //BAR/FOOD PICKER
             barOrFood.ItemsSource = ListOLocations;
@@ -146,20 +139,15 @@ namespace _2NiteAHI
              };
         }
 
-        private void listSelected()
-        {
-            throw new NotImplementedException();
-        }
-
         async private void ToolbarItem_Clicked(object sender, EventArgs e) { await Navigation.PushAsync(new Settings()); }
+
+        //LOCATION FUNCTIONS
         async private void GetUserLoc()
         {
             var location = await Geolocation.GetLocationAsync(new GeolocationRequest(GeolocationAccuracy.Default, TimeSpan.FromMinutes(1)));
             var GetAddy = await Geocoding.GetPlacemarksAsync(location.Latitude, location.Longitude); // Grabbing the users location details as a placemark.
             var addy = GetAddy?.FirstOrDefault();
 
-           
-            
             MyLocation = $"{addy.Locality},{addy.AdminArea}"; // Grabs the users current locations Address-Town and Address-State **Only works in USA**  
             if (addy.Locality == "Winter Park")
             {
@@ -178,8 +166,7 @@ namespace _2NiteAHI
                 barListView.ItemsSource = boiseBars;
             }
         }
-        
-        public string MyLocation // Property to change the label text on start-up
+        public string MyLocation 
         {
             get { return myloc; }
             set
@@ -187,7 +174,6 @@ namespace _2NiteAHI
                 myloc = value;
                 OnPropertyChanged(nameof(MyLocation));
             }
-
         }
 
         //LISTVIEW REFRESH PROPERTIES
@@ -200,7 +186,7 @@ namespace _2NiteAHI
                 OnPropertyChanged(nameof(IsSoRefreshing));
             }
         }
-        public ICommand RefreshCommand // Refreshing List View
+        public ICommand RefreshCommand 
         {
             get
             {
@@ -225,6 +211,7 @@ namespace _2NiteAHI
         }
 
         //DICTIONARIES
+            //BARS
         private void BuildWinterParkBars()
         {
             
@@ -265,46 +252,6 @@ namespace _2NiteAHI
             winterParkBars.Add("The Green Parrot", usercount); 
             winterParkBars.Add("Luke's Kitchen and Bar", usercount);
         }
-        private void BuildWinParkBarsProx()
-        {
-            winParkBarsProx.Add("Chili's Bar & Grill", 0.5835);
-            winParkBarsProx.Add("Firehouse Subs", 0.5540);
-            winParkBarsProx.Add("Arooga's", 0.5303); 
-            winParkBarsProx.Add("Chewy Boba", 0.6737);
-            winParkBarsProx.Add("The Geek Easy", 0.6719); 
-            winParkBarsProx.Add("Steak 'n Shake", 0.8633);
-            winParkBarsProx.Add("The Haven At Forsyth", 0.9050); 
-            winParkBarsProx.Add("El Pueblo Mexicqan", 1.4230);
-            winParkBarsProx.Add("Debbie's Bar", 3.7190); 
-            winParkBarsProx.Add("Ain't Misbehavin'", 3.2320);
-            winParkBarsProx.Add("Miller's Ale House", 0.2871); 
-            winParkBarsProx.Add("Devaney's Sports Pub", 1.6930);
-            winParkBarsProx.Add("The Nest", 3.9230); 
-            winParkBarsProx.Add("Admiral Cigar Club", 3.9710);
-            winParkBarsProx.Add("Gator's Dockside", 3.9420); 
-            winParkBarsProx.Add("Cork & Plate", 4.0180);
-            winParkBarsProx.Add("Tactical Brewing Co.", 4.0560); 
-            winParkBarsProx.Add("The Brass Tap", 7.0210);
-            winParkBarsProx.Add("Redlight Redlight", 5.5550);
-            winParkBarsProx.Add("Sonny's BBQ", 0.1739); 
-            winParkBarsProx.Add("La Placita 19'", 0.3135);
-            winParkBarsProx.Add("Rincon Latino", 0.4204); 
-            winParkBarsProx.Add("Starbucks", 1.2130);
-            winParkBarsProx.Add("Tequila Lounge Club", 1.4720); 
-            winParkBarsProx.Add("Muldoons Saloon", 2.0060);
-            winParkBarsProx.Add("Texas Roadhous", 4.8070); 
-            winParkBarsProx.Add("Majijis Hookah Lounge", 1.5520);
-            winParkBarsProx.Add("Thirsty Gator", 1.9780); 
-            winParkBarsProx.Add("Don Julio Mexican Kitchen and Tequila Bar", 7.1960);
-            winParkBarsProx.Add("Fire on the Bayou", 6.2520); 
-            winParkBarsProx.Add("Rock and Brews", 7.7530);
-            winParkBarsProx.Add("BJ's Restaurant and Brewhouse", 9.1900); 
-            winParkBarsProx.Add("Oviedo Brewing Company", 9.9090);
-            winParkBarsProx.Add("Buffalo Wild WIngs", 6.2890); 
-            winParkBarsProx.Add("The Green Bar", 7.1810);
-            winParkBarsProx.Add("The Green Parrot", 7.6660150); 
-            winParkBarsProx.Add("Luke's Kitchen and Bar", 6.7470);
-        }
         private void BuildBoiseBars()
         {
             boiseBars.Add("Pengilly's Saloon", rng.Next() % 150); boiseBars.Add("Whiskey Bar", rng.Next() % 150);
@@ -324,6 +271,47 @@ namespace _2NiteAHI
             boiseBars.Add("The Silly Birch", rng.Next() % 150); boiseBars.Add("The Gas Lantern Drinking Company", rng.Next() % 150);
             boiseBars.Add("Double Tap Pub", rng.Next() % 150); boiseBars.Add("Bar Gernika", rng.Next() % 150);
             boiseBars.Add("Dirty Little Roddy's", rng.Next() % 150); boiseBars.Add("Amsterdam Lounge", rng.Next() % 150);
+        }
+            //PROXIMITY OF BARS
+        private void BuildWinParkBarsProx()
+        {
+            winParkBarsProx.Add("Chili's Bar & Grill", 0.5835);
+            winParkBarsProx.Add("Firehouse Subs", 0.5540);
+            winParkBarsProx.Add("Arooga's", 0.5303);
+            winParkBarsProx.Add("Chewy Boba", 0.6737);
+            winParkBarsProx.Add("The Geek Easy", 0.6719);
+            winParkBarsProx.Add("Steak 'n Shake", 0.8633);
+            winParkBarsProx.Add("The Haven At Forsyth", 0.9050);
+            winParkBarsProx.Add("El Pueblo Mexicqan", 1.4230);
+            winParkBarsProx.Add("Debbie's Bar", 3.7190);
+            winParkBarsProx.Add("Ain't Misbehavin'", 3.2320);
+            winParkBarsProx.Add("Miller's Ale House", 0.2871);
+            winParkBarsProx.Add("Devaney's Sports Pub", 1.6930);
+            winParkBarsProx.Add("The Nest", 3.9230);
+            winParkBarsProx.Add("Admiral Cigar Club", 3.9710);
+            winParkBarsProx.Add("Gator's Dockside", 3.9420);
+            winParkBarsProx.Add("Cork & Plate", 4.0180);
+            winParkBarsProx.Add("Tactical Brewing Co.", 4.0560);
+            winParkBarsProx.Add("The Brass Tap", 7.0210);
+            winParkBarsProx.Add("Redlight Redlight", 5.5550);
+            winParkBarsProx.Add("Sonny's BBQ", 0.1739);
+            winParkBarsProx.Add("La Placita 19'", 0.3135);
+            winParkBarsProx.Add("Rincon Latino", 0.4204);
+            winParkBarsProx.Add("Starbucks", 1.2130);
+            winParkBarsProx.Add("Tequila Lounge Club", 1.4720);
+            winParkBarsProx.Add("Muldoons Saloon", 2.0060);
+            winParkBarsProx.Add("Texas Roadhous", 4.8070);
+            winParkBarsProx.Add("Majijis Hookah Lounge", 1.5520);
+            winParkBarsProx.Add("Thirsty Gator", 1.9780);
+            winParkBarsProx.Add("Don Julio Mexican Kitchen and Tequila Bar", 7.1960);
+            winParkBarsProx.Add("Fire on the Bayou", 6.2520);
+            winParkBarsProx.Add("Rock and Brews", 7.7530);
+            winParkBarsProx.Add("BJ's Restaurant and Brewhouse", 9.1900);
+            winParkBarsProx.Add("Oviedo Brewing Company", 9.9090);
+            winParkBarsProx.Add("Buffalo Wild WIngs", 6.2890);
+            winParkBarsProx.Add("The Green Bar", 7.1810);
+            winParkBarsProx.Add("The Green Parrot", 7.6660150);
+            winParkBarsProx.Add("Luke's Kitchen and Bar", 6.7470);
         }
         private void BuildBoiseBarsProx()
         {
@@ -362,6 +350,7 @@ namespace _2NiteAHI
             boiseBarsProx.Add("Dirty Little Roddy's", 0.1703); 
             boiseBarsProx.Add("Amsterdam Lounge", 0.1907);
         }
+            //FOODS
         private void BuildWinterParkFoods()
         {
             /*winterParkFoods.Add("", 0);*/
@@ -371,7 +360,8 @@ namespace _2NiteAHI
             /*BoiseFoods.Add("", 0);*/
         }
 
-        //ASCENDING BUTTON
+        //BUTTONS
+            //ASCENDING
         private void OnClick_Ascend(object sender, EventArgs e)
         {
             //OrderBy Value
@@ -388,7 +378,7 @@ namespace _2NiteAHI
                 boiseBarsProx.Clear();
             }
         }
-        //DESCENDING BUTTON
+            //DESCENDING
         private void OnClick_Descend(object sender, EventArgs e)
         {
             //OrderBy Value
@@ -405,7 +395,7 @@ namespace _2NiteAHI
                 boiseBarsProx.Clear();
             }
         }
-        //PROXIMITY BUTTON
+            //PROXIMITY
         private void OnClick_Proximity(object sender, EventArgs e)
         {
             if (locale == 0)
@@ -421,7 +411,7 @@ namespace _2NiteAHI
                 barListView.ItemsSource = boiseBarsProx;
             }
         }
-        //PEACE-OUT BUTTON
+            //PEACE-OUT
         private async void OnClick_Peace(object sender, EventArgs e)
         {
             usercount = winterParkBars[temp];
@@ -433,13 +423,6 @@ namespace _2NiteAHI
                 Environment.FailFast("");
             }
             else { return; }
-        }
-        
-        //Update adapter
-        public void Update(Dictionary<string,int> xList)
-        {
-            xList.Clear();
-            
         }
     }
 }
