@@ -12,6 +12,9 @@ namespace _2NiteAHI
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LocationList : ContentPage
     {
+
+       
+        
         //CONTAINERS
         public Dictionary<String, int> winterParkBars = new Dictionary<string, int>();
         public Dictionary<string, double> winParkBarsProx = new Dictionary<string, double>();
@@ -157,13 +160,8 @@ namespace _2NiteAHI
                 BuildWinterParkBars();
                 winterParkBars = winterParkBars.OrderByDescending(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
 
+                barListView.ItemsSource = winterParkBars ;
 
-                barListView.ItemsSource = winterParkBars;
-               
-                
-                
-                
-                
             }
             else if (addy.Locality == "Boise")
             {

@@ -52,6 +52,7 @@
 
         <!--List box-->
         <ListView
+            
             Grid.Row="1"
             Grid.Column="0"
             Grid.ColumnSpan="2"
@@ -60,11 +61,15 @@
             RefreshCommand="{Binding RefreshCommand}"
             IsRefreshing="{Binding IsSoRefreshing}"
             x:Name="barListView"
+           
             HasUnevenRows="True"
             SelectionMode="Single"
             CachingStrategy="RecycleElement"
             BackgroundColor="Black"
             SeparatorColor="White">
+           
+             
+            
         </ListView>
 
         <!--Descending order button-->
