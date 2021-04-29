@@ -65,7 +65,9 @@ namespace _2NiteAHI
                      {
                          selecteditem = e.SelectedItem.ToString(); // Changing event handler to string
                          selecteditem = selecteditem.Trim('[', ']'); // triming brackets
+                         
                          string[] splititems = selecteditem.Split(','); // delim comma
+                         splititems[0].Trim('[', ']');
 
                          usercount = winterParkBars[splititems[0]]; // Grabbing current user count of bar/rest
                          winterParkBars[splititems[0]] = usercount + 1; // increment from current bar/rest count
@@ -414,15 +416,17 @@ namespace _2NiteAHI
             //PEACE-OUT
         private async void OnClick_Peace(object sender, EventArgs e)
         {
-            usercount = winterParkBars[temp];
-            winterParkBars[temp] = usercount - 1; // decrementing old bar
+            
+            usercount = winterParkBars[temp];       
             var excode = await DisplayAlert("Leaving So Soon?", "Would You Like To Close The App?","Yes","No");
             if (excode == true)
             {
+                winterParkBars[temp] = usercount - 1; // decrementing old bar
                 Thread.Sleep(3000);
                 Environment.FailFast("");
             }
             else { return; }
+          
         }
     }
 }
