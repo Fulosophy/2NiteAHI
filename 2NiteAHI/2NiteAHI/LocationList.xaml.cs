@@ -62,37 +62,37 @@ namespace _2NiteAHI
             barOrFood.SelectedItem = "Bars";
 
             //LISTVIEW SELECTION OPERATIONS
-            
-
             barListView.ItemSelected += async (object sender, SelectedItemChangedEventArgs e) =>
              {
-                 
-                 if (hasbeen == false)
+                 //WINTER PARK INITIAL SELECT
+                 if (hasbeen == false && locale == 0)
                  {
                      var ans = await DisplayAlert("Yo New Bar?", "Would You Like To Check In?", "Yes", "Cancel");
                      if (ans == true) // pressing OK
                      {
-                         
                          selecteditem = e.SelectedItem.ToString(); // Changing event handler to string
                          selecteditem = selecteditem.Trim('[', ']'); // triming brackets
                          string[] splititems = selecteditem.Split(','); // delim comma
+
                          usercount = winterParkBars[splititems[0]]; // Grabbing current user count of bar/rest
                          winterParkBars[splititems[0]] = usercount + 1; // increment from current bar/rest count
-                         temp = splititems[0]; // Saving the selected data for decrements                       
+                         temp = splititems[0]; // Saving the selected data for decrements
+                                               
                          hasbeen = true;
+                         RefreshCommand.Execute(barListView.ItemsSource = winterParkBars);
+
                      }
-                     else
-                     {
-                         return;
-                     }
+                     else { return; }
                  }
-                 else if (hasbeen == true)
+                 //WINTER PARK NEXT SELECT
+                 else if (hasbeen == true && locale == 0)
                  {
                     var anss = await DisplayAlert("Changing bars???", "Would You Like To Check In?", "Yes", "Cancel");
                      if (anss == true) // pressing OK
                      {
                          usercount = winterParkBars[temp];
                          winterParkBars[temp] = usercount - 1; // decrementing old bar
+
                          selecteditem = e.SelectedItem.ToString(); // Changing event handler to string
                          selecteditem = selecteditem.Trim('[', ']'); // triming brackets
                          string[] splititems = selecteditem.Split(','); // delim comma
@@ -100,23 +100,51 @@ namespace _2NiteAHI
                          usercount = winterParkBars[splititems[0]]; // Grabbing current user count of bar/rest
                          winterParkBars[splititems[0]] = usercount + 1; // Incrementing CHANGED bar
                          temp = splititems[0];
+                         RefreshCommand.Execute(barListView.ItemsSource = winterParkBars);
                      }
-                     else
-                     {
-                         return;
-                     }
+                     else { return; }
                  }
+                 //BOISE INITIAL SELECT
+                 else if (hasbeen == false && locale == 1)
+                 {
+                     var ansb = await DisplayAlert("Yo New Bar?", "Would You Like To Check In?", "Yes", "Cancel");
+                     if (ansb == true)
+                     {
+                         selecteditem = e.SelectedItem.ToString(); 
+                         selecteditem = selecteditem.Trim('[', ']'); 
+                         string[] splititems = selecteditem.Split(','); 
 
+                         usercount = boiseBars[splititems[0]]; 
+                         boiseBars[splititems[0]] = usercount + 1; 
+                         temp = splititems[0]; 
+
+                         hasbeen = true;
+                         RefreshCommand.Execute(barListView.ItemsSource = boiseBars);
+                     }
+                     else { return; }
+                 }
+                 //BOISE NEXT SELECT
+                 else if (hasbeen == true && locale == 1)
+                 {
+                     var ansbb = await DisplayAlert("Yo New Bar?", "Would You Like To Check In?", "Yes", "Cancel");
+                     if (ansbb == true)
+                     {
+                         usercount = boiseBars[temp];
+                         boiseBars[temp] = usercount - 1; 
+
+                         selecteditem = e.SelectedItem.ToString(); 
+                         selecteditem = selecteditem.Trim('[', ']'); 
+                         string[] splititems = selecteditem.Split(','); 
+
+                         usercount = boiseBars[splititems[0]]; 
+                         boiseBars[splititems[0]] = usercount + 1; 
+                         temp = splititems[0];
+                         RefreshCommand.Execute(barListView.ItemsSource = boiseBars);
+                     }
+                     else { return; }
+                 }
              };
-
-            Console.WriteLine("Test");
-
-
-            
         }
-
-       
-
 
         private void listSelected()
         {
@@ -174,18 +202,15 @@ namespace _2NiteAHI
         }
         public ICommand RefreshCommand // Refreshing List View
         {
-            
             get
             {
                 return new Command(() =>
                 {
-                 
                     if (locale == 0)
                     {
                         barListView.ItemsSource = null; // resets the list back to null 
                         barListView.ItemsSource = winterParkBars; // refactors updated list
                         IsSoRefreshing = false;
-                    
                         winParkBarsProx.Clear();
                     }
                     else if (locale == 1)
@@ -198,7 +223,6 @@ namespace _2NiteAHI
                 });
             }
         }
-
 
         //DICTIONARIES
         private void BuildWinterParkBars()
@@ -363,7 +387,6 @@ namespace _2NiteAHI
                 barListView.ItemsSource = boiseBars;
                 boiseBarsProx.Clear();
             }
-
         }
         //DESCENDING BUTTON
         private void OnClick_Descend(object sender, EventArgs e)
@@ -403,26 +426,20 @@ namespace _2NiteAHI
         {
             usercount = winterParkBars[temp];
             winterParkBars[temp] = usercount - 1; // decrementing old bar
-
-           
-             var excode = await DisplayAlert("Leaving So Soon?", "Would You Like To Close The App?","Yes","No");
-
+            var excode = await DisplayAlert("Leaving So Soon?", "Would You Like To Close The App?","Yes","No");
             if (excode == true)
             {
                 Thread.Sleep(3000);
                 Environment.FailFast("");
             }
-            else
-            {
-                return;
-            }
-           
-
-
-
-
+            else { return; }
         }
-
-       
+        
+        //Update adapter
+        public void Update(Dictionary<string,int> xList)
+        {
+            xList.Clear();
+            
+        }
     }
 }
