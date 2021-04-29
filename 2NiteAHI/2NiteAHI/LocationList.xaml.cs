@@ -51,7 +51,7 @@ namespace _2NiteAHI
             GetUserLoc(); 
 
             //BAR/FOOD PICKER
-            barOrFood.ItemsSource = ListOLocations;
+           barOrFood.ItemsSource = ListOLocations;
             barOrFood.SelectedItem = "Bars";
 
             //LISTVIEW SELECTION OPERATIONS
@@ -67,7 +67,7 @@ namespace _2NiteAHI
                          selecteditem = selecteditem.Trim('[', ']'); // triming brackets
                          
                          string[] splititems = selecteditem.Split(','); // delim comma
-                         splititems[0].Trim('[', ']');
+                         
 
                          usercount = winterParkBars[splititems[0]]; // Grabbing current user count of bar/rest
                          winterParkBars[splititems[0]] = usercount + 1; // increment from current bar/rest count
@@ -150,14 +150,20 @@ namespace _2NiteAHI
             var GetAddy = await Geocoding.GetPlacemarksAsync(location.Latitude, location.Longitude); // Grabbing the users location details as a placemark.
             var addy = GetAddy?.FirstOrDefault();
 
-            MyLocation = $"{addy.Locality},{addy.AdminArea}"; // Grabs the users current locations Address-Town and Address-State **Only works in USA**  
+            MyLocation = $"{addy.Locality},  {addy.AdminArea}"; // Grabs the users current locations Address-Town and Address-State **Only works in USA**  
             if (addy.Locality == "Winter Park")
             {
                 locale = 0;
                 BuildWinterParkBars();
                 winterParkBars = winterParkBars.OrderByDescending(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
-                
+
+
                 barListView.ItemsSource = winterParkBars;
+               
+                
+                
+                
+                
             }
             else if (addy.Locality == "Boise")
             {
@@ -277,7 +283,7 @@ namespace _2NiteAHI
             //PROXIMITY OF BARS
         private void BuildWinParkBarsProx()
         {
-            winParkBarsProx.Add("Chili's Bar & Grill", 0.5835);
+            winParkBarsProx.Add(" Chili's Bar & Grill ", 0.5835);
             winParkBarsProx.Add("Firehouse Subs", 0.5540);
             winParkBarsProx.Add("Arooga's", 0.5303);
             winParkBarsProx.Add("Chewy Boba", 0.6737);
@@ -421,7 +427,7 @@ namespace _2NiteAHI
             var excode = await DisplayAlert("Leaving So Soon?", "Would You Like To Close The App?","Yes","No");
             if (excode == true)
             {
-                winterParkBars[temp] = usercount - 1; // decrementing old bar
+                winterParkBars[temp] = usercount - 1; // decrementing old bar // only if true
                 Thread.Sleep(3000);
                 Environment.FailFast("");
             }
