@@ -12,9 +12,6 @@ namespace _2NiteAHI
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LocationList : ContentPage
     {
-
-       
-        
         //CONTAINERS
         public Dictionary<String, int> winterParkBars = new Dictionary<string, int>();
         public Dictionary<string, double> winParkBarsProx = new Dictionary<string, double>();
