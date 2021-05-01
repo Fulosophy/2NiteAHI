@@ -18,6 +18,6 @@ public partial class Login : ContentPage
     }
         async void ForgotButtonClicked(object sender, EventArgs e) { await Navigation.PushAsync(new Recovery()); }
         async void RegButtonClicked(object sender, EventArgs e) { await Navigation.PushAsync(new Register()); }
-        async void SubmitButtonClicked(object sender, EventArgs e) { await Navigation.PushAsync(new MainPage()); }
+        async void SubmitButtonClicked(object sender, EventArgs e) { await Navigation.PushAsync(new LocationList()); }
     }
 }

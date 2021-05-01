@@ -67,7 +67,7 @@
             SeparatorColor="White">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <TextCell
+                    <TextCell                       
                         Text="{Binding Key}"
                         Detail="{Binding Value}"
                         TextColor="DarkOrchid"

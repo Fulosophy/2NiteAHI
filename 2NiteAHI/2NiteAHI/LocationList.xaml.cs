@@ -26,6 +26,7 @@ namespace _2NiteAHI
         };
 
         //VARIABLES
+        public string storeboth { get { return winterParkBars.Keys + " " + winterParkBars.Values; } }
         private string myloc;
         private int locale;
         private string selecteditem;
@@ -48,10 +49,11 @@ namespace _2NiteAHI
         {
             InitializeComponent();
             BindingContext = this;
-            GetUserLoc(); 
-
+            GetUserLoc();
+            BuildWinParkBarsProx();
+            BuildBoiseBarsProx();
             //BAR/FOOD PICKER
-           barOrFood.ItemsSource = ListOLocations;
+            barOrFood.ItemsSource = ListOLocations;
             barOrFood.SelectedItem = "Bars";
 
             //LISTVIEW SELECTION OPERATIONS
@@ -200,14 +202,14 @@ namespace _2NiteAHI
                         barListView.ItemsSource = null; // resets the list back to null 
                         barListView.ItemsSource = winterParkBars; // refactors updated list
                         IsSoRefreshing = false;
-                        winParkBarsProx.Clear();
+                        //winParkBarsProx.Clear();
                     }
                     else if (locale == 1)
                     {
                         barListView.ItemsSource = null; // resets the list back to null 
                         barListView.ItemsSource = boiseBars; // refactors updated list
                         IsSoRefreshing = false;
-                        boiseBarsProx.Clear();
+                        //boiseBarsProx.Clear();
                     }
                 });
             }
@@ -401,18 +403,24 @@ namespace _2NiteAHI
             //PROXIMITY
         private void OnClick_Proximity(object sender, EventArgs e)
         {
+           
             if (locale == 0)
             {
-                BuildWinParkBarsProx();
+              
                 winParkBarsProx = winParkBarsProx.OrderBy(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
+                barListView.ItemsSource = null;
                 barListView.ItemsSource = winParkBarsProx;
+
+
             }
             else if (locale == 1)
             {
-                BuildBoiseBarsProx();
-                boiseBarsProx = boiseBarsProx.OrderBy(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
+             
+                boiseBarsProx = boiseBarsProx.OrderBy(i => i.Value).ToDictionary(i => i.Key, i => i.Value);                
+                barListView.ItemsSource = null;
                 barListView.ItemsSource = boiseBarsProx;
             }
+           
         }
             //PEACE-OUT
         private async void OnClick_Peace(object sender, EventArgs e)
