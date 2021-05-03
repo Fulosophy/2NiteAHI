@@ -217,63 +217,61 @@ namespace _2NiteAHI
             //BARS
         private void BuildWinterParkBars()
         {
-            
-            winterParkBars.Add("Chili's Bar & Grill", usercount); 
-            winterParkBars.Add("Firehouse Subs", usercount);
-            winterParkBars.Add("Arooga's", usercount); 
-            winterParkBars.Add("Chewy Boba", usercount);
-            winterParkBars.Add("The Geek Easy", usercount);
-            winterParkBars.Add("Steak 'n Shake", usercount);
-            winterParkBars.Add("The Haven At Forsyth", usercount);
-            winterParkBars.Add("El Pueblo Mexicqan", usercount);
-            winterParkBars.Add("Debbie's Bar", usercount); 
-            winterParkBars.Add("Ain't Misbehavin'", usercount);
-            winterParkBars.Add("Miller's Ale House", usercount); 
-            winterParkBars.Add("Devaney's Sports Pub", usercount);
-            winterParkBars.Add("The Next", usercount); 
-            winterParkBars.Add("Admiral Cigar Club", usercount);
-            winterParkBars.Add("Gator's Dockside", usercount); 
-            winterParkBars.Add("Cork & Plate", usercount);
-            winterParkBars.Add("Tactical Brewing Co.", usercount); 
             winterParkBars.Add("The Brass Tap", usercount);
-            winterParkBars.Add("Sonny's BBQ", usercount); 
-            winterParkBars.Add("La Placita 19'", usercount);
-            winterParkBars.Add("Rincon Latino", usercount);
-            winterParkBars.Add("Starbucks", usercount);
             winterParkBars.Add("Tequila Lounge Club", usercount); 
             winterParkBars.Add("Muldoons Saloon", usercount);
-            winterParkBars.Add("Texas Roadhous", usercount); 
-            winterParkBars.Add("Majijis Hookah Lounge", usercount);
-            winterParkBars.Add("Thirsty Gator", usercount); 
-            winterParkBars.Add("Don Julio Mexican Kitchen and Tequila Bar", usercount);
-            winterParkBars.Add("Fire on the Bayou", usercount); 
+            winterParkBars.Add("The Geek Easy", usercount);
+            winterParkBars.Add("The Haven At Forsyth", usercount);
+            winterParkBars.Add("Debbie's Bar", usercount); 
+            winterParkBars.Add("Ain't Misbehavin'", usercount);
             winterParkBars.Add("Rock and Brews", usercount);
-            winterParkBars.Add("BJ's Restaurant and Brewhouse", usercount); 
             winterParkBars.Add("Oviedo Brewing Company", usercount);
-            winterParkBars.Add("Buffalo Wild WIngs", usercount); 
             winterParkBars.Add("The Green Bar", usercount);
             winterParkBars.Add("The Green Parrot", usercount); 
-            winterParkBars.Add("Luke's Kitchen and Bar", usercount);
+            winterParkBars.Add("Miller's Ale House", usercount); 
+            winterParkBars.Add("Devaney's Sports Pub", usercount);
+            winterParkBars.Add("Majijis Hookah Lounge", usercount);
+            winterParkBars.Add("Tactical Brewing Co.", usercount); 
+            winterParkBars.Add("The Next", usercount); 
+            winterParkBars.Add("Admiral Cigar Club", usercount);
+
         }
         private void BuildBoiseBars()
         {
-            boiseBars.Add("Pengilly's Saloon", rng.Next() % 150); boiseBars.Add("Whiskey Bar", rng.Next() % 150);
-            boiseBars.Add("Press & Pony", rng.Next() % 150); boiseBars.Add("The Handlebar", rng.Next() % 150);
-            boiseBars.Add("The Atlas Bar", rng.Next() % 150); boiseBars.Add("The Spacebar", rng.Next() % 150);
-            boiseBars.Add("Neurolox", rng.Next() % 150); boiseBars.Add("Taphouse", rng.Next() % 150);
-            boiseBars.Add("Water Bear Bar", rng.Next() % 150); boiseBars.Add("Cactus Bar", rng.Next() % 150);
-            boiseBars.Add("The Mode Lounge", rng.Next() % 150); boiseBars.Add("Mulligans'", rng.Next() % 150);
-            boiseBars.Add("Bardenay Restaurant & Distillery", rng.Next() % 150); boiseBars.Add("Tom Grainey's", rng.Next() % 150);
-            boiseBars.Add("Humpin' Hannah's", rng.Next() % 150); boiseBars.Add("Boise Brewing", rng.Next() % 150);
-            boiseBars.Add("Payette Brewing", rng.Next() % 150); boiseBars.Add("10 Barrel Brewing", rng.Next() % 150);
-            boiseBars.Add("White Dog Brewing", rng.Next() % 150); boiseBars.Add("Barbarian Brewing", rng.Next() % 150);
-            boiseBars.Add("Clairvoyant Brewing", rng.Next() % 150); boiseBars.Add("Lost Grove Brewing", rng.Next() % 150);
-            boiseBars.Add("Cloud 9 Brewing", rng.Next() % 150); boiseBars.Add("Woodland Brewing ", rng.Next() % 150);
-            boiseBars.Add("Edge Brewing", rng.Next() % 150); boiseBars.Add("Highlands Hollow Brewhouse", rng.Next() % 150);
-            boiseBars.Add("Ram Restaurant & Brewery", rng.Next() % 150); boiseBars.Add("Bittercreek Alehouse", rng.Next() % 150);
-            boiseBars.Add("The Silly Birch", rng.Next() % 150); boiseBars.Add("The Gas Lantern Drinking Company", rng.Next() % 150);
-            boiseBars.Add("Double Tap Pub", rng.Next() % 150); boiseBars.Add("Bar Gernika", rng.Next() % 150);
-            boiseBars.Add("Dirty Little Roddy's", rng.Next() % 150); boiseBars.Add("Amsterdam Lounge", rng.Next() % 150);
+            boiseBars.Add("Pengilly's Saloon", rng.Next() % 150); 
+            boiseBars.Add("Whiskey Bar", rng.Next() % 150);
+            boiseBars.Add("Press & Pony", rng.Next() % 150); 
+            boiseBars.Add("The Handlebar", rng.Next() % 150);
+            boiseBars.Add("The Atlas Bar", rng.Next() % 150); 
+            boiseBars.Add("The Spacebar", rng.Next() % 150);
+            boiseBars.Add("Neurolox", rng.Next() % 150); 
+            boiseBars.Add("Taphouse", rng.Next() % 150);
+            boiseBars.Add("Water Bear Bar", rng.Next() % 150); 
+            boiseBars.Add("Cactus Bar", rng.Next() % 150);
+            boiseBars.Add("The Mode Lounge", rng.Next() % 150); 
+            boiseBars.Add("Mulligans'", rng.Next() % 150);
+            boiseBars.Add("Bardenay Restaurant & Distillery", rng.Next() % 150); 
+            boiseBars.Add("Tom Grainey's", rng.Next() % 150);
+            boiseBars.Add("Humpin' Hannah's", rng.Next() % 150); 
+            boiseBars.Add("Boise Brewing", rng.Next() % 150);
+            boiseBars.Add("Payette Brewing", rng.Next() % 150); 
+            boiseBars.Add("10 Barrel Brewing", rng.Next() % 150);
+            boiseBars.Add("White Dog Brewing", rng.Next() % 150); 
+            boiseBars.Add("Barbarian Brewing", rng.Next() % 150);
+            boiseBars.Add("Clairvoyant Brewing", rng.Next() % 150); 
+            boiseBars.Add("Lost Grove Brewing", rng.Next() % 150);
+            boiseBars.Add("Cloud 9 Brewing", rng.Next() % 150); 
+            boiseBars.Add("Woodland Brewing ", rng.Next() % 150);
+            boiseBars.Add("Edge Brewing", rng.Next() % 150); 
+            boiseBars.Add("Highlands Hollow Brewhouse", rng.Next() % 150);
+            boiseBars.Add("Ram Restaurant & Brewery", rng.Next() % 150); 
+            boiseBars.Add("Bittercreek Alehouse", rng.Next() % 150);
+            boiseBars.Add("The Silly Birch", rng.Next() % 150); 
+            boiseBars.Add("The Gas Lantern Drinking Company", rng.Next() % 150);
+            boiseBars.Add("Double Tap Pub", rng.Next() % 150); 
+            boiseBars.Add("Bar Gernika", rng.Next() % 150);
+            boiseBars.Add("Dirty Little Roddy's", rng.Next() % 150); 
+            boiseBars.Add("Amsterdam Lounge", rng.Next() % 150);
         }
             //PROXIMITY OF BARS
         private void BuildWinParkBarsProx()
@@ -356,11 +354,46 @@ namespace _2NiteAHI
             //FOODS
         private void BuildWinterParkFoods()
         {
-            /*winterParkFoods.Add("", 0);*/
+            winterParkFoods.Add("Chili's Bar & Grill", rng.Next() % 150); 
+            winterParkFoods.Add("Firehouse Subs", rng.Next() % 150);
+            winterParkFoods.Add("Arooga's", rng.Next() % 150); 
+            winterParkFoods.Add("Chewy Boba", rng.Next() % 150);
+            winterParkFoods.Add("Steak 'n Shake", rng.Next() % 150);
+            winterParkFoods.Add("El Pueblo Mexicqan", rng.Next() % 150);
+            winterParkFoods.Add("Luke's Kitchen and Bar", rng.Next() % 150);
+            winterParkFoods.Add("Buffalo Wild WIngs", rng.Next() % 150); 
+            winterParkFoods.Add("BJ's Restaurant and Brewhouse", rng.Next() % 150); 
+            winterParkFoods.Add("Don Julio Mexican Kitchen and Tequila Bar", rng.Next() % 150);
+            winterParkFoods.Add("Texas Roadhous", rng.Next() % 150); 
+            winterParkFoods.Add("Starbucks", rng.Next() % 150);
+            winterParkFoods.Add("Sonny's BBQ", rng.Next() % 150); 
+            winterParkFoods.Add("Gator's Dockside", rng.Next() % 150); 
+            winterParkFoods.Add("Cork & Plate", rng.Next() % 150);
+            winterParkFoods.Add("La Placita 19'", rng.Next() % 150);
+            winterParkFoods.Add("Rincon Latino", rng.Next() % 150);
+            winterParkFoods.Add("Thirsty Gator", rng.Next() % 150); 
+            winterParkFoods.Add("Fire on the Bayou", rng.Next() % 150); 
+
         }
         private void BuildBoiseFoods()
         {
-            /*BoiseFoods.Add("", 0);*/
+            BoiseFoods.Add("Del Taco", rng.Next() % 150);
+            BoiseFoods.Add("Meraki Greek Street Food", rng.Next() % 150);
+            BoiseFoods.Add("Trillium Restaurant", rng.Next() % 150);
+            BoiseFoods.Add("Boise Fry Company", rng.Next() % 150);
+            BoiseFoods.Add("Bittercreek Alehouse", rng.Next() % 150);
+            BoiseFoods.Add("Eureka", rng.Next() % 150);
+            BoiseFoods.Add("Chandlers Prime Steaks & Seafood", rng.Next() % 150);
+            BoiseFoods.Add("Manfred’s Kitchen", rng.Next() % 150);
+            BoiseFoods.Add("Owyhee Tavern	Steakhouse", rng.Next() % 150);
+            BoiseFoods.Add("Bombay Grill", rng.Next() % 150);
+            BoiseFoods.Add("Txikitea", rng.Next() % 150);
+            BoiseFoods.Add("KIN", rng.Next() % 150);
+            BoiseFoods.Add("Main Street Deli", rng.Next() % 150);
+            BoiseFoods.Add("Fork", rng.Next() % 150);
+            BoiseFoods.Add("Even Stevens Sandwiches", rng.Next() % 150);
+            BoiseFoods.Add("Lucky Fins Seafood Grill", rng.Next() % 150);
+
         }
 
         //BUTTONS
