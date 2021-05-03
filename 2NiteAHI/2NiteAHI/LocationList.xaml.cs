@@ -13,12 +13,14 @@ namespace _2NiteAHI
     public partial class LocationList : ContentPage
     {
         //CONTAINERS
-        public Dictionary<String, int> winterParkBars = new Dictionary<string, int>();
+        public Dictionary<string, int> winterParkBars = new Dictionary<string, int>();
         public Dictionary<string, double> winParkBarsProx = new Dictionary<string, double>();
-        public Dictionary<String, int> boiseBars = new Dictionary<string, int>();
+        public Dictionary<string, int> boiseBars = new Dictionary<string, int>();
         public Dictionary<string, double> boiseBarsProx = new Dictionary<string, double>();
-        public Dictionary<String, int> winterParkFoods = new Dictionary<string, int>();
-        public Dictionary<String, int> boiseFoods = new Dictionary<string, int>();
+        public Dictionary<string, int> winterParkFoods = new Dictionary<string, int>();
+        public Dictionary<string, double> winParkFoodsProx = new Dictionary<string, double>();
+        public Dictionary<string, int> boiseFoods = new Dictionary<string, int>();
+        public Dictionary<string, double> boiseFoodsProx = new Dictionary<string, double>();
         public List<string> ListOLocations = new List<string>
         {
             "Bars",
@@ -234,7 +236,6 @@ namespace _2NiteAHI
             winterParkBars.Add("Tactical Brewing Co.", usercount); 
             winterParkBars.Add("The Next", usercount); 
             winterParkBars.Add("Admiral Cigar Club", usercount);
-
         }
         private void BuildBoiseBars()
         {
@@ -276,43 +277,24 @@ namespace _2NiteAHI
             //PROXIMITY OF BARS
         private void BuildWinParkBarsProx()
         {
-            winParkBarsProx.Add(" Chili's Bar & Grill ", 0.5835);
-            winParkBarsProx.Add("Firehouse Subs", 0.5540);
-            winParkBarsProx.Add("Arooga's", 0.5303);
-            winParkBarsProx.Add("Chewy Boba", 0.6737);
-            winParkBarsProx.Add("The Geek Easy", 0.6719);
-            winParkBarsProx.Add("Steak 'n Shake", 0.8633);
-            winParkBarsProx.Add("The Haven At Forsyth", 0.9050);
-            winParkBarsProx.Add("El Pueblo Mexicqan", 1.4230);
-            winParkBarsProx.Add("Debbie's Bar", 3.7190);
-            winParkBarsProx.Add("Ain't Misbehavin'", 3.2320);
-            winParkBarsProx.Add("Miller's Ale House", 0.2871);
-            winParkBarsProx.Add("Devaney's Sports Pub", 1.6930);
-            winParkBarsProx.Add("The Nest", 3.9230);
-            winParkBarsProx.Add("Admiral Cigar Club", 3.9710);
-            winParkBarsProx.Add("Gator's Dockside", 3.9420);
-            winParkBarsProx.Add("Cork & Plate", 4.0180);
-            winParkBarsProx.Add("Tactical Brewing Co.", 4.0560);
-            winParkBarsProx.Add("The Brass Tap", 7.0210);
-            winParkBarsProx.Add("Redlight Redlight", 5.5550);
-            winParkBarsProx.Add("Sonny's BBQ", 0.1739);
-            winParkBarsProx.Add("La Placita 19'", 0.3135);
-            winParkBarsProx.Add("Rincon Latino", 0.4204);
-            winParkBarsProx.Add("Starbucks", 1.2130);
-            winParkBarsProx.Add("Tequila Lounge Club", 1.4720);
-            winParkBarsProx.Add("Muldoons Saloon", 2.0060);
-            winParkBarsProx.Add("Texas Roadhous", 4.8070);
-            winParkBarsProx.Add("Majijis Hookah Lounge", 1.5520);
-            winParkBarsProx.Add("Thirsty Gator", 1.9780);
-            winParkBarsProx.Add("Don Julio Mexican Kitchen and Tequila Bar", 7.1960);
-            winParkBarsProx.Add("Fire on the Bayou", 6.2520);
-            winParkBarsProx.Add("Rock and Brews", 7.7530);
-            winParkBarsProx.Add("BJ's Restaurant and Brewhouse", 9.1900);
-            winParkBarsProx.Add("Oviedo Brewing Company", 9.9090);
-            winParkBarsProx.Add("Buffalo Wild WIngs", 6.2890);
-            winParkBarsProx.Add("The Green Bar", 7.1810);
-            winParkBarsProx.Add("The Green Parrot", 7.6660150);
-            winParkBarsProx.Add("Luke's Kitchen and Bar", 6.7470);
+           winParkBarsProx.Add("The Geek Easy", 0.6719);
+           winParkBarsProx.Add("The Haven At Forsyth", 0.9050);
+           winParkBarsProx.Add("Debbie's Bar", 3.7190);
+           winParkBarsProx.Add("Ain't Misbehavin'", 3.2320);
+           winParkBarsProx.Add("Miller's Ale House", 0.2871);
+           winParkBarsProx.Add("Devaney's Sports Pub", 1.6930);
+           winParkBarsProx.Add("The Nest", 3.9230);
+           winParkBarsProx.Add("Admiral Cigar Club", 3.9710);
+           winParkBarsProx.Add("Tactical Brewing Co.", 4.0560);
+           winParkBarsProx.Add("The Brass Tap", 7.0210);
+           winParkBarsProx.Add("Redlight Redlight", 5.5550);
+           winParkBarsProx.Add("Tequila Lounge Club", 1.4720);
+           winParkBarsProx.Add("Muldoons Saloon", 2.0060);
+           winParkBarsProx.Add("Majijis Hookah Lounge", 1.5520);
+           winParkBarsProx.Add("Rock and Brews", 7.7530);
+           winParkBarsProx.Add("Oviedo Brewing Company", 9.9090);
+           winParkBarsProx.Add("The Green Bar", 7.1810);
+           winParkBarsProx.Add("The Green Parrot", 7.6660150);
         }
         private void BuildBoiseBarsProx()
         {
@@ -373,7 +355,6 @@ namespace _2NiteAHI
             winterParkFoods.Add("Rincon Latino", rng.Next() % 150);
             winterParkFoods.Add("Thirsty Gator", rng.Next() % 150); 
             winterParkFoods.Add("Fire on the Bayou", rng.Next() % 150); 
-
         }
         private void BuildBoiseFoods()
         {
@@ -393,7 +374,47 @@ namespace _2NiteAHI
             BoiseFoods.Add("Fork", rng.Next() % 150);
             BoiseFoods.Add("Even Stevens Sandwiches", rng.Next() % 150);
             BoiseFoods.Add("Lucky Fins Seafood Grill", rng.Next() % 150);
-
+        }
+        private void BuildWinParkFoodsProx()
+        {
+            winParkFoodsProx.Add(" Chili's Bar & Grill ", 0.5835);
+            winParkFoodsProx.Add("Firehouse Subs", 0.5540);
+            winParkFoodsProx.Add("Arooga's", 0.5303);
+            winParkFoodsProx.Add("Chewy Boba", 0.6737);
+            winParkFoodsProx.Add("Steak 'n Shake", 0.8633);
+            winParkFoodsProx.Add("El Pueblo Mexicqan", 1.4230);
+            winParkFoodsProx.Add("Luke's Kitchen and Bar", 6.7470);
+            winParkFoodsProx.Add("Buffalo Wild WIngs", 6.2890);
+            winParkFoodsProx.Add("BJ's Restaurant and Brewhouse", 9.1900);
+            winParkFoodsProx.Add("Don Julio Mexican Kitchen and Tequila Bar", 7.1960);
+            winParkFoodsProx.Add("Texas Roadhous", 4.8070);
+            winParkFoodsProx.Add("Starbucks", 1.2130);
+            winParkFoodsProx.Add("Sonny's BBQ", 0.1739);
+            winParkFoodsProx.Add("Gator's Dockside", 3.9420);
+            winParkFoodsProx.Add("Cork & Plate", 4.0180);
+            winParkFoodsProx.Add("La Placita 19'", 0.3135);
+            winParkFoodsProx.Add("Rincon Latino", 0.4204);
+            winParkFoodsProx.Add("Fire on the Bayou", 6.2520);
+            winParkFoodsProx.Add("Thirsty Gator", 1.9780);
+        }
+        private void BuildBoiseFoodsProx()
+        {
+            boiseFoodsProx.Add("Del Taco",0.9709);
+            boiseFoodsProx.Add("Meraki Greek Street Food",0.2481);
+            boiseFoodsProx.Add("Trillium Restaurant",0.1435);
+            boiseFoodsProx.Add("Boise Fry Company",0.3768);
+            boiseFoodsProx.Add("Bittercreek Alehouse",0.3981);
+            boiseFoodsProx.Add("Eureka",0.4533);
+            boiseFoodsProx.Add("Chandlers Prime Steaks & Seafood",0.4253);
+            boiseFoodsProx.Add("Manfred’s Kitchen",0.6363);
+            boiseFoodsProx.Add("Owyhee Tavern	Steakhouse",0.6258);
+            boiseFoodsProx.Add("Bombay Grill",0.4976);
+            boiseFoodsProx.Add("Txikitea",0.9841);
+            boiseFoodsProx.Add("KIN",0.4279);
+            boiseFoodsProx.Add("Main Street Deli",0.4157);
+            boiseFoodsProx.Add("Fork",0.3662);
+            boiseFoodsProx.Add("Even Stevens Sandwiches",0.4837);
+            boiseFoodsProx.Add("Lucky Fins Seafood Grill",0.2793);
         }
 
         //BUTTONS
