@@ -11,9 +11,7 @@
             Text="Settings"
             Clicked="ToolbarItem_Clicked"/>
     </ContentPage.ToolbarItems>
-
     <Grid>
-
         <Grid.Background>
 
             <LinearGradientBrush StartPoint="0.8,0" EndPoint="0,0.8">
