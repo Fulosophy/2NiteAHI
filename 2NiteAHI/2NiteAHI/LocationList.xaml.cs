@@ -21,15 +21,11 @@ namespace _2NiteAHI
         public Dictionary<string, double> winParkFoodsProx = new Dictionary<string, double>();
         public Dictionary<string, int> boiseFoods = new Dictionary<string, int>();
         public Dictionary<string, double> boiseFoodsProx = new Dictionary<string, double>();
-        public List<string> ListOLocations = new List<string>
-        {
-            "Bars",
-            "Restaurants"
-        };
 
         //VARIABLES
         private string myloc;
         private int locale;
+        private int xlocale = 0;
         private string selecteditem;
         private int usercount; 
         private bool hasbeen;
@@ -52,17 +48,13 @@ namespace _2NiteAHI
             BindingContext = this;
             GetUserLoc(); 
 
-            //BAR/FOOD PICKER
-           barOrFood.ItemsSource = ListOLocations;
-           barOrFood.SelectedItem = "Bars";
-
             //LISTVIEW SELECTION OPERATIONS
             barListView.ItemSelected += async (object sender, SelectedItemChangedEventArgs e) =>
              {
                  //WINTER PARK INITIAL SELECT
                  if (hasbeen == false && locale == 0)
                  {
-                     var ans = await DisplayAlert("Yo New Bar?", "Would You Like To Check In?", "Yes", "Cancel");
+                     var ans = await DisplayAlert("Yo! Checking in?", "Have fun!", "Yes", "Cancel");
                      if (ans == true) // pressing OK
                      {
                          selecteditem = e.SelectedItem.ToString(); // Changing event handler to string
@@ -101,10 +93,11 @@ namespace _2NiteAHI
                      }
                      else { return; }
                  }
+
                  //BOISE INITIAL SELECT
                  else if (hasbeen == false && locale == 1)
                  {
-                     var ansb = await DisplayAlert("Yo New Bar?", "Would You Like To Check In?", "Yes", "Cancel");
+                     var ansb = await DisplayAlert("Yo! Checking in??", "Have fun!", "Yes", "Cancel");
                      if (ansb == true)
                      {
                          selecteditem = e.SelectedItem.ToString(); 
@@ -140,6 +133,87 @@ namespace _2NiteAHI
                      }
                      else { return; }
                  }
+
+                 //WINTER PARK FOOD SELECT
+                 else if (hasbeen == false && locale == 0 && xlocale == 2)
+                 {
+                     var ansb = await DisplayAlert("Yo! Checking in?", "Have fun!", "Yes", "Cancel");
+                     if (ansb == true)
+                     {
+                         selecteditem = e.SelectedItem.ToString();
+                         selecteditem = selecteditem.Trim('[', ']');
+                         string[] splititems = selecteditem.Split(',');
+
+                         usercount = winterParkFoods[splititems[0]];
+                         winterParkFoods[splititems[0]] = usercount + 1;
+                         temp = splititems[0];
+
+                         hasbeen = true;
+                         RefreshCommand.Execute(barListView.ItemsSource = winterParkFoods);
+                     }
+                     else { return; }
+                 }
+                 //WINTER PARK FOOD NEXT SELECT
+                 else if (hasbeen == true && locale == 0 && xlocale == 2)
+                 {
+                     var ansbb = await DisplayAlert("Yo New Restaurant?", "Would You Like To Check In?", "Yes", "Cancel");
+                     if (ansbb == true)
+                     {
+                         usercount = winterParkFoods[temp];
+                         winterParkFoods[temp] = usercount - 1;
+
+                         selecteditem = e.SelectedItem.ToString();
+                         selecteditem = selecteditem.Trim('[', ']');
+                         string[] splititems = selecteditem.Split(',');
+
+                         usercount = winterParkFoods[splititems[0]];
+                         winterParkFoods[splititems[0]] = usercount + 1;
+                         temp = splititems[0];
+                         RefreshCommand.Execute(barListView.ItemsSource = winterParkFoods);
+                     }
+                     else { return; }
+                 }
+
+                 //BOISE FOOD SELECT
+                 else if (hasbeen == false && locale == 1 && xlocale == 3)
+                 {
+                     var ansb = await DisplayAlert("Yo! Checking in?", "Have fun!", "Yes", "Cancel");
+                     if (ansb == true)
+                     {
+                         selecteditem = e.SelectedItem.ToString();
+                         selecteditem = selecteditem.Trim('[', ']');
+                         string[] splititems = selecteditem.Split(',');
+
+                         usercount = boiseFoods[splititems[0]];
+                         boiseFoods[splititems[0]] = usercount + 1;
+                         temp = splititems[0];
+
+                         hasbeen = true;
+                         RefreshCommand.Execute(barListView.ItemsSource = boiseFoods);
+                     }
+                     else { return; }
+                 }
+                 //BOISE FOOD NEXT SELECT
+                 else if (hasbeen == true && locale == 1 && xlocale == 3)
+                 {
+                     var ansbb = await DisplayAlert("Yo New Restaurant?", "Would You Like To Check In?", "Yes", "Cancel");
+                     if (ansbb == true)
+                     {
+                         usercount = boiseFoods[temp];
+                         boiseFoods[temp] = usercount - 1;
+
+                         selecteditem = e.SelectedItem.ToString();
+                         selecteditem = selecteditem.Trim('[', ']');
+                         string[] splititems = selecteditem.Split(',');
+
+                         usercount = boiseFoods[splititems[0]];
+                         boiseFoods[splititems[0]] = usercount + 1;
+                         temp = splititems[0];
+                         RefreshCommand.Execute(barListView.ItemsSource = boiseFoods);
+                     }
+                     else { return; }
+                 }
+
              };
         }
 
@@ -153,39 +227,21 @@ namespace _2NiteAHI
             var addy = GetAddy?.FirstOrDefault();
 
             MyLocation = $"{addy.Locality},  {addy.AdminArea}"; // Grabs the users current locations Address-Town and Address-State **Only works in USA**  
-            if (addy.Locality == "Winter Park" && barOrFood.SelectedIndex == -1)
+
+            if (addy.Locality == "Winter Park")
             {
                 locale = 0;
                 BuildWinterParkBars();
                 winterParkBars = winterParkBars.OrderByDescending(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
-
                 barListView.ItemsSource = winterParkBars;
             }
-            else if (addy.Locality == "Boise" && barOrFood.SelectedIndex == -1)
+            else if (addy.Locality == "Boise")
             {
                 locale = 1;
                 BuildBoiseBars();
                 boiseBars = boiseBars.OrderByDescending(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
-                
                 barListView.ItemsSource = boiseBars;
             }
-            else if (addy.Locality == "Winter Park" && barOrFood.SelectedIndex == 0)
-            {
-                locale = 2;
-                BuildWinterParkFoods();
-                winterParkFoods = winterParkFoods.OrderByDescending(i => i.Value).ToDictionary(i=> i.Key, i => i.Value);
-
-                barListView.ItemsSource = winterParkFoods;
-            }
-            else if (addy.Locality == "Boise" && barOrFood.SelectedIndex == 0)
-            {
-                locale = 3;
-                BuildBoiseFoods();
-                boiseFoods = boiseFoods.OrderByDescending(i => i.Value).ToDictionary(i=>i.Key, i=>i.Value);
-
-                barListView.ItemsSource = boiseFoods;
-            }
-
         }
         public string MyLocation 
         {
@@ -226,6 +282,20 @@ namespace _2NiteAHI
                         barListView.ItemsSource = boiseBars; // refactors updated list
                         IsSoRefreshing = false;
                         boiseBarsProx.Clear();
+                    }
+                    else if (locale == 2)
+                    {
+                        barListView.ItemsSource = null; // resets the list back to null 
+                        barListView.ItemsSource = winterParkFoods; // refactors updated list
+                        IsSoRefreshing = false;
+                        winParkFoodsProx.Clear();
+                    }
+                    else if (locale == 3)
+                    {
+                        barListView.ItemsSource = null; // resets the list back to null 
+                        barListView.ItemsSource = boiseFoods; // refactors updated list
+                        IsSoRefreshing = false;
+                        boiseFoodsProx.Clear();
                     }
                 });
             }
@@ -446,25 +516,25 @@ namespace _2NiteAHI
         private void OnClick_Ascend(object sender, EventArgs e)
         {
             //OrderBy Value
-            if (locale == 0)
+            if (locale == 0 && xlocale == 0)
             {
                 winterParkBars = winterParkBars.OrderBy(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
                 barListView.ItemsSource = winterParkBars;
                 winParkBarsProx.Clear();
             }
-            else if (locale == 1)
+            else if (locale == 1 && xlocale == 0)
             {
                 boiseBars = boiseBars.OrderBy(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
                 barListView.ItemsSource = boiseBars;
                 boiseBarsProx.Clear();
             }
-            else if (locale == 2)
+            else if (locale == 0 && xlocale == 2)
             {
                 winterParkFoods = winterParkFoods.OrderBy(i=>i.Value).ToDictionary(i=> i.Key, i => i.Value);
                 barListView.ItemsSource = winterParkFoods;
                 winParkFoodsProx.Clear();
             }
-            else if (locale == 3)
+            else if (locale == 1 && xlocale == 3)
             {
                 boiseFoods = boiseFoods.OrderBy(i=>i.Value).ToDictionary(i=>i.Key, i=>i.Value);
                 barListView.ItemsSource = boiseFoods;
@@ -475,25 +545,25 @@ namespace _2NiteAHI
         private void OnClick_Descend(object sender, EventArgs e)
         {
             //OrderBy Value
-            if (locale == 0)
+            if (locale == 0 && xlocale == 0)
             {
                 winterParkBars = winterParkBars.OrderByDescending(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
                 barListView.ItemsSource = winterParkBars;
                 winParkBarsProx.Clear();
             }
-            else if (locale == 1)
+            else if (locale == 1 && xlocale == 0)
             {
                 boiseBars = boiseBars.OrderByDescending(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
                 barListView.ItemsSource = boiseBars;
                 boiseBarsProx.Clear();
             }
-            else if (locale == 2)
+            else if (locale == 0 && xlocale == 2)
             {
                 winterParkFoods = winterParkFoods.OrderByDescending(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
                 barListView.ItemsSource = winterParkFoods;
                 winParkFoodsProx.Clear();
             }
-            else if (locale == 3)
+            else if (locale == 1 && xlocale == 3)
             {
                 boiseFoods = boiseFoods.OrderByDescending(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
                 barListView.ItemsSource = boiseFoods;
@@ -503,63 +573,65 @@ namespace _2NiteAHI
             //PROXIMITY
         private void OnClick_Proximity(object sender, EventArgs e)
         {
-            if (locale == 0)
+            if (locale == 0 && xlocale == 0)
             {
                 BuildWinParkBarsProx();
                 winParkBarsProx = winParkBarsProx.OrderBy(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
                 barListView.ItemsSource = winParkBarsProx;
             }
-            else if (locale == 1)
+            else if (locale == 1 && xlocale == 0)
             {
                 BuildBoiseBarsProx();
                 boiseBarsProx = boiseBarsProx.OrderBy(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
                 barListView.ItemsSource = boiseBarsProx;
             }
-            else if (locale == 2)
+            else if (locale == 0 && xlocale == 2)
             {
                 BuildWinParkFoodsProx();
                 winParkFoodsProx = winParkFoodsProx.OrderBy(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
                 barListView.ItemsSource = winParkFoodsProx;
             }
-            else if (locale == 3)
+            else if (locale == 1 && xlocale == 3)
             {
                 BuildBoiseFoodsProx();
                 boiseFoodsProx = boiseFoodsProx.OrderBy(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
                 barListView.ItemsSource = boiseFoodsProx;
             }
         }
-            //TYPE
-        private void OnClick_Type(object sender, EventArgs e)
+            //RESTAURANTS
+        private void OnClick_Restaurants(object sender, EventArgs e)
         {
-
             if (locale == 0)
             {
-                GetUserLoc();
-                winterParkBars = winterParkBars.OrderBy(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
-                barListView.ItemsSource = winterParkBars;
-                RefreshCommand.Execute(barListView.ItemsSource = winterParkBars);
+                xlocale = 2;
+                BuildWinterParkFoods();
+                winterParkFoods = winterParkFoods.OrderByDescending(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
+                barListView.ItemsSource = winterParkFoods;
             }
             else if (locale == 1)
             {
-                GetUserLoc();
-                boiseBars = boiseBars.OrderBy(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
-                barListView.ItemsSource = boiseBars;
-                RefreshCommand.Execute(barListView.ItemsSource = boiseBars);
-            }
-            else if (locale == 2)
-            {
-                GetUserLoc();
-
-                winterParkFoods = winterParkFoods.OrderBy(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
-                barListView.ItemsSource = winterParkFoods;
-                RefreshCommand.Execute(barListView.ItemsSource = winterParkFoods);
-            }
-            else if (locale == 3)
-            {
-                GetUserLoc();
-                boiseFoods = boiseFoods.OrderBy(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
+                xlocale = 3;
+                BuildBoiseFoods();
+                boiseFoods = boiseFoods.OrderByDescending(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
                 barListView.ItemsSource = boiseFoods;
-                RefreshCommand.Execute(barListView.ItemsSource = boiseFoods);
+            }
+        }
+            //BARS
+        private void OnClick_Bars(object sender, EventArgs e)
+        {
+            if (locale == 0)
+            {
+                xlocale = 0;
+                BuildWinParkFoodsProx();
+                winterParkBars = winterParkBars.OrderByDescending(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
+                barListView.ItemsSource = winterParkBars;
+            }
+            else if (locale == 1)
+            {
+                xlocale = 0;
+                BuildBoiseBars();
+                boiseBars = boiseBars.OrderByDescending(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
+                barListView.ItemsSource = boiseBars;
             }
         }
         //PEACE-OUT
