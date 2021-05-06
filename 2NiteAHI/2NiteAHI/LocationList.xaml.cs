@@ -24,7 +24,7 @@ namespace _2NiteAHI
         public List<string> ListOLocations = new List<string>
         {
             "Bars",
-            "Restaurant"
+            "Restaurants"
         };
 
         //VARIABLES
@@ -153,16 +153,15 @@ namespace _2NiteAHI
             var addy = GetAddy?.FirstOrDefault();
 
             MyLocation = $"{addy.Locality},  {addy.AdminArea}"; // Grabs the users current locations Address-Town and Address-State **Only works in USA**  
-            if (addy.Locality == "Winter Park")
+            if (addy.Locality == "Winter Park" && barOrFood.SelectedItem == "Bars")
             {
                 locale = 0;
                 BuildWinterParkBars();
                 winterParkBars = winterParkBars.OrderByDescending(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
 
-                barListView.ItemsSource = winterParkBars ;
-
+                barListView.ItemsSource = winterParkBars;
             }
-            else if (addy.Locality == "Boise")
+            else if (addy.Locality == "Boise" && barOrFood.SelectedItem == "Bars")
             {
                 locale = 1;
                 BuildBoiseBars();
@@ -170,6 +169,23 @@ namespace _2NiteAHI
                 
                 barListView.ItemsSource = boiseBars;
             }
+            else if (addy.Locality == "Winter Park" && barOrFood.SelectedItem == "Restaurants")
+            {
+                locale = 2;
+                BuildWinterParkFoods();
+                winterParkFoods = winterParkFoods.OrderByDescending(i => i.Value).ToDictionary(i=> i.Key, i => i.Value);
+
+                barListView.ItemsSource = winterParkFoods;
+            }
+            else if (addy.Locality == "Boise" && barOrFood.SelectedItem == "Restaurants")
+            {
+                locale = 3;
+                BuildBoiseFoods();
+                boiseFoods = boiseFoods.OrderByDescending(i => i.Value).ToDictionary(i=>i.Key, i=>i.Value);
+
+                barListView.ItemsSource = boiseFoods;
+            }
+
         }
         public string MyLocation 
         {
@@ -358,22 +374,22 @@ namespace _2NiteAHI
         }
         private void BuildBoiseFoods()
         {
-            BoiseFoods.Add("Del Taco", rng.Next() % 150);
-            BoiseFoods.Add("Meraki Greek Street Food", rng.Next() % 150);
-            BoiseFoods.Add("Trillium Restaurant", rng.Next() % 150);
-            BoiseFoods.Add("Boise Fry Company", rng.Next() % 150);
-            BoiseFoods.Add("Bittercreek Alehouse", rng.Next() % 150);
-            BoiseFoods.Add("Eureka", rng.Next() % 150);
-            BoiseFoods.Add("Chandlers Prime Steaks & Seafood", rng.Next() % 150);
-            BoiseFoods.Add("Manfred’s Kitchen", rng.Next() % 150);
-            BoiseFoods.Add("Owyhee Tavern	Steakhouse", rng.Next() % 150);
-            BoiseFoods.Add("Bombay Grill", rng.Next() % 150);
-            BoiseFoods.Add("Txikitea", rng.Next() % 150);
-            BoiseFoods.Add("KIN", rng.Next() % 150);
-            BoiseFoods.Add("Main Street Deli", rng.Next() % 150);
-            BoiseFoods.Add("Fork", rng.Next() % 150);
-            BoiseFoods.Add("Even Stevens Sandwiches", rng.Next() % 150);
-            BoiseFoods.Add("Lucky Fins Seafood Grill", rng.Next() % 150);
+            boiseFoods.Add("Del Taco", rng.Next() % 150);
+            boiseFoods.Add("Meraki Greek Street Food", rng.Next() % 150);
+            boiseFoods.Add("Trillium Restaurant", rng.Next() % 150);
+            boiseFoods.Add("Boise Fry Company", rng.Next() % 150);
+            boiseFoods.Add("Bittercreek Alehouse", rng.Next() % 150);
+            boiseFoods.Add("Eureka", rng.Next() % 150);
+            boiseFoods.Add("Chandlers Prime Steaks & Seafood", rng.Next() % 150);
+            boiseFoods.Add("Manfred’s Kitchen", rng.Next() % 150);
+            boiseFoods.Add("Owyhee Tavern	Steakhouse", rng.Next() % 150);
+            boiseFoods.Add("Bombay Grill", rng.Next() % 150);
+            boiseFoods.Add("Txikitea", rng.Next() % 150);
+            boiseFoods.Add("KIN", rng.Next() % 150);
+            boiseFoods.Add("Main Street Deli", rng.Next() % 150);
+            boiseFoods.Add("Fork", rng.Next() % 150);
+            boiseFoods.Add("Even Stevens Sandwiches", rng.Next() % 150);
+            boiseFoods.Add("Lucky Fins Seafood Grill", rng.Next() % 150);
         }
         private void BuildWinParkFoodsProx()
         {
@@ -434,6 +450,18 @@ namespace _2NiteAHI
                 barListView.ItemsSource = boiseBars;
                 boiseBarsProx.Clear();
             }
+            else if (locale == 2)
+            {
+                winterParkFoods = winterParkFoods.OrderBy(i=>i.Value).ToDictionary(i=> i.Key, i => i.Value);
+                barListView.ItemsSource = winterParkFoods;
+                winParkFoodsProx.Clear();
+            }
+            else if (locale == 3)
+            {
+                boiseFoods = boiseFoods.OrderBy(i=>i.Value).ToDictionary(i=>i.Key, i=>i.Value);
+                barListView.ItemsSource = boiseFoods;
+                boiseFoodsProx.Clear();
+            }
         }
             //DESCENDING
         private void OnClick_Descend(object sender, EventArgs e)
@@ -451,6 +479,18 @@ namespace _2NiteAHI
                 barListView.ItemsSource = boiseBars;
                 boiseBarsProx.Clear();
             }
+            else if (locale == 2)
+            {
+                winterParkFoods = winterParkFoods.OrderByDescending(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
+                barListView.ItemsSource = winterParkFoods;
+                winParkFoodsProx.Clear();
+            }
+            else if (locale == 3)
+            {
+                boiseFoods = boiseFoods.OrderByDescending(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
+                barListView.ItemsSource = boiseFoods;
+                boiseFoodsProx.Clear();
+            }
         }
             //PROXIMITY
         private void OnClick_Proximity(object sender, EventArgs e)
@@ -466,6 +506,18 @@ namespace _2NiteAHI
                 BuildBoiseBarsProx();
                 boiseBarsProx = boiseBarsProx.OrderBy(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
                 barListView.ItemsSource = boiseBarsProx;
+            }
+            else if (locale == 2)
+            {
+                BuildWinParkFoodsProx();
+                winParkFoodsProx = winParkFoodsProx.OrderBy(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
+                barListView.ItemsSource = winParkFoodsProx;
+            }
+            else if (locale == 3)
+            {
+                BuildBoiseFoodsProx();
+                boiseFoodsProx = boiseFoodsProx.OrderBy(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
+                barListView.ItemsSource = boiseFoodsProx;
             }
         }
             //PEACE-OUT
