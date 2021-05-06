@@ -54,7 +54,7 @@ namespace _2NiteAHI
 
             //BAR/FOOD PICKER
            barOrFood.ItemsSource = ListOLocations;
-            barOrFood.SelectedItem = "Bars";
+           barOrFood.SelectedItem = "Bars";
 
             //LISTVIEW SELECTION OPERATIONS
             barListView.ItemSelected += async (object sender, SelectedItemChangedEventArgs e) =>
@@ -153,7 +153,7 @@ namespace _2NiteAHI
             var addy = GetAddy?.FirstOrDefault();
 
             MyLocation = $"{addy.Locality},  {addy.AdminArea}"; // Grabs the users current locations Address-Town and Address-State **Only works in USA**  
-            if (addy.Locality == "Winter Park" && barOrFood.SelectedItem == "Bars")
+            if (addy.Locality == "Winter Park" && barOrFood.SelectedIndex == -1)
             {
                 locale = 0;
                 BuildWinterParkBars();
@@ -161,7 +161,7 @@ namespace _2NiteAHI
 
                 barListView.ItemsSource = winterParkBars;
             }
-            else if (addy.Locality == "Boise" && barOrFood.SelectedItem == "Bars")
+            else if (addy.Locality == "Boise" && barOrFood.SelectedIndex == -1)
             {
                 locale = 1;
                 BuildBoiseBars();
@@ -169,7 +169,7 @@ namespace _2NiteAHI
                 
                 barListView.ItemsSource = boiseBars;
             }
-            else if (addy.Locality == "Winter Park" && barOrFood.SelectedItem == "Restaurants")
+            else if (addy.Locality == "Winter Park" && barOrFood.SelectedIndex == 0)
             {
                 locale = 2;
                 BuildWinterParkFoods();
@@ -177,7 +177,7 @@ namespace _2NiteAHI
 
                 barListView.ItemsSource = winterParkFoods;
             }
-            else if (addy.Locality == "Boise" && barOrFood.SelectedItem == "Restaurants")
+            else if (addy.Locality == "Boise" && barOrFood.SelectedIndex == 0)
             {
                 locale = 3;
                 BuildBoiseFoods();
@@ -235,6 +235,7 @@ namespace _2NiteAHI
             //BARS
         private void BuildWinterParkBars()
         {
+            winterParkBars.Clear();
             winterParkBars.Add("The Brass Tap", usercount);
             winterParkBars.Add("Tequila Lounge Club", usercount); 
             winterParkBars.Add("Muldoons Saloon", usercount);
@@ -255,6 +256,7 @@ namespace _2NiteAHI
         }
         private void BuildBoiseBars()
         {
+            boiseBars.Clear();
             boiseBars.Add("Pengilly's Saloon", rng.Next() % 150); 
             boiseBars.Add("Whiskey Bar", rng.Next() % 150);
             boiseBars.Add("Press & Pony", rng.Next() % 150); 
@@ -293,6 +295,7 @@ namespace _2NiteAHI
             //PROXIMITY OF BARS
         private void BuildWinParkBarsProx()
         {
+           winParkBarsProx.Clear();
            winParkBarsProx.Add("The Geek Easy", 0.6719);
            winParkBarsProx.Add("The Haven At Forsyth", 0.9050);
            winParkBarsProx.Add("Debbie's Bar", 3.7190);
@@ -314,6 +317,7 @@ namespace _2NiteAHI
         }
         private void BuildBoiseBarsProx()
         {
+            boiseBarsProx.Clear();
             boiseBarsProx.Add("Pengilly's Saloon", 0.2701); 
             boiseBarsProx.Add("Whiskey Bar", 0.1709);
             boiseBarsProx.Add("Press & Pony", 0.7412); 
@@ -352,6 +356,7 @@ namespace _2NiteAHI
             //FOODS
         private void BuildWinterParkFoods()
         {
+            winterParkFoods.Clear();
             winterParkFoods.Add("Chili's Bar & Grill", rng.Next() % 150); 
             winterParkFoods.Add("Firehouse Subs", rng.Next() % 150);
             winterParkFoods.Add("Arooga's", rng.Next() % 150); 
@@ -374,6 +379,7 @@ namespace _2NiteAHI
         }
         private void BuildBoiseFoods()
         {
+            boiseFoods.Clear();
             boiseFoods.Add("Del Taco", rng.Next() % 150);
             boiseFoods.Add("Meraki Greek Street Food", rng.Next() % 150);
             boiseFoods.Add("Trillium Restaurant", rng.Next() % 150);
@@ -393,6 +399,7 @@ namespace _2NiteAHI
         }
         private void BuildWinParkFoodsProx()
         {
+            winParkFoodsProx.Clear();
             winParkFoodsProx.Add(" Chili's Bar & Grill ", 0.5835);
             winParkFoodsProx.Add("Firehouse Subs", 0.5540);
             winParkFoodsProx.Add("Arooga's", 0.5303);
@@ -415,6 +422,7 @@ namespace _2NiteAHI
         }
         private void BuildBoiseFoodsProx()
         {
+            boiseFoodsProx.Clear();
             boiseFoodsProx.Add("Del Taco",0.9709);
             boiseFoodsProx.Add("Meraki Greek Street Food",0.2481);
             boiseFoodsProx.Add("Trillium Restaurant",0.1435);
@@ -520,7 +528,41 @@ namespace _2NiteAHI
                 barListView.ItemsSource = boiseFoodsProx;
             }
         }
-            //PEACE-OUT
+            //TYPE
+        private void OnClick_Type(object sender, EventArgs e)
+        {
+
+            if (locale == 0)
+            {
+                GetUserLoc();
+                winterParkBars = winterParkBars.OrderBy(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
+                barListView.ItemsSource = winterParkBars;
+                RefreshCommand.Execute(barListView.ItemsSource = winterParkBars);
+            }
+            else if (locale == 1)
+            {
+                GetUserLoc();
+                boiseBars = boiseBars.OrderBy(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
+                barListView.ItemsSource = boiseBars;
+                RefreshCommand.Execute(barListView.ItemsSource = boiseBars);
+            }
+            else if (locale == 2)
+            {
+                GetUserLoc();
+
+                winterParkFoods = winterParkFoods.OrderBy(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
+                barListView.ItemsSource = winterParkFoods;
+                RefreshCommand.Execute(barListView.ItemsSource = winterParkFoods);
+            }
+            else if (locale == 3)
+            {
+                GetUserLoc();
+                boiseFoods = boiseFoods.OrderBy(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
+                barListView.ItemsSource = boiseFoods;
+                RefreshCommand.Execute(barListView.ItemsSource = boiseFoods);
+            }
+        }
+        //PEACE-OUT
         private async void OnClick_Peace(object sender, EventArgs e)
         {
             

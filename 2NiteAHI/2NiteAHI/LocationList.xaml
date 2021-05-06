@@ -25,8 +25,8 @@
             </LinearGradientBrush>
         </Grid.Background>
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.5*"/>
-            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.55*"/>
+            <RowDefinition Height="0.65*"/>
             <RowDefinition Height="5*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
@@ -108,7 +108,6 @@
             CornerRadius="8"
             Clicked="OnClick_Descend"/>
 
- 
         <!--PROXIMITY-->
         <Button
             Text="Proximity"
@@ -118,26 +117,43 @@
             FontAttributes="Bold"
             Grid.Row="0"
             Grid.Column="1"
-            Grid.RowSpan="2"
-            HeightRequest="35"
+            HeightRequest="50"
             WidthRequest="90"
-            HorizontalOptions="End"
+            HorizontalOptions="Center"
             VerticalOptions="Center"
             CornerRadius="10"
-            Margin="0,5,50,0"
+            Margin="0,10,0,0"
             Clicked="OnClick_Proximity"/>
+        
+        <!--SUBMIT-->
+        <Button
+            Text="Submit"
+            TextColor="Yellow"
+            FontSize="Medium"
+            BackgroundColor="SlateGray"
+            FontAttributes="Bold"
+            Grid.Row="1"
+            Grid.Column="1"
+            HeightRequest="65"
+            WidthRequest="100"
+            HorizontalOptions="Start"
+            VerticalOptions="Center"
+            CornerRadius="10"
+            Margin="0,0,50,0"
+            Clicked="OnClick_Type"/>
 
         <!--BAR OR FOODS SELECTOR-->
         <Picker
             x:Name="barOrFood"
             Grid.Row="1"
             Grid.Column="0"
-            TextColor="White"
-            HorizontalOptions="Start"
+            TextColor="Black"
+            HorizontalOptions="End"
             VerticalOptions="Center"
             WidthRequest="130"
-            Margin="30,0,0,0"/>
-
+            Margin="0,0,0,0"
+            BackgroundColor="White"/>
+        
         <!--Peace out button for checking out of a location-->
         <Button
             Text="PEACE-OUT"
