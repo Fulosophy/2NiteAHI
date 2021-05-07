@@ -10,6 +10,7 @@ namespace _2NiteAHI
         public App()
         {
             Device.SetFlags(new string[] {"AppTheme_Experimental"});
+            Device.SetFlags(new string[] { "Shapes_Experimental" , "MediaElemental_Experimental" });
             InitializeComponent();
             MainPage = new NavigationPage(new SplashScreen());
         }

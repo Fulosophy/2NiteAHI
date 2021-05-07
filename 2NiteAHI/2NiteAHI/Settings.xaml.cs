@@ -13,7 +13,7 @@ using GoogleApi.Entities.Places;
 
 namespace _2NiteAHI
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
+    [Xamarin.Forms.TypeConverter(typeof(Xamarin.Forms.ImageSourceConverter))]
     public partial class Settings : ContentPage
     {
         private List<int> RadialOpt = new List<int>
@@ -38,13 +38,27 @@ namespace _2NiteAHI
 
         //private void GPSLOC_Toggled(object sender, ToggledEventArgs e)
         //{
-           
+
         //    if (GPSLOC.IsToggled == false)
         //    {
         //       // logic here to disable GPS LOCATION
         //    }
         //}
+       
+        async void Button_clicked(System.Object sender, System.EventArgs e)
+        {
+            var pickResult = await FilePicker.PickAsync(new PickOptions
+            {
+                FileTypes = FilePickerFileType.Images,
+                PickerTitle = "Pick an Image"
+            });
 
+            if (pickResult != null)
+            {
+                var stream = await pickResult.OpenReadAsync();
+                resultImage.Source = ImageSource.FromStream(() => stream);
+            }
+        }
         private void NightTheme_Toggled(object sender, ToggledEventArgs e)
         {
             // logic here to change to NIGHTTIME THEME

@@ -14,18 +14,17 @@
             </LinearGradientBrush>
         </Grid.Background>
         <Grid.RowDefinitions>
-            <RowDefinition Height="120"/>
+            <RowDefinition Height="100"/>
             <!--GPS LOCATION-->
-           <RowDefinition Height="*"/>
             <!--NightTheme-->
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="30"/>
             <RowDefinition Height="100"/>
-            <RowDefinition Height="100"/>
-            <RowDefinition Height="100"/>
-            <RowDefinition Height="100"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="85"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <!--User Settings-->
@@ -39,21 +38,21 @@
             Text="USER SETTINGS" 
             FontAttributes="Bold"
             Visual="Material"
-            HorizontalOptions="StartAndExpand" 
-            VerticalOptions="EndAndExpand"
+            HorizontalOptions="Start" 
+            VerticalOptions="End"
             TextColor="{AppThemeBinding Dark=WHITE, Light=Black}"  
             Grid.Row="0" 
             Grid.Column="0"
             FontSize="Title"
-            Padding="45,0,20,0"
+            Padding="45,0,0,0"
             TextDecorations="Underline"
-            WidthRequest="1150"
-            HeightRequest="60"/>
+            WidthRequest="700"
+            HeightRequest="65"/>
         <Image
             Source="fire"
             Grid.Row="0"
             Grid.Column="1"
-            WidthRequest="90"
+            WidthRequest="70"
             VerticalOptions="Center"
             Aspect="AspectFill"
             HorizontalOptions="Start"/>
@@ -81,22 +80,22 @@
 
         <!--NIGHTTIME THEME-->
         <Label 
-            Text="Day/Nite Mode" 
-            Grid.Row="2" 
+            Text="Nite Mode" 
+            Grid.Row="1" 
             Grid.Column="0" 
             TextColor="{AppThemeBinding Dark=YELLOW, Light=DarkBlue}" 
-            HorizontalOptions="StartAndExpand"
+            HorizontalOptions="Fill"
             VerticalOptions="CenterAndExpand" 
             FontAttributes="None"
-            Padding="70,1,30,0" 
+            Padding="80,0,30,0" 
             FontSize="Title"/>
         <Switch 
-            x:Name="Day/Nite Mode" 
+            x:Name="Nite Mode" 
             IsToggled="{Binding NightTheme}" 
-            Grid.Row="2" 
+            Grid.Row="1" 
             Grid.Column="1" 
-            VerticalOptions="CenterAndExpand" 
-            HorizontalOptions="CenterAndExpand"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center"
             Toggled="NightTheme_Toggled" />
         
         <!--SEARCH OPTIONS-->
@@ -148,6 +147,65 @@
             WidthRequest="100"
             Margin="0,0,30,0"
             BackgroundColor="Gainsboro"/>
+        <Label
+            Text="USER PROFILE" 
+            FontAttributes="Bold"
+            Visual="Material"
+            HorizontalOptions="Center" 
+            VerticalOptions="End"
+            TextColor="{AppThemeBinding Dark=WHITE, Light=Black}"  
+            Grid.Row="6" 
+            Grid.Column="0"
+            FontSize="Title"
+            Padding="50,0,0,0"
+            TextDecorations="Underline"
+            WidthRequest="500"
+            HeightRequest="65"/>
+        <!--<Label
+            Text="UserName:"
+            Grid.Row="7"
+            Grid.Column="0"
+            FontAttributes="None"
+            Grid.ColumnSpan="1"
+            FontSize="Large"
+            TextColor="{AppThemeBinding Dark=WHITE, Light=Black}"
+            HorizontalOptions="StartAndExpand" 
+            VerticalOptions="CenterAndExpand"
+            TextDecorations="Underline"
+            Margin="40,0,0,0"/>-->
+        <Entry Placeholder="User Name: " PlaceholderColor="{AppThemeBinding Dark=YELLOW, Light=DarkBlue}"
+            TextColor="{AppThemeBinding Dark=YELLOW, Light=DarkBlue}"
+            Grid.Row="7"
+            Grid.Column="0"
+            FontAttributes="None"
+            Grid.ColumnSpan="1"
+            FontSize="Large"/>
+        <Entry Placeholder="Number: " PlaceholderColor="{AppThemeBinding Dark=YELLOW, Light=DarkBlue}"  
+            TextColor="{AppThemeBinding Dark=YELLOW, Light=DarkBlue}"
+            Grid.Row="8"
+            Grid.Column="0"
+            FontAttributes="None"
+            Grid.ColumnSpan="1"
+            FontSize="Large"/>
+        <Entry Placeholder="Email: " PlaceholderColor="{AppThemeBinding Dark=YELLOW, Light=DarkBlue}" 
+            TextColor="{AppThemeBinding Dark=YELLOW, Light=DarkBlue}"
+            Grid.Row="9"
+            Grid.Column="0"
+            FontAttributes="None"
+            Grid.ColumnSpan="1"
+            FontSize="Large"/>
+        <Image x:Name="resultImage"
+            Grid.Row="6"
+            Grid.Column="1"
+            WidthRequest="70"
+            VerticalOptions="Center"
+            Aspect="AspectFit"
+            HorizontalOptions="Start"/>
+        <Button Text="Add Photo" Clicked="Button_clicked" Grid.Row="7"
+            Grid.Column="1"
+            WidthRequest="65"
+            VerticalOptions="StartAndExpand"
+            HorizontalOptions="Center" Padding="4,10,10,10"/>
 
 
         <!--Next Expansion  Personal Information
@@ -178,4 +236,11 @@
             HorizontalTextAlignment="Center"
             FontSize="Medium"/>-->
     </Grid>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Profile"
+                      Clicked="ToolbarItem_Clicked"/>
+    </ContentPage.ToolbarItems>
+    
+
 </ContentPage>
+    

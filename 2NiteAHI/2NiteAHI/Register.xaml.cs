@@ -15,6 +15,7 @@ public partial class Register : ContentPage
         public Register()
         {
             InitializeComponent();
+            Device.SetFlags(new[] { "Shapes_experimental", "MediaElement_Experimental" });
         }
         async void RegSubmitClicked(object sender, EventArgs e) { await Navigation.PushAsync(new Login()); }
 
