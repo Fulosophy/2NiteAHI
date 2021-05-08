@@ -30,6 +30,7 @@ namespace _2NiteAHI
         private int usercount; 
         private bool hasbeen;
         private bool _isSoRefreshing = false;
+        private bool restPressed, barPressed;
         private string temp;
 
         //OBJECTS
@@ -603,19 +604,38 @@ namespace _2NiteAHI
         {
             if (locale == 0)
             {
-                hasbeen = false;
-                xlocale = 2;
-                BuildWinterParkFoods();
-                winterParkFoods = winterParkFoods.OrderBy(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
-                barListView.ItemsSource = winterParkFoods;
+
+                if (restPressed == true)
+                {
+                    return;
+                }
+                else
+                {
+                    hasbeen = false;
+                    xlocale = 2;
+                    BuildWinterParkFoods();
+                    winterParkFoods = winterParkFoods.OrderBy(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
+                    barListView.ItemsSource = winterParkFoods;
+                    restPressed = true;
+                    barPressed = false;
+                }
             }
             else if (locale == 1)
             {
-                hasbeen = false;
-                xlocale = 3;
-                BuildBoiseFoods();
-                boiseFoods = boiseFoods.OrderBy(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
-                barListView.ItemsSource = boiseFoods;
+                if (restPressed == true)
+                {
+                    return;
+                }
+                else
+                {
+                    hasbeen = false;
+                    xlocale = 3;
+                    BuildBoiseFoods();
+                    boiseFoods = boiseFoods.OrderBy(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
+                    barListView.ItemsSource = boiseFoods;
+                    restPressed = true;
+                    barPressed = false;
+                }
             }
         }
             //BARS
@@ -623,17 +643,36 @@ namespace _2NiteAHI
         {
             if (locale == 0)
             {
-                xlocale = 0;
-                BuildWinParkFoodsProx();
-                winterParkBars = winterParkBars.OrderByDescending(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
-                barListView.ItemsSource = winterParkBars;
+                if (barPressed == true)
+                {
+                    return;
+                }
+                else
+                {
+                    xlocale = 0;
+                    BuildWinParkFoodsProx();
+                    winterParkBars = winterParkBars.OrderByDescending(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
+                    barListView.ItemsSource = winterParkBars;
+                    barPressed = true;
+                    restPressed = false;
+                }
             }
             else if (locale == 1)
             {
-                xlocale = 0;
-                BuildBoiseBars();
-                boiseBars = boiseBars.OrderByDescending(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
-                barListView.ItemsSource = boiseBars;
+                if (barPressed == true)
+                {
+                    return;
+
+                }
+                else
+                {
+                    xlocale = 0;
+                    BuildBoiseBars();
+                    boiseBars = boiseBars.OrderByDescending(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
+                    barListView.ItemsSource = boiseBars;
+                    barPressed = true;
+                    restPressed = false;
+                }
             }
         }
         //PEACE-OUT
