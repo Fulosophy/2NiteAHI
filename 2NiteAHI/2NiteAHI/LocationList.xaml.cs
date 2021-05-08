@@ -269,28 +269,28 @@ namespace _2NiteAHI
             {
                 return new Command(() =>
                 {
-                    if (locale == 0)
+                    if (locale == 0 && xlocale == 0)
                     {
                         barListView.ItemsSource = null; // resets the list back to null 
                         barListView.ItemsSource = winterParkBars; // refactors updated list
                         IsSoRefreshing = false;
                         winParkBarsProx.Clear();
                     }
-                    else if (locale == 1)
+                    else if (locale == 1 && xlocale == 0)
                     {
                         barListView.ItemsSource = null; // resets the list back to null 
                         barListView.ItemsSource = boiseBars; // refactors updated list
                         IsSoRefreshing = false;
                         boiseBarsProx.Clear();
                     }
-                    else if (locale == 2)
+                    else if (locale == 0 && xlocale == 2)
                     {
                         barListView.ItemsSource = null; // resets the list back to null 
                         barListView.ItemsSource = winterParkFoods; // refactors updated list
                         IsSoRefreshing = false;
                         winParkFoodsProx.Clear();
                     }
-                    else if (locale == 3)
+                    else if (locale == 3 && xlocale == 3)
                     {
                         barListView.ItemsSource = null; // resets the list back to null 
                         barListView.ItemsSource = boiseFoods; // refactors updated list
