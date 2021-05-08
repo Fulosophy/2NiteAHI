@@ -16,6 +16,7 @@ namespace _2NiteAHI
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Settings : ContentPage
     {
+        
         private List<int> RadialOpt = new List<int>
         {
             1000,
@@ -29,7 +30,7 @@ namespace _2NiteAHI
         
         public Settings()
         {
-            
+            var fixederrors = string.Empty;
             InitializeComponent();
             radiusPicker.ItemsSource = RadialOpt;
             placePicker.ItemsSource = PlaceOpt;
