@@ -238,7 +238,7 @@
     </Grid>
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Profile"
-                      Clicked="ToolbarItem_Clicked"/>
+                      />
     </ContentPage.ToolbarItems>
     
 
