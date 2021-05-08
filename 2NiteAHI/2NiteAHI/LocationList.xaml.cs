@@ -52,7 +52,7 @@ namespace _2NiteAHI
             barListView.ItemSelected += async (object sender, SelectedItemChangedEventArgs e) =>
              {
                  //WINTER PARK INITIAL SELECT
-                 if (hasbeen == false && locale == 0)
+                 if (hasbeen == false && locale == 0 && xlocale == 0)
                  {
                      var ans = await DisplayAlert("Yo! Checking in?", "Have fun!", "Yes", "Cancel");
                      if (ans == true) // pressing OK
@@ -74,7 +74,7 @@ namespace _2NiteAHI
                      else { return; }
                  }
                  //WINTER PARK NEXT SELECT
-                 else if (hasbeen == true && locale == 0)
+                 else if (hasbeen == true && locale == 0 && xlocale == 0)
                  {
                     var anss = await DisplayAlert("Changing bars???", "Would You Like To Check In?", "Yes", "Cancel");
                      if (anss == true) // pressing OK
@@ -95,7 +95,7 @@ namespace _2NiteAHI
                  }
 
                  //BOISE INITIAL SELECT
-                 else if (hasbeen == false && locale == 1)
+                 else if (hasbeen == false && locale == 1 && xlocale == 0)
                  {
                      var ansb = await DisplayAlert("Yo! Checking in??", "Have fun!", "Yes", "Cancel");
                      if (ansb == true)
@@ -114,7 +114,7 @@ namespace _2NiteAHI
                      else { return; }
                  }
                  //BOISE NEXT SELECT
-                 else if (hasbeen == true && locale == 1)
+                 else if (hasbeen == true && locale == 1 && xlocale == 0)
                  {
                      var ansbb = await DisplayAlert("Yo New Bar?", "Would You Like To Check In?", "Yes", "Cancel");
                      if (ansbb == true)
