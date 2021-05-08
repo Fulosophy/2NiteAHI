@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
+﻿using Xamarin.Forms;
 
 namespace _2NiteAHI
 {
@@ -36,7 +29,15 @@ namespace _2NiteAHI
             base.OnAppearing();
             await fade.ScaleTo(1, 1000);
             await fade.ScaleTo(0.5, 1000, Easing.SpringIn);
-            await fade.ScaleTo(50, 800, Easing.BounceOut);
+            await fade.ScaleTo(1, 700, Easing.BounceOut);
+            for (int i = 1; i < 7; i++)
+            {
+                await fade.RotateTo(i * (360/6), 1000, Easing.BounceOut);
+            }
+            await fade.ScaleTo(0.5, 1000, Easing.SpringIn);
+            await fade.ScaleTo(3, 700, Easing.BounceOut);
+
+
             Application.Current.MainPage = new NavigationPage(new Login()) 
             { 
                 BarBackgroundColor = Color.Black,
