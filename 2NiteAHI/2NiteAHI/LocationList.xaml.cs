@@ -603,6 +603,7 @@ namespace _2NiteAHI
         {
             if (locale == 0)
             {
+                hasbeen = false;
                 xlocale = 2;
                 BuildWinterParkFoods();
                 winterParkFoods = winterParkFoods.OrderByDescending(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
@@ -610,6 +611,7 @@ namespace _2NiteAHI
             }
             else if (locale == 1)
             {
+                hasbeen = false;
                 xlocale = 3;
                 BuildBoiseFoods();
                 boiseFoods = boiseFoods.OrderByDescending(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
