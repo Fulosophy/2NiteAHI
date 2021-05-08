@@ -290,7 +290,7 @@ namespace _2NiteAHI
                         IsSoRefreshing = false;
                         winParkFoodsProx.Clear();
                     }
-                    else if (locale == 3 && xlocale == 3)
+                    else if (locale == 1 && xlocale == 3)
                     {
                         barListView.ItemsSource = null; // resets the list back to null 
                         barListView.ItemsSource = boiseFoods; // refactors updated list
@@ -606,7 +606,7 @@ namespace _2NiteAHI
                 hasbeen = false;
                 xlocale = 2;
                 BuildWinterParkFoods();
-                winterParkFoods = winterParkFoods.OrderByDescending(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
+                winterParkFoods = winterParkFoods.OrderBy(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
                 barListView.ItemsSource = winterParkFoods;
             }
             else if (locale == 1)
@@ -614,7 +614,7 @@ namespace _2NiteAHI
                 hasbeen = false;
                 xlocale = 3;
                 BuildBoiseFoods();
-                boiseFoods = boiseFoods.OrderByDescending(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
+                boiseFoods = boiseFoods.OrderBy(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
                 barListView.ItemsSource = boiseFoods;
             }
         }
