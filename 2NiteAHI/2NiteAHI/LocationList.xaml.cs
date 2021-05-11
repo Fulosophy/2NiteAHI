@@ -387,6 +387,13 @@ namespace _2NiteAHI
                         IsSoRefreshing = false;
                         boiseBarsProx.Clear();
                     }
+                    else if (locale == 2 && xlocale == 0)
+                    {
+                        barListView.ItemsSource = null; // resets the list back to null 
+                        barListView.ItemsSource = nycbars; // refactors updated list
+                        IsSoRefreshing = false;
+                        nycbarsprox.Clear();
+                    }
                     else if (locale == 0 && xlocale == 2)
                     {
                         barListView.ItemsSource = null; // resets the list back to null 
@@ -401,13 +408,7 @@ namespace _2NiteAHI
                         IsSoRefreshing = false;
                         boiseFoodsProx.Clear();
                     }
-                    else if (locale == 2 && xlocale == 5)
-                    {
-                        barListView.ItemsSource = null; // resets the list back to null 
-                        barListView.ItemsSource = nycbars; // refactors updated list
-                        IsSoRefreshing = false;
-                        nycbarsprox.Clear();
-                    }
+                   
                     else if (locale == 1 && xlocale == 4)
                     {
                         barListView.ItemsSource = null; // resets the list back to null 
@@ -475,7 +476,11 @@ namespace _2NiteAHI
             nycfoods.Add("Fogon's", rng.Next() % 150);
 
         }
-        private void Buildnycprox()
+        private void BuildnycBarsProx()
+        {
+
+        }
+        private void BuildnycFoodProx()
         {
 
         }
@@ -683,6 +688,12 @@ namespace _2NiteAHI
                 barListView.ItemsSource = boiseBars;
                 boiseBarsProx.Clear();
             }
+            else if (locale == 2 && xlocale == 0)
+            {
+                nycbars = nycbars.OrderBy(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
+                barListView.ItemsSource = nycbars;
+                nycbarsprox.Clear();
+            }
             else if (locale == 0 && xlocale == 2)
             {
                 winterParkFoods = winterParkFoods.OrderBy(i=>i.Value).ToDictionary(i=> i.Key, i => i.Value);
@@ -695,18 +706,13 @@ namespace _2NiteAHI
                 barListView.ItemsSource = boiseFoods;
                 boiseFoodsProx.Clear();
             }
-            else if(locale == 2 && xlocale == 5)
+            else if(locale == 2 && xlocale == 4)
             {
                 nycfoods = nycfoods.OrderBy(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
                 barListView.ItemsSource = nycfoods;
-                nycfoods.Clear();
+                nycfoodsprox.Clear();
             }
-            else if (locale == 2 && xlocale == 4)
-            {
-                nycbars = nycbars.OrderBy(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
-                barListView.ItemsSource = nycbars;
-                nycbars.Clear();
-            }
+           
 
         }
             //DESCENDING
@@ -725,6 +731,12 @@ namespace _2NiteAHI
                 barListView.ItemsSource = boiseBars;
                 boiseBarsProx.Clear();
             }
+            else if (locale == 2 && xlocale == 0)
+            {
+                nycbars = nycbars.OrderByDescending(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
+                barListView.ItemsSource = nycbars;
+                nycbarsprox.Clear();
+            }
             else if (locale == 0 && xlocale == 2)
             {
                 winterParkFoods = winterParkFoods.OrderByDescending(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
@@ -737,18 +749,14 @@ namespace _2NiteAHI
                 barListView.ItemsSource = boiseFoods;
                 boiseFoodsProx.Clear();
             }
-            else if (locale == 2 && xlocale == 5)
+           
+            else if (locale == 2 && xlocale == 4)
             {
                 nycfoods = nycfoods.OrderBy(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
                 barListView.ItemsSource = nycfoods;
-                nycfoods.Clear();
+                nycfoodsprox.Clear();
             }
-            else if (locale == 2 && xlocale == 4)
-            {
-                nycbars = nycbars.OrderBy(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
-                barListView.ItemsSource = nycbars;
-                nycbars.Clear();
-            }
+           
         }
             //PROXIMITY
         private void OnClick_Proximity(object sender, EventArgs e)
@@ -777,9 +785,13 @@ namespace _2NiteAHI
                 boiseFoodsProx = boiseFoodsProx.OrderBy(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
                 barListView.ItemsSource = boiseFoodsProx;
             }
-            else if(locale == 2 && xlocale == 4 )
+            else if(locale == 2 && xlocale == 0 )
             {
-                Buildnycprox();
+                //build prox for nycbars
+            }
+            else if (locale == 2 && xlocale == 4)
+            {
+                //build prox for nycfoods
             }
         }
             //RESTAURANTS
@@ -884,7 +896,7 @@ namespace _2NiteAHI
                 }
                 else
                 {
-                    xlocale = 5;
+                    xlocale = 0;
                     BuildnycBars();
                     nycbars = nycbars.OrderByDescending(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
                     barListView.ItemsSource = nycbars;
@@ -897,16 +909,42 @@ namespace _2NiteAHI
         //PEACE-OUT
         private async void OnClick_Peace(object sender, EventArgs e)
         {
-            
-            usercount = winterParkBars[temp];       
-            var excode = await DisplayAlert("Leaving So Soon?", "Would You Like To Close The App?","Yes","No");
-            if (excode == true)
+            if(locale == 0)
             {
-                winterParkBars[temp] = usercount - 1; // decrementing old bar // only if true
-                Thread.Sleep(3000);
-                Environment.FailFast("");
+                usercount = winterParkBars[temp];
+                var excode = await DisplayAlert("Leaving So Soon?", "Would You Like To Close The App?", "Yes", "No");
+                if (excode == true)
+                {
+                    winterParkBars[temp] = usercount - 1; // decrementing old bar // only if true
+                    Thread.Sleep(3000);
+                    Environment.FailFast("");
+                }
+                else { return; }
             }
-            else { return; }
+            else if (locale == 1)
+            {
+                usercount = boiseBars[temp];
+                var excode = await DisplayAlert("Leaving So Soon?", "Would You Like To Close The App?", "Yes", "No");
+                if (excode == true)
+                {
+                    boiseBars[temp] = usercount - 1; // decrementing old bar // only if true
+                    Thread.Sleep(3000);
+                    Environment.FailFast("");
+                }
+                else { return; }
+            }
+            else if (locale == 2)
+            {
+                usercount = nycbars[temp];
+                var excode = await DisplayAlert("Leaving So Soon?", "Would You Like To Close The App?", "Yes", "No");
+                if (excode == true)
+                {
+                    nycbars[temp] = usercount - 1; // decrementing old bar // only if true
+                    Thread.Sleep(3000);
+                    Environment.FailFast("");
+                }
+                else { return; }
+            }
           
         }
     }
