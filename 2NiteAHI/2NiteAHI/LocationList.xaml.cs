@@ -224,6 +224,90 @@ namespace _2NiteAHI
                      }
                      else { return; }
                  }
+                 // Nyc INITIAL SELECT Bars
+                else if (hasbeen == false && locale == 2 && xlocale == 4)
+                 {
+                     var ans = await DisplayAlert("Yo! Checking in?", "Have fun!", "Yes", "Cancel");
+                     if (ans == true) // pressing OK
+                     {
+                         selecteditem = e.SelectedItem.ToString(); // Changing event handler to string
+                         selecteditem = selecteditem.Trim('[', ']'); // triming brackets
+
+                         string[] splititems = selecteditem.Split(','); // delim comma
+
+
+                         usercount = nycbars[splititems[0]]; // Grabbing current user count of bar/rest
+                         nycbars[splititems[0]] = usercount + 1; // increment from current bar/rest count
+                         temp = splititems[0]; // Saving the selected data for decrements
+
+                         hasbeen = true;
+                         RefreshCommand.Execute(barListView.ItemsSource = nycbars);
+
+                     }
+                     else { return; }
+
+
+                     // 
+                 }
+                 // Nyc NEXT SELECT bar
+                 else if (hasbeen == true && locale == 2 && xlocale == 4)
+                 {
+                     var anss = await DisplayAlert("Changing bars???", "Would You Like To Check In?", "Yes", "Cancel");
+                     if (anss == true) // pressing OK
+                     {
+                         usercount = nycbars[temp];
+                         nycbars[temp] = usercount - 1; // decrementing old bar
+
+                         selecteditem = e.SelectedItem.ToString(); // Changing event handler to string
+                         selecteditem = selecteditem.Trim('[', ']'); // triming brackets
+                         string[] splititems = selecteditem.Split(','); // delim comma
+
+                         usercount = nycbars[splititems[0]]; // Grabbing current user count of bar/rest
+                         nycbars[splititems[0]] = usercount + 1; // Incrementing CHANGED bar
+                         temp = splititems[0];
+                         RefreshCommand.Execute(barListView.ItemsSource = nycbars);
+                     }
+                     else { return; }
+                 }
+                 // nyc food intial select 
+                 else if (hasbeen == false && locale == 2 && xlocale == 5)
+                 {
+                     var ansb = await DisplayAlert("Yo! Checking in?", "Have fun!", "Yes", "Cancel");
+                     if (ansb == true)
+                     {
+                         selecteditem = e.SelectedItem.ToString();
+                         selecteditem = selecteditem.Trim('[', ']');
+                         string[] splititems = selecteditem.Split(',');
+
+                         usercount = nycfoods[splititems[0]];
+                         nycfoods[splititems[0]] = usercount + 1;
+                         temp = splititems[0];
+
+                         hasbeen = true;
+                         RefreshCommand.Execute(barListView.ItemsSource = nycfoods);
+                     }
+                     else { return; }
+                 }
+                 // nyc food next select
+                 else if (hasbeen == true && locale == 0 && xlocale == 5)
+                 {
+                     var ansbb = await DisplayAlert("Yo New Restaurant?", "Would You Like To Check In?", "Yes", "Cancel");
+                     if (ansbb == true)
+                     {
+                         usercount = nycfoods[temp];
+                         nycfoods[temp] = usercount - 1;
+
+                         selecteditem = e.SelectedItem.ToString();
+                         selecteditem = selecteditem.Trim('[', ']');
+                         string[] splititems = selecteditem.Split(',');
+
+                         usercount = nycfoods[splititems[0]];
+                         nycfoods[splititems[0]] = usercount + 1;
+                         temp = splititems[0];
+                         RefreshCommand.Execute(barListView.ItemsSource = nycfoods);
+                     }
+                     else { return; }
+                 }
 
              };
         }
@@ -317,6 +401,23 @@ namespace _2NiteAHI
                         IsSoRefreshing = false;
                         boiseFoodsProx.Clear();
                     }
+                    else if (locale == 2 && xlocale == 5)
+                    {
+                        barListView.ItemsSource = null; // resets the list back to null 
+                        barListView.ItemsSource = nycbars; // refactors updated list
+                        IsSoRefreshing = false;
+                        nycbarsprox.Clear();
+                    }
+                    else if (locale == 1 && xlocale == 4)
+                    {
+                        barListView.ItemsSource = null; // resets the list back to null 
+                        barListView.ItemsSource = nycfoods; // refactors updated list
+                        IsSoRefreshing = false;
+                        nycfoodsprox.Clear();
+                    }
+
+
+
                 });
             }
         }
@@ -346,7 +447,7 @@ namespace _2NiteAHI
         }
         private void BuildnycBars()
         {
-           // nycbars.Clear(); 
+           nycbars.Clear(); 
             nycbars.Add("The Jeffery Craft", rng.Next() % 150);
             nycbars.Add("Mercury Bar West", rng.Next() % 150);
             nycbars.Add("Down The Road Sports Bar", rng.Next() % 150);
@@ -362,15 +463,16 @@ namespace _2NiteAHI
         }
         private void Buildnycfoods()
         {
-            nycbars.Add("Authentic NYC Street Food", rng.Next() % 150);
-            nycbars.Add("Cantina Rooftop", rng.Next() % 150);
-            nycbars.Add("Cook Unity", rng.Next() % 150);
-            nycbars.Add("Burger Shot Beer", rng.Next() % 150);
-            nycbars.Add("Taboon", rng.Next() % 150);
-            nycbars.Add("Mamasita Grill", rng.Next() % 150);
-            nycbars.Add("Le Soleil", rng.Next() % 150);
-            nycbars.Add("Justino's Pizza", rng.Next() % 150);
-            nycbars.Add("Fogon's", rng.Next() % 150);
+            nycfoods.Clear();
+            nycfoods.Add("Authentic NYC Street Food", rng.Next() % 150);
+            nycfoods.Add("Cantina Rooftop", rng.Next() % 150);
+            nycfoods.Add("Cook Unity", rng.Next() % 150);
+            nycfoods.Add("Burger Shot Beer", rng.Next() % 150);
+            nycfoods.Add("Taboon", rng.Next() % 150);
+            nycfoods.Add("Mamasita Grill", rng.Next() % 150);
+            nycfoods.Add("Le Soleil", rng.Next() % 150);
+            nycfoods.Add("Justino's Pizza", rng.Next() % 150);
+            nycfoods.Add("Fogon's", rng.Next() % 150);
 
         }
         private void Buildnycprox()
@@ -593,6 +695,19 @@ namespace _2NiteAHI
                 barListView.ItemsSource = boiseFoods;
                 boiseFoodsProx.Clear();
             }
+            else if(locale == 2 && xlocale == 5)
+            {
+                nycfoods = nycfoods.OrderBy(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
+                barListView.ItemsSource = nycfoods;
+                nycfoods.Clear();
+            }
+            else if (locale == 2 && xlocale == 4)
+            {
+                nycbars = nycbars.OrderBy(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
+                barListView.ItemsSource = nycbars;
+                nycbars.Clear();
+            }
+
         }
             //DESCENDING
         private void OnClick_Descend(object sender, EventArgs e)
@@ -622,6 +737,18 @@ namespace _2NiteAHI
                 barListView.ItemsSource = boiseFoods;
                 boiseFoodsProx.Clear();
             }
+            else if (locale == 2 && xlocale == 5)
+            {
+                nycfoods = nycfoods.OrderBy(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
+                barListView.ItemsSource = nycfoods;
+                nycfoods.Clear();
+            }
+            else if (locale == 2 && xlocale == 4)
+            {
+                nycbars = nycbars.OrderBy(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
+                barListView.ItemsSource = nycbars;
+                nycbars.Clear();
+            }
         }
             //PROXIMITY
         private void OnClick_Proximity(object sender, EventArgs e)
@@ -649,6 +776,10 @@ namespace _2NiteAHI
                 BuildBoiseFoodsProx();
                 boiseFoodsProx = boiseFoodsProx.OrderBy(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
                 barListView.ItemsSource = boiseFoodsProx;
+            }
+            else if(locale == 2 && xlocale == 4 )
+            {
+                Buildnycprox();
             }
         }
             //RESTAURANTS
@@ -689,6 +820,24 @@ namespace _2NiteAHI
                     barPressed = false;
                 }
             }
+            else if (locale == 2)
+            {
+                if (restPressed == true)
+                {
+                    return;
+                }
+                else
+                {
+                    hasbeen = false;
+                    xlocale = 4;
+                    Buildnycfoods();
+                    nycfoods = nycfoods.OrderBy(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
+                    barListView.ItemsSource = nycfoods;
+                    restPressed = true;
+                    barPressed = false;
+                }
+
+            }
         }
             //BARS
         private void OnClick_Bars(object sender, EventArgs e)
@@ -725,6 +874,24 @@ namespace _2NiteAHI
                     barPressed = true;
                     restPressed = false;
                 }
+            }
+            else if (locale == 2)
+            {
+                if (barPressed == true)
+                {
+                    return;
+
+                }
+                else
+                {
+                    xlocale = 5;
+                    BuildnycBars();
+                    nycbars = nycbars.OrderByDescending(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
+                    barListView.ItemsSource = nycbars;
+                    barPressed = true;
+                    restPressed = false;
+                }
+
             }
         }
         //PEACE-OUT
