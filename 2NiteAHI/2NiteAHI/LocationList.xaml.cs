@@ -933,13 +933,25 @@ namespace _2NiteAHI
                 }
                 else { return; }
             }
-            else if (locale == 2)
+            else if (locale == 2 && xlocale == 0)
             {
                 usercount = nycbars[temp];
                 var excode = await DisplayAlert("Leaving So Soon?", "Would You Like To Close The App?", "Yes", "No");
                 if (excode == true)
                 {
                     nycbars[temp] = usercount - 1; // decrementing old bar // only if true
+                    Thread.Sleep(3000);
+                    Environment.FailFast("");
+                }
+                else { return; }
+            }
+            else if (locale == 2 && xlocale == 4)
+            {
+                usercount = nycfoods[temp];
+                var excode = await DisplayAlert("Leaving So Soon?", "Would You Like To Close The App?", "Yes", "No");
+                if (excode == true)
+                {
+                    nycfoods[temp] = usercount - 1; // decrementing old bar // only if true
                     Thread.Sleep(3000);
                     Environment.FailFast("");
                 }
