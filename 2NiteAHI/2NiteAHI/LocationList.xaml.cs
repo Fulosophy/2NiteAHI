@@ -494,6 +494,18 @@ namespace _2NiteAHI
         }
         private void BuildnycFoodProx()
         {
+            nycfoodsprox.Clear();
+            nycfoodsprox.Add("Authentic NYC Street Food", "2172 meters away! ");
+            nycfoodsprox.Add("Cantina Rooftop", "2014 meters away!");
+            nycfoodsprox.Add("Mamasitas Grill", "1314 meters away!");
+            nycfoodsprox.Add("Cook Unity", "1803 meters away!");
+            nycfoodsprox.Add("Burger Shot Beer", "1675 meters away!");
+            nycfoodsprox.Add("Taboon", "1573 meters away! ");
+            nycfoodsprox.Add("Le Soleil", "1395 meters away!");
+            nycfoodsprox.Add("Justino's Pizza", "1247 meters away!");
+            nycfoodsprox.Add("Fogon's", "1174 meters away!");
+
+
 
         }
         private void BuildBoiseBars()
@@ -805,7 +817,9 @@ namespace _2NiteAHI
             }
             else if (locale == 2 && xlocale == 4)
             {
-                //build prox for nycfoods
+                BuildnycFoodProx();
+                nycfoodsprox = nycfoodsprox.OrderBy(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
+                barListView.ItemsSource = nycfoodsprox;
             }
         }
             //RESTAURANTS
