@@ -253,6 +253,11 @@ namespace _2NiteAHI
                 boiseBars = boiseBars.OrderByDescending(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
                 barListView.ItemsSource = boiseBars;
             }
+            else if (addy.Locality == "Manhattan")
+            {
+                locale = 2;
+                
+            }
         }
         public string MyLocation 
         {
@@ -334,6 +339,22 @@ namespace _2NiteAHI
             winterParkBars.Add("Tactical Brewing Co.", usercount); 
             winterParkBars.Add("The Next", usercount); 
             winterParkBars.Add("Admiral Cigar Club", usercount);
+        }
+        private void BuildnycBars()
+        {
+            nycbars.Clear();
+            nycbars.Add("The Jeffery Craft", rng.Next() % 150);
+            nycbars.Add("Mercury Bar West", rng.Next() % 150);
+            nycbars.Add("Down The Road Sports Bar", rng.Next() % 150);
+            nycbars.Add("The House Of Brews", rng.Next() % 150);
+            nycbars.Add("Deacon Brodie's Tavern", rng.Next() % 150);
+            nycbars.Add("Wine Escape", rng.Next() % 150);
+            nycbars.Add("Dalton's Bar & Grill", rng.Next() % 150);
+            nycbars.Add("Dave's Tavern", rng.Next() % 150);
+            nycbars.Add("Scruffy Duffy's Bar", rng.Next() % 150);
+            nycbars.Add("The Press Lounge", rng.Next() % 150);
+            nycbars.Add("Mom's Kitchen & Bar", rng.Next() % 150);
+
         }
         private void BuildBoiseBars()
         {
