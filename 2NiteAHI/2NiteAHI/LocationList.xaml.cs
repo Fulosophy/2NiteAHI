@@ -225,7 +225,7 @@ namespace _2NiteAHI
                      else { return; }
                  }
                  // Nyc INITIAL SELECT Bars
-                else if (hasbeen == false && locale == 2 && xlocale == 4)
+                else if (hasbeen == false && locale == 2 && xlocale == 0)
                  {
                      var ans = await DisplayAlert("Yo! Checking in?", "Have fun!", "Yes", "Cancel");
                      if (ans == true) // pressing OK
@@ -250,7 +250,7 @@ namespace _2NiteAHI
                      // 
                  }
                  // Nyc NEXT SELECT bar
-                 else if (hasbeen == true && locale == 2 && xlocale == 4)
+                 else if (hasbeen == true && locale == 2 && xlocale == 0)
                  {
                      var anss = await DisplayAlert("Changing bars???", "Would You Like To Check In?", "Yes", "Cancel");
                      if (anss == true) // pressing OK
@@ -270,7 +270,7 @@ namespace _2NiteAHI
                      else { return; }
                  }
                  // nyc food intial select 
-                 else if (hasbeen == false && locale == 2 && xlocale == 5)
+                 else if (hasbeen == false && locale == 2 && xlocale == 4)
                  {
                      var ansb = await DisplayAlert("Yo! Checking in?", "Have fun!", "Yes", "Cancel");
                      if (ansb == true)
@@ -289,7 +289,7 @@ namespace _2NiteAHI
                      else { return; }
                  }
                  // nyc food next select
-                 else if (hasbeen == true && locale == 0 && xlocale == 5)
+                 else if (hasbeen == true && locale == 2 && xlocale == 4)
                  {
                      var ansbb = await DisplayAlert("Yo New Restaurant?", "Would You Like To Check In?", "Yes", "Cancel");
                      if (ansbb == true)
@@ -409,7 +409,7 @@ namespace _2NiteAHI
                         boiseFoodsProx.Clear();
                     }
                    
-                    else if (locale == 1 && xlocale == 4)
+                    else if (locale == 2 && xlocale == 4)
                     {
                         barListView.ItemsSource = null; // resets the list back to null 
                         barListView.ItemsSource = nycfoods; // refactors updated list
