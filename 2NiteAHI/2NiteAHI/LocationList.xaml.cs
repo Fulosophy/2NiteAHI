@@ -752,7 +752,7 @@ namespace _2NiteAHI
            
             else if (locale == 2 && xlocale == 4)
             {
-                nycfoods = nycfoods.OrderBy(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
+                nycfoods = nycfoods.OrderByDescending(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
                 barListView.ItemsSource = nycfoods;
                 nycfoodsprox.Clear();
             }
