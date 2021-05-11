@@ -28,9 +28,9 @@ namespace _2NiteAHI
 
         // 3rd Location Manhattan
         public Dictionary<string, int> nycbars = new Dictionary<string, int>();
-        public Dictionary<string, double> nycbarsprox = new Dictionary<string, double>();
+        public Dictionary<string, string> nycbarsprox = new Dictionary<string, string>();
         public Dictionary<string, int> nycfoods = new Dictionary<string, int>();
-        public Dictionary<string, double> nycfoodsprox = new Dictionary<string, double>();
+        public Dictionary<string, string> nycfoodsprox = new Dictionary<string, string>();
 
         //VARIABLES
         private string myloc;
@@ -479,17 +479,17 @@ namespace _2NiteAHI
         private void BuildnycBarsProx()
         {
             nycbarsprox.Clear();
-            nycbarsprox.Add("The Jeffery Craft", 1523);
-            nycbarsprox.Add("Mercury Bar West", 1907);
-            nycbarsprox.Add("Down The Road Sports Bar", 1735);
-            nycbarsprox.Add("The House Of Brews", 1804);
-            nycbarsprox.Add("Deacon Brodie's Tavern", 1877 );
-            nycbarsprox.Add("Wine Escape", 2035);
-            nycbarsprox.Add("Dalton's Bar & Grill", 2085);
-            nycbarsprox.Add("Dave's Tavern", 2223);
-            nycbarsprox.Add("Scruffy Duffy's Bar", 2048);
-            nycbarsprox.Add("The Press Lounge", 2028);
-            nycbarsprox.Add("Mom's Kitchen & Bar", 1709);
+            nycbarsprox.Add("The Jeffery Craft", "1523 meters away!");
+            nycbarsprox.Add("Mercury Bar West", "1907 meters away!");
+            nycbarsprox.Add("Down The Road Sports Bar", "1735 meters away!");
+            nycbarsprox.Add("The House Of Brews", "1804 meters away!");
+            nycbarsprox.Add("Deacon Brodie's Tavern", "1877 meters away!");
+            nycbarsprox.Add("Wine Escape", "2035 meters away!") ;
+            nycbarsprox.Add("Dalton's Bar & Grill", "2085 meters away!");
+            nycbarsprox.Add("Dave's Tavern", "2223 meters away!");
+            nycbarsprox.Add("Scruffy Duffy's Bar", "2048 meters away!");
+            nycbarsprox.Add("The Press Lounge", "2028 meters away!");
+            nycbarsprox.Add("Mom's Kitchen & Bar", "1709 meters away!");
 
         }
         private void BuildnycFoodProx()
