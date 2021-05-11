@@ -253,9 +253,13 @@ namespace _2NiteAHI
                 boiseBars = boiseBars.OrderByDescending(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
                 barListView.ItemsSource = boiseBars;
             }
-            else if (addy.Locality == "Manhattan")
+            else if (addy.Locality == "New York")
             {
                 locale = 2;
+                BuildnycBars();
+                nycbars = nycbars.OrderByDescending(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
+                barListView.ItemsSource = nycbars;
+               
                 
             }
         }
@@ -367,6 +371,10 @@ namespace _2NiteAHI
             nycbars.Add("Le Soleil", rng.Next() % 150);
             nycbars.Add("Justino's Pizza", rng.Next() % 150);
             nycbars.Add("Fogon's", rng.Next() % 150);
+
+        }
+        private void Buildnycprox()
+        {
 
         }
         private void BuildBoiseBars()
