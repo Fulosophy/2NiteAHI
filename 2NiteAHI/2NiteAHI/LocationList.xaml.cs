@@ -342,7 +342,7 @@ namespace _2NiteAHI
         }
         private void BuildnycBars()
         {
-            nycbars.Clear();
+           // nycbars.Clear(); 
             nycbars.Add("The Jeffery Craft", rng.Next() % 150);
             nycbars.Add("Mercury Bar West", rng.Next() % 150);
             nycbars.Add("Down The Road Sports Bar", rng.Next() % 150);
@@ -354,6 +354,19 @@ namespace _2NiteAHI
             nycbars.Add("Scruffy Duffy's Bar", rng.Next() % 150);
             nycbars.Add("The Press Lounge", rng.Next() % 150);
             nycbars.Add("Mom's Kitchen & Bar", rng.Next() % 150);
+
+        }
+        private void Buildnycfoods()
+        {
+            nycbars.Add("Authentic NYC Street Food", rng.Next() % 150);
+            nycbars.Add("Cantina Rooftop", rng.Next() % 150);
+            nycbars.Add("Cook Unity", rng.Next() % 150);
+            nycbars.Add("Burger Shot Beer", rng.Next() % 150);
+            nycbars.Add("Taboon", rng.Next() % 150);
+            nycbars.Add("Mamasita Grill", rng.Next() % 150);
+            nycbars.Add("Le Soleil", rng.Next() % 150);
+            nycbars.Add("Justino's Pizza", rng.Next() % 150);
+            nycbars.Add("Fogon's", rng.Next() % 150);
 
         }
         private void BuildBoiseBars()
