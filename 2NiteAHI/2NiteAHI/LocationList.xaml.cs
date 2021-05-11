@@ -921,7 +921,19 @@ namespace _2NiteAHI
                 }
                 else { return; }
             }
-            else if (locale == 1)
+            else if (locale == 0 && xlocale == 2)
+            {
+                usercount = winterParkFoods[temp];
+                var excode = await DisplayAlert("Leaving So Soon?", "Would You Like To Close The App?", "Yes", "No");
+                if (excode == true)
+                {
+                    winterParkFoods[temp] = usercount - 1; // decrementing old bar // only if true
+                    Thread.Sleep(3000);
+                    Environment.FailFast("");
+                }
+                else { return; }
+            }
+            else if (locale == 1 && xlocale == 0)
             {
                 usercount = boiseBars[temp];
                 var excode = await DisplayAlert("Leaving So Soon?", "Would You Like To Close The App?", "Yes", "No");
@@ -933,7 +945,7 @@ namespace _2NiteAHI
                 }
                 else { return; }
             }
-            else if (locale == 1)
+            else if (locale == 1 && xlocale == 3)
             {
                 usercount = boiseFoods[temp];
                 var excode = await DisplayAlert("Leaving So Soon?", "Would You Like To Close The App?", "Yes", "No");
