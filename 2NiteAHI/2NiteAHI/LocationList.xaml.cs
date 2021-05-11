@@ -478,6 +478,18 @@ namespace _2NiteAHI
         }
         private void BuildnycBarsProx()
         {
+            nycbarsprox.Clear();
+            nycbarsprox.Add("The Jeffery Craft", 1523);
+            nycbarsprox.Add("Mercury Bar West", 1907);
+            nycbarsprox.Add("Down The Road Sports Bar", 1735);
+            nycbarsprox.Add("The House Of Brews", 1804);
+            nycbarsprox.Add("Deacon Brodie's Tavern", 1877 );
+            nycbarsprox.Add("Wine Escape", 2035);
+            nycbarsprox.Add("Dalton's Bar & Grill", 2085);
+            nycbarsprox.Add("Dave's Tavern", 2223);
+            nycbarsprox.Add("Scruffy Duffy's Bar", 2048);
+            nycbarsprox.Add("The Press Lounge", 2028);
+            nycbarsprox.Add("Mom's Kitchen & Bar", 1709);
 
         }
         private void BuildnycFoodProx()
@@ -787,7 +799,9 @@ namespace _2NiteAHI
             }
             else if(locale == 2 && xlocale == 0 )
             {
-                //build prox for nycbars
+                BuildnycBarsProx();
+                nycbarsprox = nycbarsprox.OrderBy(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
+                barListView.ItemsSource = nycbarsprox;
             }
             else if (locale == 2 && xlocale == 4)
             {
