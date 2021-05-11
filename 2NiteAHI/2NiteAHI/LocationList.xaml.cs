@@ -933,6 +933,18 @@ namespace _2NiteAHI
                 }
                 else { return; }
             }
+            else if (locale == 1)
+            {
+                usercount = boiseFoods[temp];
+                var excode = await DisplayAlert("Leaving So Soon?", "Would You Like To Close The App?", "Yes", "No");
+                if (excode == true)
+                {
+                    boiseFoods[temp] = usercount - 1; // decrementing old bar // only if true
+                    Thread.Sleep(3000);
+                    Environment.FailFast("");
+                }
+                else { return; }
+            }
             else if (locale == 2 && xlocale == 0)
             {
                 usercount = nycbars[temp];
