@@ -909,7 +909,7 @@ namespace _2NiteAHI
         //PEACE-OUT
         private async void OnClick_Peace(object sender, EventArgs e)
         {
-            if(locale == 0)
+            if(locale == 0 && xlocale == 0)
             {
                 usercount = winterParkBars[temp];
                 var excode = await DisplayAlert("Leaving So Soon?", "Would You Like To Close The App?", "Yes", "No");
