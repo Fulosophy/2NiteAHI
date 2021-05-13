@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="_2NiteAHI.Register">
+             x:Class="_2NiteAHI.Register"
+             Title="ACCOUNT REGISTER">
     <!--REGISTER1 PAGE-->
     <Grid>
         <Grid.Background>
@@ -12,40 +13,42 @@
             </LinearGradientBrush>
         </Grid.Background>
         <StackLayout>
-        
-        
-        <Label
-            Text="2Nite Account Register"
-            HorizontalTextAlignment="Center"
-            TextColor="White" 
-            FontSize="36"
-            Padding="0,20,0,20"/>
-       
+               
         <!--Email-->
         <Entry                    
             x:Name="GetEmail"
             Placeholder="Email"
+            ClearButtonVisibility="WhileEditing"
             Keyboard="Email"
+            ReturnType="Next"
+            TextChanged="Entry_Email"
             BackgroundColor="Gainsboro"
             HorizontalOptions="Center"
             WidthRequest="300"
-            Margin="20,10"/>
+            Margin="0,50,0,0"/>
             
         <!--Username-->
         <Entry                   
             x:Name="GetUsername"
             Placeholder="Username"
+            ClearButtonVisibility="WhileEditing"
             Keyboard="Text"
             BackgroundColor="Gainsboro"
             HorizontalOptions="Center"
             WidthRequest="300"
-            Margin="10,10"/>
+            Margin="10,10"
+            ReturnType="Next"
+            TextChanged="Entry_Username"/>
             
         <!--Password-->
         <Entry                   
             x:Name="GetPassword"
             Placeholder="Password"
+            ClearButtonVisibility="WhileEditing"
+            IsPassword="True"
             Keyboard="Text"
+            ReturnType="Next"
+            TextChanged="Entry_Password"
             MaxLength="12"
             BackgroundColor="Gainsboro"
             HorizontalOptions="Center"
@@ -56,7 +59,11 @@
         <Entry                    
             x:Name="GetVerifyPassword"
             Placeholder="Confirm Password"
+            ClearButtonVisibility="WhileEditing"
+            IsPassword="True"
             Keyboard="Text"
+            ReturnType="Next"
+            TextChanged="Entry_RePassword"
             MaxLength="12"
             BackgroundColor="Gainsboro"
             HorizontalOptions="Center"
@@ -77,7 +84,10 @@
         <Entry                   
             x:Name="GetNumber"
             Placeholder="Phone Number"
+            ClearButtonVisibility="WhileEditing"
             Keyboard="Telephone"
+            ReturnType="Send"
+            TextChanged="Entry_PhoneNumber"
             MaxLength="10"
             BackgroundColor="Gainsboro"
             HorizontalOptions="Center"
@@ -99,21 +109,17 @@
             HorizontalOptions="Center"
             CornerRadius="10"
             Text="REGISTER"
-            Margin="15,10"
+            Margin="0,20,0,0"
             Padding="30,0,30,0"
             Clicked="RegSubmitClicked"/>
-            
-        <Label FontSize="16" Padding="30,5,30,0" VerticalOptions="End">
-            <Label.FormattedText>
-                <FormattedString>
-                    <FormattedString.Spans>
-                        <Span Text="Learn more at "/>
-                        <Span Text="https://2Nite-Usage" FontAttributes="Bold" TextColor="Blue"/>
-                    </FormattedString.Spans>
-                </FormattedString>
-            </Label.FormattedText>
-        </Label>
-            
-    </StackLayout>
+
+            <Label 
+            FontSize="16" 
+            Padding="30,50,30,0" 
+            VerticalOptions="End"
+            Text="Learn more @ https://2Nite-Usage" 
+            FontAttributes="Bold" 
+            TextColor="Blue"/>
+        </StackLayout>
     </Grid>
 </ContentPage>
