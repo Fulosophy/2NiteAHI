@@ -32,6 +32,12 @@ namespace _2NiteAHI
         public Dictionary<string, int> nycfoods = new Dictionary<string, int>();
         public Dictionary<string, string> nycfoodsprox = new Dictionary<string, string>();
 
+        // 4th Location Miami Beach 
+        public Dictionary<string, int> miamiBeachBars = new Dictionary<string, int>();
+        public Dictionary<string, double> miamiBeachBarsProx = new Dictionary<string, double>();
+        public Dictionary<string, int> miamiBeachFoods = new Dictionary<string, int>();
+        public Dictionary<string, double> miamiBeachFoodsProx = new Dictionary<string, double>();
+
         //VARIABLES
         private string myloc;
         private int locale;
@@ -308,6 +314,90 @@ namespace _2NiteAHI
                      }
                      else { return; }
                  }
+                 // Miami Beach INITIAL SELECT Bars
+                 else if (hasbeen == false && locale == 2 && xlocale == 0)
+                 {
+                     var ans = await DisplayAlert("Yo! Checking in?", "Have fun!", "Yes", "Cancel");
+                     if (ans == true) // pressing OK
+                     {
+                         selecteditem = e.SelectedItem.ToString(); // Changing event handler to string
+                         selecteditem = selecteditem.Trim('[', ']'); // triming brackets
+
+                         string[] splititems = selecteditem.Split(','); // delim comma
+
+
+                         usercount = miamiBeachBars[splititems[0]]; // Grabbing current user count of bar/rest
+                         miamiBeachBars[splititems[0]] = usercount + 1; // increment from current bar/rest count
+                         temp = splititems[0]; // Saving the selected data for decrements
+
+                         hasbeen = true;
+                         RefreshCommand.Execute(barListView.ItemsSource = miamiBeachBars);
+
+                     }
+                     else { return; }
+
+
+                     // 
+                 }
+                 // Miami Beach NEXT SELECT bar
+                 else if (hasbeen == true && locale == 2 && xlocale == 0)
+                 {
+                     var anss = await DisplayAlert("Changing bars???", "Would You Like To Check In?", "Yes", "Cancel");
+                     if (anss == true) // pressing OK
+                     {
+                         usercount = miamiBeachBars[temp];
+                         miamiBeachBars[temp] = usercount - 1; // decrementing old bar
+
+                         selecteditem = e.SelectedItem.ToString(); // Changing event handler to string
+                         selecteditem = selecteditem.Trim('[', ']'); // triming brackets
+                         string[] splititems = selecteditem.Split(','); // delim comma
+
+                         usercount = miamiBeachBars[splititems[0]]; // Grabbing current user count of bar/rest
+                         miamiBeachBars[splititems[0]] = usercount + 1; // Incrementing CHANGED bar
+                         temp = splititems[0];
+                         RefreshCommand.Execute(barListView.ItemsSource = miamiBeachBars);
+                     }
+                     else { return; }
+                 }
+                 // Miami Beach food intial select 
+                 else if (hasbeen == false && locale == 2 && xlocale == 4)
+                 {
+                     var ansb = await DisplayAlert("Yo! Checking in?", "Have fun!", "Yes", "Cancel");
+                     if (ansb == true)
+                     {
+                         selecteditem = e.SelectedItem.ToString();
+                         selecteditem = selecteditem.Trim('[', ']');
+                         string[] splititems = selecteditem.Split(',');
+
+                         usercount = miamiBeachFoods[splititems[0]];
+                         miamiBeachFoods[splititems[0]] = usercount + 1;
+                         temp = splititems[0];
+
+                         hasbeen = true;
+                         RefreshCommand.Execute(barListView.ItemsSource = miamiBeachFoods);
+                     }
+                     else { return; }
+                 }
+                 // Miami Beach food next select
+                 else if (hasbeen == true && locale == 2 && xlocale == 4)
+                 {
+                     var ansbb = await DisplayAlert("Yo New Restaurant?", "Would You Like To Check In?", "Yes", "Cancel");
+                     if (ansbb == true)
+                     {
+                         usercount = miamiBeachFoods[temp];
+                         miamiBeachFoods[temp] = usercount - 1;
+
+                         selecteditem = e.SelectedItem.ToString();
+                         selecteditem = selecteditem.Trim('[', ']');
+                         string[] splititems = selecteditem.Split(',');
+
+                         usercount = miamiBeachFoods[splititems[0]];
+                         miamiBeachFoods[splititems[0]] = usercount + 1;
+                         temp = splititems[0];
+                         RefreshCommand.Execute(barListView.ItemsSource = miamiBeachFoods);
+                     }
+                     else { return; }
+                 }
 
              };
         }
@@ -345,6 +435,15 @@ namespace _2NiteAHI
                 barListView.ItemsSource = nycbars;
                
                 
+            }
+            else if (addy.Locality == "Miami Beach")
+            {
+                locale = 3;
+                BuildMiamiBeachBars();
+                miamiBeachBars = miamiBeachBars.OrderByDescending(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
+                barListView.ItemsSource = miamiBeachBars;
+
+
             }
         }
         public string MyLocation 
@@ -394,6 +493,13 @@ namespace _2NiteAHI
                         IsSoRefreshing = false;
                         nycbarsprox.Clear();
                     }
+                    else if (locale == 3 && xlocale == 0)
+                    {
+                        barListView.ItemsSource = null; // resets the list back to null 
+                        barListView.ItemsSource = miamiBeachBars; // refactors updated list
+                        IsSoRefreshing = false;
+                        miamiBeachBarsProx.Clear();
+                    }
                     else if (locale == 0 && xlocale == 2)
                     {
                         barListView.ItemsSource = null; // resets the list back to null 
@@ -415,6 +521,13 @@ namespace _2NiteAHI
                         barListView.ItemsSource = nycfoods; // refactors updated list
                         IsSoRefreshing = false;
                         nycfoodsprox.Clear();
+                    }
+                    else if (locale == 3 && xlocale == 5)
+                    {
+                        barListView.ItemsSource = null; // resets the list back to null 
+                        barListView.ItemsSource = miamiBeachFoods; // refactors updated list
+                        IsSoRefreshing = false;
+                        miamiBeachFoodsProx.Clear();
                     }
 
 
@@ -694,9 +807,218 @@ namespace _2NiteAHI
             boiseFoodsProx.Add("Even Stevens Sandwiches",0.4837);
             boiseFoodsProx.Add("Lucky Fins Seafood Grill",0.2793);
         }
+        private void BuildMiamiBeachBars()
+        {
+            miamiBeachBars.Add("Cafe Prima Pasta", rng.Next() % 150);
+            miamiBeachBars.Add("The Tarern", rng.Next() % 150);
+            miamiBeachBars.Add("Bolivar Resturant Bar Lounge", rng.Next() % 150);
+            miamiBeachBars.Add("Maxine's Bistro and Bar", rng.Next() % 150);
+            miamiBeachBars.Add("TGI Fridays", rng.Next() % 150);
+            miamiBeachBars.Add("The Place", rng.Next() % 150);
+            miamiBeachBars.Add("Finnegan's Way", rng.Next() % 150);
+            miamiBeachBars.Add("Monty's Sunset", rng.Next() % 150);
+            miamiBeachBars.Add("Norman's", rng.Next() % 150);
+            miamiBeachBars.Add("Moreno's Cuba", rng.Next() % 150);
+            miamiBeachBars.Add("Yard House", rng.Next() % 150);
+            miamiBeachBars.Add("27 Restaurant & Bar", rng.Next() % 150);
+            miamiBeachBars.Add("Broken Shaker", rng.Next() % 150);
+            miamiBeachBars.Add("Bleau Bar", rng.Next() % 150);
+            miamiBeachBars.Add("Wet Willie's", rng.Next() % 150);
+            miamiBeachBars.Add("Segafredo L'Originale", rng.Next() % 150);
+            miamiBeachBars.Add("Sweet Liberty Drinks & Supply Company", rng.Next() % 150);
+            miamiBeachBars.Add("Clevelander Bar", rng.Next() % 150);
+            miamiBeachBars.Add("Nautilus Bar & Grill ", rng.Next() % 150);
+            miamiBeachBars.Add("Blue Ribbon Sushi Bar & Grill", rng.Next() % 150);
+            miamiBeachBars.Add("Mac’s Club Deuce", rng.Next() % 150);
+            miamiBeachBars.Add("Abbey Brewing Company", rng.Next() % 150);
+            miamiBeachBars.Add("Twist", rng.Next() % 150);
+            miamiBeachBars.Add("Palace Bar LLC", rng.Next() % 150);
+            miamiBeachBars.Add("Kansas Bar & Grill", rng.Next() % 150);
+            miamiBeachBars.Add("Playwright Irish Pub", rng.Next() % 150);
+            miamiBeachBars.Add("Tavern at Oceanside", rng.Next() % 150);
+            miamiBeachBars.Add("Venezia Grill Pizzeria Bar", rng.Next() % 150);
+            miamiBeachBars.Add("Espanola Cigar Bar", rng.Next() % 150);
+            miamiBeachBars.Add("The Regent Cocktail Club", rng.Next() % 150);
+            miamiBeachBars.Add("Vanilla Cafe", rng.Next() % 150);
+            miamiBeachBars.Add("Bungalow By The Sea", rng.Next() % 150);
+            miamiBeachBars.Add("Bar Collins", rng.Next() % 150);
+            miamiBeachBars.Add("Living Room Lounge", rng.Next() % 150);
+            miamiBeachBars.Add("Tantra", rng.Next() % 150);
+            miamiBeachBars.Add("High Tide", rng.Next() % 150);
+            miamiBeachBars.Add("Mike's At Venetia", rng.Next() % 150);
+            miamiBeachBars.Add("Lost Weekend", rng.Next() % 150);
+            miamiBeachBars.Add("Bay Club", rng.Next() % 150);
+            miamiBeachBars.Add("Drunk Bitch", rng.Next() % 150);
+            miamiBeachBars.Add("South Pointe Tavern", rng.Next() % 150);
+            miamiBeachBars.Add("Sky Bar At Shore Club South Beach", rng.Next() % 150);
+            miamiBeachBars.Add("Kill Your Idol ", rng.Next() % 150);
+            miamiBeachBars.Add("Miami Clubs", rng.Next() % 150);
+            miamiBeachBars.Add("Mynt Lounge", rng.Next() % 150);
+            miamiBeachBars.Add("Hyde Beach", rng.Next() % 150);
+            miamiBeachBars.Add("Riki Tiki Bar and Grill", rng.Next() % 150);
+            miamiBeachBars.Add("El Grito", rng.Next() % 150);
+            miamiBeachBars.Add("Margarita Beach Club", rng.Next() % 150);
+            miamiBeachBars.Add("Palace", rng.Next() % 150);
+
+        }
+
+        private void BuildMiamiBeachBarsProx()
+        {
+            miamiBeachBarsProx.Add("Cafe Prima Pasta",5.2);
+            miamiBeachBarsProx.Add("The Tarern", 0.130);
+            miamiBeachBarsProx.Add("Bolivar Resturant Bar Lounge", 4.3);
+            miamiBeachBarsProx.Add("Maxine's Bistro and Bar", 4.3);
+            miamiBeachBarsProx.Add("TGI Fridays", 4.6);
+            miamiBeachBarsProx.Add("The Place", 4.3);
+            miamiBeachBarsProx.Add("Finnegan's Way", 3.4);
+            miamiBeachBarsProx.Add("Monty's Sunset", 6.2);
+            miamiBeachBarsProx.Add("Norman's", 4.6);
+            miamiBeachBarsProx.Add("Moreno's Cuba", 2.2);
+            miamiBeachBarsProx.Add("Yard House", 4.0);
+            miamiBeachBarsProx.Add("27 Restaurant & Bar", 1.0);
+            miamiBeachBarsProx.Add("Broken Shaker", 1.0);
+            miamiBeachBarsProx.Add("Bleau Bar", 0.750);
+            miamiBeachBarsProx.Add("Wet Willie's", 4.4);
+            miamiBeachBarsProx.Add("Segafredo L'Originale", 4.1);
+            miamiBeachBarsProx.Add("Sweet Liberty Drinks & Supply Company", 2.2);
+            miamiBeachBarsProx.Add("Clevelander Bar", 3.9);
+            miamiBeachBarsProx.Add("Nautilus Bar & Grill", 6.4);
+            miamiBeachBarsProx.Add("Blue Ribbon Sushi Bar & Grill", 2.2);
+            miamiBeachBarsProx.Add("Mac’s Club Deuce", 3.4);
+            miamiBeachBarsProx.Add("Abbey Brewing Company", 4.3);
+            miamiBeachBarsProx.Add("Twist", 4.0);
+            miamiBeachBarsProx.Add("Palace Bar LLC", 3.8);
+            miamiBeachBarsProx.Add("Kansas Bar & Grill", 3.1);
+            miamiBeachBarsProx.Add("Harat's Pub", 3.6);
+            miamiBeachBarsProx.Add("Tavern at Oceanside", 4.8);
+            miamiBeachBarsProx.Add("Venezia Grill Pizzeria Bar", 4.4);
+            miamiBeachBarsProx.Add("Espanola Cigar Bar", 3.2);
+            miamiBeachBarsProx.Add("The Regent Cocktail Club", 2.6);
+            miamiBeachBarsProx.Add("Bungalow By The Sea", 0.77);
+            miamiBeachBarsProx.Add("Bar Collins", 2.9);
+            miamiBeachBarsProx.Add("Living Room Lounge", 0.500);
+            miamiBeachBarsProx.Add("High Tide", 2.6);
+            miamiBeachBarsProx.Add("Lost Weekend", 3.2);
+            miamiBeachBarsProx.Add("Bay Club", 4.1);
+            miamiBeachBarsProx.Add("Bacon Bitch", 4.0);
+            miamiBeachBarsProx.Add("South Pointe Tavern", 7.0);
+            miamiBeachBarsProx.Add("Sky Bar At Shore Club South Beach", 2.2);
+            miamiBeachBarsProx.Add("Kill Your Idol ", 3.2);
+            miamiBeachBarsProx.Add("Miami Clubs", 2.9);
+            miamiBeachBarsProx.Add("Mynt Lounge", 2.2);
+            miamiBeachBarsProx.Add("Hyde Beach", 2.7);
+            miamiBeachBarsProx.Add("Riki Tiki Bar and Grill", 2.5);
+            miamiBeachBarsProx.Add("Palace", 3.8);
+        }
+
+        private void BuildMiamiBeachFood()
+        {
+
+            miamiBeachFoods.Add("Cvi.Che 105", rng.Next() % 150);
+            miamiBeachFoods.Add("Pane & Vino La Trattoria", rng.Next() % 150);
+            miamiBeachFoods.Add("La Ventana Colombian Restaurant", rng.Next() % 150);
+            miamiBeachFoods.Add("Santorini by Georgios", rng.Next() % 150);
+            miamiBeachFoods.Add("Joe's Takeaway", rng.Next() % 150);
+            miamiBeachFoods.Add("11th Street Diner", rng.Next() % 150);
+            miamiBeachFoods.Add("Yardbird Southern Table & Bar", rng.Next() % 150);
+            miamiBeachFoods.Add("La Sandwicherie", rng.Next() % 150);
+            miamiBeachFoods.Add("Shake Shack", rng.Next() % 150);
+            miamiBeachFoods.Add("La Cerveceria de Barrio Miami", rng.Next() % 150);
+            miamiBeachFoods.Add("Cafe Prima Pasta", rng.Next() % 150);
+            miamiBeachFoods.Add("Dolce Italian", rng.Next() % 150);
+            miamiBeachFoods.Add("Hakkasan Miami", rng.Next() % 150);
+            miamiBeachFoods.Add("A Fish Called Avalon", rng.Next() % 150);
+            miamiBeachFoods.Add("The Tavern", rng.Next() % 150);
+            miamiBeachFoods.Add("Churros Manolo Miami", rng.Next() % 150);
+            miamiBeachFoods.Add("Mercato Della Pescheria Espanola Way", rng.Next() % 150);
+            miamiBeachFoods.Add("Ola", rng.Next() % 150);
+            miamiBeachFoods.Add("Katsuya South Beach", rng.Next() % 150);
+            miamiBeachFoods.Add("Cleo South Beach", rng.Next() % 150);
+            miamiBeachFoods.Add("il Pastaiolo", rng.Next() % 150);
+            miamiBeachFoods.Add("Otentic Fresh Food Restaurant", rng.Next() % 150);
+            miamiBeachFoods.Add("Scarpetta", rng.Next() % 150);
+            miamiBeachFoods.Add("Five Guys", rng.Next() % 150);
+            miamiBeachFoods.Add("Fogo de Chao Brazilian Steakhouse", rng.Next() % 150);
+            miamiBeachFoods.Add("Il Bolognese on Ocean", rng.Next() % 150);
+            miamiBeachFoods.Add("Spris Pizza", rng.Next() % 150);
+            miamiBeachFoods.Add("Bolivar Restaurant Bar Lounge", rng.Next() % 150);
+            miamiBeachFoods.Add("Osteria Del Teatro", rng.Next() % 150);
+            miamiBeachFoods.Add("On Ocean 7 Cafe", rng.Next() % 150);
+            miamiBeachFoods.Add("The Forge", rng.Next() % 150);
+            miamiBeachFoods.Add("Spiga Ristorante Italiano", rng.Next() % 150);
+            miamiBeachFoods.Add("Estiatorio Milos", rng.Next() % 150);
+            miamiBeachFoods.Add("Havana 1957", rng.Next() % 150);
+            miamiBeachFoods.Add("Texas de Brazil", rng.Next() % 150);
+            miamiBeachFoods.Add("Chalan On The Beach", rng.Next() % 150);
+            miamiBeachFoods.Add("Matador Room", rng.Next() % 150);
+            miamiBeachFoods.Add("La Côte", rng.Next() % 150);
+            miamiBeachFoods.Add("Bella Cuba", rng.Next() % 150);
+            miamiBeachFoods.Add("Juvia", rng.Next() % 150);
+            miamiBeachFoods.Add("Italymania Restaurant Pizzeria", rng.Next() % 150);
+            miamiBeachFoods.Add("Pompei Osteria Napoletana", rng.Next() % 150);
+            miamiBeachFoods.Add("La Locanda", rng.Next() % 150);
+            miamiBeachFoods.Add("News Cafe", rng.Next() % 150);
+            miamiBeachFoods.Add("Smith and Wollensky", rng.Next() % 150);
+            miamiBeachFoods.Add("Makoto", rng.Next() % 150);
+
+
+        }
+
+
+        private void BuildMiamiBeachFoodsProx()
+        {
+            miamiBeachFoodsProx.Clear();
+            miamiBeachFoodsProx.Add("Cvi.Che 105", 14.1);
+            miamiBeachFoodsProx.Add("Pane & Vino La Trattoria", 3.2);
+            miamiBeachFoodsProx.Add("La Ventana Colombian Restaurant", 5.0);
+            miamiBeachFoodsProx.Add("Santorini by Georgios", 5.2);
+            miamiBeachFoodsProx.Add("Joe's Takeaway", 6.4);
+            miamiBeachFoodsProx.Add("11th Street Diner", 3.8);
+            miamiBeachFoodsProx.Add("Yardbird Southern Table & Bar", 4.4);
+            miamiBeachFoodsProx.Add("La Sandwicherie", 3.4);
+            miamiBeachFoodsProx.Add("Shake Shack", 3.4);
+            miamiBeachFoodsProx.Add("La Cerveceria de Barrio Miami", 3.9);
+            miamiBeachFoodsProx.Add("Cafe Prima Pasta", 5.2);
+            miamiBeachFoodsProx.Add("Dolce Italian", 2.6);
+            miamiBeachFoodsProx.Add("Hakkasan Miami", 0.800);
+            miamiBeachFoodsProx.Add("A Fish Called Avalon", 4.3);
+            miamiBeachFoodsProx.Add("The Tavern", 0.130);
+            miamiBeachFoodsProx.Add("Churros Manolo Miami", 5.3);
+            miamiBeachFoodsProx.Add("Mercato Della Pescheria Espanola Way", 3.2);
+            miamiBeachFoodsProx.Add("Ola", 1.7);
+            miamiBeachFoodsProx.Add("Katsuya South Beach", 2.6);
+            miamiBeachFoodsProx.Add("Cleo South Beach", 2.4);
+            miamiBeachFoodsProx.Add("il Pastaiolo", 3.6);
+            miamiBeachFoodsProx.Add("Otentic Fresh Food Restaurant", 4.6);
+            miamiBeachFoodsProx.Add("Scarpetta", 0.600);
+            miamiBeachFoodsProx.Add("Five Guys", 3.2);
+            miamiBeachFoodsProx.Add("Fogo de Chao Brazilian Steakhouse", 6.6);
+            miamiBeachFoodsProx.Add("Il Bolognese on Ocean", 3.4);
+            miamiBeachFoodsProx.Add("Spris Pizza", 3.8);
+            miamiBeachFoodsProx.Add("Bolivar Restaurant Bar Lounge", 4.3);
+            miamiBeachFoodsProx.Add("Osteria Del Teatro", 3.6);
+            miamiBeachFoodsProx.Add("On Ocean 7 Cafe", 4.3);
+            miamiBeachFoodsProx.Add("The Forge", 0.700);
+            miamiBeachFoodsProx.Add("Spiga Ristorante Italiano", 3.5);
+            miamiBeachFoodsProx.Add("Estiatorio Milos", 5.3);
+            miamiBeachFoodsProx.Add("Havana 1957", 3.2);
+            miamiBeachFoodsProx.Add("Texas de Brazil", 6.2);
+            miamiBeachFoodsProx.Add("Chalan On The Beach", 3.0);
+            miamiBeachFoodsProx.Add("Matador Room", 0.900);
+            miamiBeachFoodsProx.Add("La Côte", 0.700);
+            miamiBeachFoodsProx.Add("Bella Cuba", 2.9);
+            miamiBeachFoodsProx.Add("Juvia", 4.1);
+            miamiBeachFoodsProx.Add("Italymania Restaurant Pizzeria", 3.6);
+            miamiBeachFoodsProx.Add("Pompei Osteria Napoletana", 3.4);
+            miamiBeachFoodsProx.Add("La Locanda", 4.8);
+            miamiBeachFoodsProx.Add("News Cafe", 4.4);
+            miamiBeachFoodsProx.Add("Smith and Wollensky", 7.4);
+            miamiBeachFoodsProx.Add("Makoto", 9.1);
+        }
+
 
         //BUTTONS
-            //ASCENDING
+        //ASCENDING
         private void OnClick_Ascend(object sender, EventArgs e)
         {
             //OrderBy Value
@@ -821,6 +1143,18 @@ namespace _2NiteAHI
                 nycfoodsprox = nycfoodsprox.OrderBy(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
                 barListView.ItemsSource = nycfoodsprox;
             }
+            else if (locale == 2 && xlocale == 0)
+            {
+                BuildMiamiBeachBarsProx();
+                miamiBeachBarsProx = miamiBeachBarsProx.OrderBy(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
+                barListView.ItemsSource = miamiBeachBarsProx;
+            }
+            else if (locale == 2 && xlocale == 4)
+            {
+                BuildMiamiBeachFoodsProx();
+                miamiBeachFoodsProx = miamiBeachFoodsProx.OrderBy(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
+                barListView.ItemsSource = miamiBeachFoodsProx;
+            }
         }
             //RESTAURANTS
         private void OnClick_Restaurants(object sender, EventArgs e)
@@ -878,6 +1212,24 @@ namespace _2NiteAHI
                 }
 
             }
+            else if (locale == 3)
+            {
+                if (restPressed == true)
+                {
+                    return;
+                }
+                else
+                {
+                    hasbeen = false;
+                    xlocale = 5;
+                    BuildMiamiBeachFood();
+                    miamiBeachFoods = miamiBeachFoods.OrderBy(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
+                    barListView.ItemsSource = miamiBeachFoods;
+                    restPressed = true;
+                    barPressed = false;
+                }
+
+            }
         }
             //BARS
         private void OnClick_Bars(object sender, EventArgs e)
@@ -928,6 +1280,24 @@ namespace _2NiteAHI
                     BuildnycBars();
                     nycbars = nycbars.OrderByDescending(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
                     barListView.ItemsSource = nycbars;
+                    barPressed = true;
+                    restPressed = false;
+                }
+
+            }
+            else if (locale == 3)
+            {
+                if (barPressed == true)
+                {
+                    return;
+
+                }
+                else
+                {
+                    xlocale = 0;
+                    BuildMiamiBeachBars();
+                    miamiBeachBars = miamiBeachBars.OrderByDescending(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
+                    barListView.ItemsSource = miamiBeachBars;
                     barPressed = true;
                     restPressed = false;
                 }
@@ -1009,7 +1379,31 @@ namespace _2NiteAHI
                 }
                 else { return; }
             }
-          
+            else if (locale == 3 && xlocale == 0)
+            {
+                usercount = miamiBeachBars[temp];
+                var excode = await DisplayAlert("Leaving So Soon?", "Would You Like To Close The App?", "Yes", "No");
+                if (excode == true)
+                {
+                    miamiBeachBars[temp] = usercount - 1; // decrementing old bar // only if true
+                    Thread.Sleep(3000);
+                    Environment.FailFast("");
+                }
+                else { return; }
+            }
+            else if (locale == 3 && xlocale == 5)
+            {
+                usercount = miamiBeachFoods[temp];
+                var excode = await DisplayAlert("Leaving So Soon?", "Would You Like To Close The App?", "Yes", "No");
+                if (excode == true)
+                {
+                    miamiBeachFoods[temp] = usercount - 1; // decrementing old bar // only if true
+                    Thread.Sleep(3000);
+                    Environment.FailFast("");
+                }
+                else { return; }
+            }
+
         }
     }
 }
