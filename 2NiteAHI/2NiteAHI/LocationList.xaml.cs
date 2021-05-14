@@ -31,6 +31,11 @@ namespace _2NiteAHI
         public Dictionary<string, string> nycbarsprox = new Dictionary<string, string>();
         public Dictionary<string, int> nycfoods = new Dictionary<string, int>();
         public Dictionary<string, string> nycfoodsprox = new Dictionary<string, string>();
+        //4TH LOCATION Miami Beach
+        public Dictionary<string, int> miamiBeachBars = new Dictionary<string, int>();
+        public Dictionary<string, double> miamiBeachBarsProx = new Dictionary<string, double>();
+        public Dictionary<string, int> miamiBeachFoods = new Dictionary<string, int>();
+        public Dictionary<string, double> miamiBeachFoodsProx = new Dictionary<string, double>();
 
         // 4th Location Miami Beach 
         public Dictionary<string, int> miamiBeachBars = new Dictionary<string, int>();
@@ -315,7 +320,7 @@ namespace _2NiteAHI
                      else { return; }
                  }
                  // Miami Beach INITIAL SELECT Bars
-                 else if (hasbeen == false && locale == 2 && xlocale == 0)
+                 else if (hasbeen == false && locale == 3 && xlocale == 0)
                  {
                      var ans = await DisplayAlert("Yo! Checking in?", "Have fun!", "Yes", "Cancel");
                      if (ans == true) // pressing OK
@@ -339,8 +344,8 @@ namespace _2NiteAHI
 
                      // 
                  }
-                 // Miami Beach NEXT SELECT bar
-                 else if (hasbeen == true && locale == 2 && xlocale == 0)
+                 // miami Beach NEXT SELECT bar
+                 else if (hasbeen == true && locale == 3 && xlocale == 0)
                  {
                      var anss = await DisplayAlert("Changing bars???", "Would You Like To Check In?", "Yes", "Cancel");
                      if (anss == true) // pressing OK
@@ -359,8 +364,8 @@ namespace _2NiteAHI
                      }
                      else { return; }
                  }
-                 // Miami Beach food intial select 
-                 else if (hasbeen == false && locale == 2 && xlocale == 4)
+                 // miami Beach food intial select 
+                 else if (hasbeen == false && locale == 3 && xlocale == 5)
                  {
                      var ansb = await DisplayAlert("Yo! Checking in?", "Have fun!", "Yes", "Cancel");
                      if (ansb == true)
@@ -379,7 +384,7 @@ namespace _2NiteAHI
                      else { return; }
                  }
                  // Miami Beach food next select
-                 else if (hasbeen == true && locale == 2 && xlocale == 4)
+                 else if (hasbeen == true && locale == 3 && xlocale == 5)
                  {
                      var ansbb = await DisplayAlert("Yo New Restaurant?", "Would You Like To Check In?", "Yes", "Cancel");
                      if (ansbb == true)
@@ -438,9 +443,9 @@ namespace _2NiteAHI
             }
             else if (addy.Locality == "Miami Beach")
             {
-                locale = 3;
+                locale = 2;
                 BuildMiamiBeachBars();
-                miamiBeachBars = miamiBeachBars.OrderByDescending(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
+                nycbars = nycbars.OrderByDescending(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
                 barListView.ItemsSource = miamiBeachBars;
 
 
@@ -861,10 +866,9 @@ namespace _2NiteAHI
             miamiBeachBars.Add("Palace", rng.Next() % 150);
 
         }
-
         private void BuildMiamiBeachBarsProx()
         {
-            miamiBeachBarsProx.Add("Cafe Prima Pasta",5.2);
+            miamiBeachBarsProx.Add("Cafe Prima Pasta", 5.2);
             miamiBeachBarsProx.Add("The Tarern", 0.130);
             miamiBeachBarsProx.Add("Bolivar Resturant Bar Lounge", 4.3);
             miamiBeachBarsProx.Add("Maxine's Bistro and Bar", 4.3);
@@ -910,8 +914,7 @@ namespace _2NiteAHI
             miamiBeachBarsProx.Add("Riki Tiki Bar and Grill", 2.5);
             miamiBeachBarsProx.Add("Palace", 3.8);
         }
-
-        private void BuildMiamiBeachFood()
+        private void BuildMiaBeachFood()
         {
 
             miamiBeachFoods.Add("Cvi.Che 105", rng.Next() % 150);
@@ -960,14 +963,9 @@ namespace _2NiteAHI
             miamiBeachFoods.Add("News Cafe", rng.Next() % 150);
             miamiBeachFoods.Add("Smith and Wollensky", rng.Next() % 150);
             miamiBeachFoods.Add("Makoto", rng.Next() % 150);
-
-
         }
-
-
         private void BuildMiamiBeachFoodsProx()
         {
-            miamiBeachFoodsProx.Clear();
             miamiBeachFoodsProx.Add("Cvi.Che 105", 14.1);
             miamiBeachFoodsProx.Add("Pane & Vino La Trattoria", 3.2);
             miamiBeachFoodsProx.Add("La Ventana Colombian Restaurant", 5.0);
@@ -1017,6 +1015,8 @@ namespace _2NiteAHI
         }
 
 
+
+
         //BUTTONS
         //ASCENDING
         private void OnClick_Ascend(object sender, EventArgs e)
@@ -1040,6 +1040,12 @@ namespace _2NiteAHI
                 barListView.ItemsSource = nycbars;
                 nycbarsprox.Clear();
             }
+            else if (locale == 3 && xlocale == 0)
+            {
+                miamiBeachBars = miamiBeachBars.OrderBy(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
+                barListView.ItemsSource = miamiBeachBars;
+                miamiBeachBarsProx.Clear();
+            }
             else if (locale == 0 && xlocale == 2)
             {
                 winterParkFoods = winterParkFoods.OrderBy(i=>i.Value).ToDictionary(i=> i.Key, i => i.Value);
@@ -1058,7 +1064,13 @@ namespace _2NiteAHI
                 barListView.ItemsSource = nycfoods;
                 nycfoodsprox.Clear();
             }
-           
+            else if (locale == 3 && xlocale == 5)
+            {
+                miamiBeachFoods = miamiBeachFoods.OrderBy(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
+                barListView.ItemsSource = miamiBeachFoods;
+                miamiBeachFoodsProx.Clear();
+            }
+
 
         }
             //DESCENDING
@@ -1083,6 +1095,12 @@ namespace _2NiteAHI
                 barListView.ItemsSource = nycbars;
                 nycbarsprox.Clear();
             }
+            else if (locale == 3 && xlocale == 0)
+            {
+                miamiBeachBars = miamiBeachBars.OrderByDescending(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
+                barListView.ItemsSource = miamiBeachBars;
+                miamiBeachBarsProx.Clear();
+            }
             else if (locale == 0 && xlocale == 2)
             {
                 winterParkFoods = winterParkFoods.OrderByDescending(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
@@ -1102,7 +1120,13 @@ namespace _2NiteAHI
                 barListView.ItemsSource = nycfoods;
                 nycfoodsprox.Clear();
             }
-           
+            else if (locale == 3 && xlocale == 5)
+            {
+                miamiBeachFoods = miamiBeachFoods.OrderByDescending(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
+                barListView.ItemsSource = miamiBeachFoods;
+                miamiBeachFoodsProx.Clear();
+            }
+
         }
             //PROXIMITY
         private void OnClick_Proximity(object sender, EventArgs e)
@@ -1143,13 +1167,13 @@ namespace _2NiteAHI
                 nycfoodsprox = nycfoodsprox.OrderBy(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
                 barListView.ItemsSource = nycfoodsprox;
             }
-            else if (locale == 2 && xlocale == 0)
+            else if (locale == 3 && xlocale == 0)
             {
-                BuildMiamiBeachBarsProx();
+                BuildMiamiBeachBars();
                 miamiBeachBarsProx = miamiBeachBarsProx.OrderBy(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
                 barListView.ItemsSource = miamiBeachBarsProx;
             }
-            else if (locale == 2 && xlocale == 4)
+            else if (locale == 3 && xlocale == 5)
             {
                 BuildMiamiBeachFoodsProx();
                 miamiBeachFoodsProx = miamiBeachFoodsProx.OrderBy(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
@@ -1222,7 +1246,7 @@ namespace _2NiteAHI
                 {
                     hasbeen = false;
                     xlocale = 5;
-                    BuildMiamiBeachFood();
+                    BuildMiaBeachFood();
                     miamiBeachFoods = miamiBeachFoods.OrderBy(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
                     barListView.ItemsSource = miamiBeachFoods;
                     restPressed = true;
@@ -1295,7 +1319,7 @@ namespace _2NiteAHI
                 else
                 {
                     xlocale = 0;
-                    BuildMiamiBeachBars();
+                    BuildMiaBeachFood();
                     miamiBeachBars = miamiBeachBars.OrderByDescending(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
                     barListView.ItemsSource = miamiBeachBars;
                     barPressed = true;
