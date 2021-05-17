@@ -35,8 +35,13 @@ namespace _2NiteAHI
         {
             base.OnAppearing();
             await fade.ScaleTo(1, 1000);
-            await fade.ScaleTo(0.5, 1000, Easing.SpringIn);
-            await fade.ScaleTo(50, 800, Easing.BounceOut);
+            await fade.ScaleTo(0.5, 800, Easing.SpringIn);
+            await Task.WhenAny<bool>
+            (
+                fade.ScaleTo(1.2, 700, Easing.BounceOut),
+                fade.RelRotateTo(360, 700, Easing.CubicOut)
+            );
+            await fade.ScaleTo(0.8, 500, Easing.SpringIn);
             Application.Current.MainPage = new NavigationPage(new Login()) 
             { 
                 BarBackgroundColor = Color.Black,
