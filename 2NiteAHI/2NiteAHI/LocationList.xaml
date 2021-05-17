@@ -1,8 +1,8 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="_2NiteAHI.LocationList"
-             Title="2NITE - LOCATION LIST">
+             Title="LOCATION LIST">
 
     <ContentPage.ToolbarItems>
         <ToolbarItem
@@ -14,14 +14,14 @@
     <Grid>
         <Grid.Background>
             <LinearGradientBrush StartPoint="0.8,0" EndPoint="0,0.8">
-                <GradientStop Color="Indigo"  Offset="0.05"/>
-                <GradientStop Color="DarkOrchid" Offset="0.08"/>
-                <GradientStop Color="Indigo"  Offset="0.15"/>
-                <GradientStop Color="DarkBlue" Offset="0.3"/>
-                <GradientStop Color="Blue" Offset="0.5"/>
-                <GradientStop Color="Indigo"  Offset="0.85"/>
-                <GradientStop Color="DarkOrchid" Offset="0.92"/>
-                <GradientStop Color="Indigo"  Offset="0.95"/>
+                <GradientStop Color="{AppThemeBinding Dark=Indigo, Light=LightBlue}"  Offset="0.05"/>
+                <GradientStop Color="{AppThemeBinding Dark=DarkOrchid, Light=violet}" Offset="0.08"/>
+                <GradientStop Color="{AppThemeBinding Dark=Indigo, Light=LightBlue}"  Offset="0.15"/>
+                <GradientStop Color="{AppThemeBinding Dark=DarkBlue, Light=LightBlue}" Offset="0.3"/>
+                <GradientStop Color="{AppThemeBinding Dark=Blue, Light=Violet}" Offset="0.5"/>
+                <GradientStop Color="{AppThemeBinding Dark=Indigo, Light=LightBlue}"  Offset="0.85"/>
+                <GradientStop Color="{AppThemeBinding Dark=DarkOrchid, Light=Violet}" Offset="0.92"/>
+                <GradientStop Color="{AppThemeBinding Dark=Indigo, Light=LightBlue}"  Offset="0.95"/>
             </LinearGradientBrush>
         </Grid.Background>
         <Grid.RowDefinitions>
@@ -40,7 +40,7 @@
             x:Name="UserLocation"
             Text="{Binding MyLocation}"
             FontSize="Medium"
-            TextColor="White"
+            TextColor="{AppThemeBinding Dark=White, Light=Black}"
             Grid.Row="0"
             Grid.Column="0"
             Grid.ColumnSpan="2"
@@ -61,8 +61,8 @@
             HasUnevenRows="True"
             SelectionMode="Single"
             CachingStrategy="RecycleElement"
-            BackgroundColor="Black"
-            SeparatorColor="White">
+            BackgroundColor="{AppThemeBinding Dark=Black, Light=White}"
+            SeparatorColor="{AppThemeBinding Dark=White, Light=Black}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <TextCell
