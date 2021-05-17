@@ -22,8 +22,8 @@ namespace _2NiteAHI
         }
         public void NightTheme_Toggled(object sender, ToggledEventArgs e)
         {
-            if (e.Value){ App.Current.UserAppTheme = OSAppTheme.Dark;}
-            else { App.Current.UserAppTheme = OSAppTheme.Light; }
+            if (e.Value){ App.Current.UserAppTheme = OSAppTheme.Light;}
+            else { App.Current.UserAppTheme = OSAppTheme.Dark; }
         }
     }
 }
