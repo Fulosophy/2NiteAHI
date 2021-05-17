@@ -1,73 +1,85 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="_2NiteAHI.Recovery">
+             x:Class="_2NiteAHI.Recovery"
+             Title="RECOVERY">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            IconImageSource="fire"/>
+        <ToolbarItem 
+            Text="Settings"
+            Clicked="ToolbarItem_Clicked"/>
+    </ContentPage.ToolbarItems>
     <!--PASSWORD RECOVERY PAGE-->
     <Grid>
         <Grid.Background>
             <LinearGradientBrush StartPoint="1,1" EndPoint="0,0">
-                <GradientStop Color="CadetBlue" Offset="0.0"/>
-                <GradientStop Color="Cyan" Offset="0.5"/>
-                <GradientStop Color="DarkBlue" Offset="0.9"/>
+                <GradientStop Color="{AppThemeBinding Dark=CadetBlue, Light=White}" Offset="0.0"/>
+                <GradientStop Color="{AppThemeBinding Dark=Cyan, Light=Violet}" Offset="0.5"/>
+                <GradientStop Color="{AppThemeBinding Dark=DarkBlue, Light=White}" Offset="0.9"/>
             </LinearGradientBrush>
         </Grid.Background>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height=".75*"/>
-            <RowDefinition Height=".5*"/>
-            <RowDefinition Height="1*"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <Label
-            Text="Password Recovery"
-            Grid.Row="0"
-            HorizontalTextAlignment="Center"
-            VerticalTextAlignment="Center"
-            TextColor="White"
-            FontSize="36"
-            Padding="30,0,30,0"/>
-        <Image
-            Source="fire"
-            Grid.Row="1"
-            VerticalOptions="Center"/>
-        <!--Email-->
-        <Label
-            Text="Email"
-            Grid.Row="2"
-            TextColor="Black"
-            FontSize="Small"
-            Padding="50,10,30,0"
-            VerticalOptions="Start"/>
-        <Entry                   
-            x:Name="GetEmail"
-            Grid.Row="2"
-            Text="{Binding rEmail}"
-            Keyboard="Email"
-            BackgroundColor="White"
-            HorizontalOptions="Center"
-            VerticalOptions="End"
-            WidthRequest="300"
-            HeightRequest="50"/>
-        <Button
-            x:Name="rSubmit"
-            Grid.Row="3"
-            HorizontalOptions="Center"
-            BackgroundColor="DarkBlue"
-            TextColor="White"
-            CornerRadius="10"
-            Text="Submit"
-            Margin="15,10"
-            Padding="30,0,30,0"
-            Clicked="PWSubmitClicked"/>
-        <Label
-            Text="*An email will be sent for password recovery"
-            Grid.Row="4"
-            TextColor="Black"
-            FontSize="Small"
-            HorizontalTextAlignment="Center"
-            Padding="30,10,30,0"/>
+        <StackLayout>
+
+            <Label
+                Text="Please enter your email"
+                HorizontalOptions="Start"
+                VerticalOptions="Center"
+                TextColor="Black"
+                FontSize="Medium"
+                FontAttributes="Bold"
+                TextDecorations="Underline"
+                Margin="50,100,0,0"/>
+            <!--EMAIL-->
+            <Entry                   
+                x:Name="GetEmail"
+                Placeholder="EMAIL"
+                ClearButtonVisibility="WhileEditing"
+                Grid.Row="2"
+                Text="{Binding rEmail}"
+                Keyboard="Email"
+                BackgroundColor="White"
+                HorizontalOptions="Center"
+                VerticalOptions="End"
+                WidthRequest="300"
+                HeightRequest="50"
+                Margin="0,0,0,20"
+                TextChanged="Entry_EmailPwdRecovery"/>
+
+            <!--BUTTON-->
+            <Button
+                x:Name="rSubmit"
+                Grid.Row="3"
+                HorizontalOptions="Center"
+                BackgroundColor="DarkBlue"
+                TextColor="White"
+                CornerRadius="10"
+                Text="Submit"
+                Margin="15,10"
+                Padding="30,0,30,0"
+                Clicked="PWSubmitClicked"/>
+
+            <Label
+                Text="THANK YOU FOR USING 2NITE!"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                FontSize="Medium"
+                TextColor="Black"
+                FontAttributes="Bold"
+                Margin="0,100,0,0"/>
+
+            <!--BACK TO LOGIN-->
+            <Button
+                x:Name="goToLogin"
+                Grid.Row="3"
+                HorizontalOptions="Center"
+                BackgroundColor="DarkGoldenrod"
+                TextColor="Black"
+                CornerRadius="10"
+                Text="Go To Login"
+                Margin="15,10"
+                Padding="30,0,30,0"
+                Clicked="rLoginClicked"/>
+        </StackLayout>
     </Grid>
 </ContentPage>

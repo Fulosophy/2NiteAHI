@@ -1,83 +1,97 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:map="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps" xmlns:maps="clr-namespace:Xamarin.Essentials;assembly=Xamarin.Essentials"
-             x:Class="_2NiteAHI.Settings">
-
-
-
-
-
-
+             x:Class="_2NiteAHI.Settings"
+             Title="Settings">
+    
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            IconImageSource="fire"/>
+    </ContentPage.ToolbarItems>
+    
     <Grid RowSpacing="0" ColumnSpacing="0">
-
-
         <Grid.Background>
-            <LinearGradientBrush StartPoint="1,1" EndPoint="0,0">
+            <LinearGradientBrush StartPoint="1,0" EndPoint="0,1">
                 <!--<GradientStop Color="Aquamarine" Offset="0.0"/>-->
-                <GradientStop Color="CadetBlue" Offset="0.0"/>
-                <GradientStop Color="Cyan" Offset="0.5"/>
-                <GradientStop Color="DarkBlue" Offset="0.9"/>
+                <GradientStop Color="{AppThemeBinding Dark=CadetBlue, Light=White}" Offset="0.2"/>
+                <GradientStop Color="{AppThemeBinding Dark=Cyan, Light=Violet}" Offset="0.5"/>
+                <GradientStop Color="{AppThemeBinding Dark=DarkBlue, Light=White}" Offset="0.70"/>
             </LinearGradientBrush>
         </Grid.Background>
-
-       
-            <Grid.RowDefinitions>
-             <!--User Settings-->
-            <RowDefinition Height="2*"/> <!--GPS LOCATION-->
-            <RowDefinition Height="2*"/> <!--NightTheme-->
-            <RowDefinition Height="3*"/>
-            <RowDefinition Height="4*"/>
-            <RowDefinition Height="2*"/>
-           
-            <!--Switches-->
-            <RowDefinition Height="11*"/> 
-            <RowDefinition Height="10*"/>
-            <RowDefinition Height="10*"/>
-            <RowDefinition Height="9*"/>
-            <RowDefinition Height="1*"/>
-          
-        </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
-        </Grid.ColumnDefinitions>
         
-        <!--USER SETTINGS-->
-        <Label Text="User Settings" TextColor="DarkGoldenrod"  Grid.Row="0" Grid.Column="0" FontSize="Medium"/>
-        
-        <!--GPS LOCATION--> <!--Location Services-->
-        <Switch x:Name="GPSLOC" IsToggled="False" Grid.Row="1" Grid.Column="1" Toggled="GPSLOC_Toggled" />
-        <Label Text="GPS Location" Grid.Row="1" Grid.Column="0" TextColor="White"  HorizontalOptions="Start" VerticalOptions="Center" Padding="20,0,30,0" FontSize="Medium"/>
-        <!--NIGHTTIME THEME-->
-        <Switch x:Name="NightTheme" IsToggled="False" Grid.Row="2" Grid.Column="1" VerticalOptions="Center" Toggled="NightTheme_Toggled" />
-        <Label Text="Night Theme" Grid.Row="2" Grid.Column="0" TextColor="White"  VerticalOptions="Center" Padding="20,1,30,0" FontSize="Medium"/>
-        
-        <!--Personal Information-->
-        <Label Text="Personal Information" Grid.Row="3" Grid.Column="0" TextColor="DarkGoldenrod" FontSize="Medium"/>
-        <!--USERNAME-->
-        <Label Text="USERNAME: " Grid.Row="4" Grid.Column="0" FontSize="Medium"/>
-        <Label Text="EMAIL: " Grid.Row="5" Grid.Column="0" FontSize="Medium"/>
-        
+        <StackLayout
+            Padding="50,10,50,0">
+        <!--USER-->
+            <Label
+                Text="USER INFO"
+                TextColor="Black"
+                FontSize="Large"
+                FontAttributes="Bold"
+                TextDecorations="Underline"
+                HorizontalOptions="CenterAndExpand"/>
+            
+            <!--USER EMAIL-->
+            <Label
+                Text="Email"
+                TextColor="Black"
+                FontSize="Medium"
+                Padding="0,10,0,0"/>
+            <Label
+                Text="{Binding _Email}"
+                TextColor="Black"
+                FontSize="Medium"
+                HorizontalTextAlignment="Center"
+                FontAttributes="Bold"
+                BackgroundColor="Gainsboro"/>
+            
+            <!--USER USERNAME-->
+            <Label
+                Text="Username"
+                TextColor="Black"
+                FontSize="Medium"
+                Padding="0,10,0,0"/>
+            <Label
+                Text="{Binding _Username}"
+                TextColor="Black"
+                FontSize="Medium"
+                HorizontalTextAlignment="Center"
+                FontAttributes="Bold"
+                BackgroundColor="Gainsboro"/>
 
+            <!--USER PHONE NUMBER-->
+            <Label
+                Text="Phone Number"
+                TextColor="Black"
+                FontSize="Medium"
+                Padding="0,10,0,0"/>
+            <Label    
+                Text="{Binding _PhoneNumber}"
+                TextColor="Black"
+                FontSize="Medium"
+                HorizontalTextAlignment="Center"
+                FontAttributes="Bold"
+                BackgroundColor="Gainsboro"/>
 
+            <!--THEME-->
+            <Label
+                Text="OPTIONS"
+                TextColor="Black"
+                HorizontalOptions="CenterAndExpand"
+                Padding="0,20,0,0"
+                FontSize="Title"
+                FontAttributes="Bold"
+                TextDecorations="Underline"/>
+            <Label
+                Text="Day/Night Theme"
+                TextColor="{AppThemeBinding Dark=White, Light=Black}"
+                FontSize="Medium"
+                Padding="0,10,0,0"/>
+            <Switch
+                x:Name="ThemeSwitch"
+                IsToggled="{Binding NightTheme}"
+                Toggled="NightTheme_Toggled"/>
 
-
-
-
-
-
-
-
-
-
-
-
-
+        </StackLayout>
     </Grid>
-    
-    
-  
-    
-    
 </ContentPage>

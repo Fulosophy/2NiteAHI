@@ -1,44 +1,29 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using Xamarin.Essentials;
-using System.Threading;
-using Xamarin.Forms.Maps;
-using GoogleApi;
-using GoogleApi.Entities.Places;
 
 namespace _2NiteAHI
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-public partial class Settings : ContentPage
-{
-    public Settings()
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class Settings : ContentPage
     {
-        InitializeComponent();
-    }
+        public string _Email { get; set; }
+        public string _Username { get; set; }
+        public string _PhoneNumber { get; set; }
 
-   
-    
-
-        private void GPSLOC_Toggled(object sender, ToggledEventArgs e)
+        public Settings()
         {
-           
-            if (GPSLOC.IsToggled == false)
-            {
-               // logic here to disable GPS LOCATION
-            }
+            InitializeComponent();
+            _Email = App.email;
+            _Username = App.username;
+            _PhoneNumber = App.phoneNumber;
+            BindingContext = this;
         }
-
-        private void NightTheme_Toggled(object sender, ToggledEventArgs e)
+        public void NightTheme_Toggled(object sender, ToggledEventArgs e)
         {
-            if (NightTheme.IsToggled == false)
-            {
-                // logic here to change to NIGHTTIME THEME
-            }
+            if (e.Value){ App.Current.UserAppTheme = OSAppTheme.Light;}
+            else { App.Current.UserAppTheme = OSAppTheme.Dark; }
         }
     }
 }
