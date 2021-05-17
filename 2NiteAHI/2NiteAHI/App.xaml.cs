@@ -1,7 +1,4 @@
-﻿using System;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
-using Xamarin.Essentials;
 
 namespace _2NiteAHI
 {
@@ -10,6 +7,7 @@ namespace _2NiteAHI
         public static string username, pwd, email, phoneNumber;
         public App()
         {
+            App.Current.UserAppTheme = OSAppTheme.Dark;
             InitializeComponent();
 
             username = "FSU";
