@@ -100,7 +100,7 @@
                 Text="Submit"
                 HorizontalOptions="Center"
                 VerticalOptions="End"
-                BackgroundColor="{AppThemeBinding Dark=Blue, Light=Red}"
+                BackgroundColor="{AppThemeBinding Dark=Black, Light=Red}"
                 TextColor="{AppThemeBinding Dark=White, Light=Black}"
                 Margin="15,10"
                 CornerRadius="10"
