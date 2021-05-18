@@ -17,7 +17,7 @@
         <Label
             Text="2Nite Account Register"
             HorizontalTextAlignment="Center"
-            TextColor="White" 
+            TextColor="{AppThemeBinding Dark=white, Light=Black}" 
             FontSize="36"
             Padding="0,20,0,20"/>
        
@@ -26,7 +26,7 @@
             x:Name="GetEmail"
             Placeholder="Email"
             Keyboard="Email"
-            BackgroundColor="Gainsboro"
+            BackgroundColor="{AppThemeBinding Dark=Gainsboro, Light=Black}"
             HorizontalOptions="Center"
             WidthRequest="300"
             Margin="20,10"/>
@@ -36,7 +36,7 @@
             x:Name="GetUsername"
             Placeholder="Username"
             Keyboard="Text"
-            BackgroundColor="Gainsboro"
+            BackgroundColor="{AppThemeBinding Dark=Gainsboro, Light=Black}"
             HorizontalOptions="Center"
             WidthRequest="300"
             Margin="10,10"/>
@@ -47,7 +47,7 @@
             Placeholder="Password"
             Keyboard="Text"
             MaxLength="12"
-            BackgroundColor="Gainsboro"
+            BackgroundColor="{AppThemeBinding Dark=Gainsboro, Light=Black}"
             HorizontalOptions="Center"
             WidthRequest="300"
             Margin="10,10"/>
@@ -58,7 +58,7 @@
             Placeholder="Confirm Password"
             Keyboard="Text"
             MaxLength="12"
-            BackgroundColor="Gainsboro"
+            BackgroundColor="{AppThemeBinding Dark=Gainsboro, Light=Black}"
             HorizontalOptions="Center"
             WidthRequest="300"
             Margin="10,10"/>
@@ -68,7 +68,7 @@
             x:Name="PwMismatchWarn" 
             Text="" 
             IsVisible="False" 
-            TextColor="Blue" 
+            TextColor="{AppThemeBinding Dark=Blue, Light=Cyan}" 
             FontSize="15" 
             BackgroundColor="Transparent" 
             FlexLayout.AlignSelf="End"/>
@@ -79,7 +79,7 @@
             Placeholder="Phone Number"
             Keyboard="Telephone"
             MaxLength="10"
-            BackgroundColor="Gainsboro"
+            BackgroundColor="{AppThemeBinding Dark=Gainsboro, Light=Black}"
             HorizontalOptions="Center"
             WidthRequest="300"
             Margin="10,10"/>
@@ -88,7 +88,7 @@
         <Label 
             x:Name="NumberNotValid" 
             Text="" IsVisible="False" 
-            TextColor="Blue" 
+            TextColor="{AppThemeBinding Dark=Blue, Light=Cyan}" 
             FontSize="15" 
             BackgroundColor="Transparent" 
             FlexLayout.AlignSelf="End"/>
@@ -108,7 +108,7 @@
                 <FormattedString>
                     <FormattedString.Spans>
                         <Span Text="Learn more at "/>
-                        <Span Text="https://2Nite-Usage" FontAttributes="Bold" TextColor="Blue"/>
+                            <Span Text="https://2Nite-Usage" FontAttributes="Bold" TextColor="{AppThemeBinding Dark=Blue, Light=Cyan}"/>
                     </FormattedString.Spans>
                 </FormattedString>
             </Label.FormattedText>

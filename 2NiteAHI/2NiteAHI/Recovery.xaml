@@ -26,7 +26,7 @@
             Grid.Row="0"
             HorizontalTextAlignment="Center"
             VerticalTextAlignment="Center"
-            TextColor="White"
+            TextColor="{AppThemeBinding Dark=white, Light=Black}"
             FontSize="36"
             Padding="30,0,30,0"/>
         <Image
@@ -37,7 +37,7 @@
         <Label
             Text="Email"
             Grid.Row="2"
-            TextColor="Black"
+            TextColor="{AppThemeBinding Dark=Black, Light=White}"
             FontSize="Small"
             Padding="50,10,30,0"
             VerticalOptions="Start"/>
@@ -46,7 +46,7 @@
             Grid.Row="2"
             Text="{Binding rEmail}"
             Keyboard="Email"
-            BackgroundColor="White"
+            BackgroundColor="{AppThemeBinding Dark=white, Light=Black}"
             HorizontalOptions="Center"
             VerticalOptions="End"
             WidthRequest="300"
@@ -55,8 +55,8 @@
             x:Name="rSubmit"
             Grid.Row="3"
             HorizontalOptions="Center"
-            BackgroundColor="DarkBlue"
-            TextColor="White"
+            BackgroundColor="{AppThemeBinding Dark=DarkBlue, Light=lightblue}"
+            TextColor="{AppThemeBinding Dark=white, Light=Black}"
             CornerRadius="10"
             Text="Submit"
             Margin="15,10"
@@ -65,7 +65,7 @@
         <Label
             Text="*An email will be sent for password recovery"
             Grid.Row="4"
-            TextColor="Black"
+            TextColor="{AppThemeBinding Dark=Black, Light=white}"
             FontSize="Small"
             HorizontalTextAlignment="Center"
             Padding="30,10,30,0"/>

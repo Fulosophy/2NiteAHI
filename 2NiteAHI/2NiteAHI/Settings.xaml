@@ -81,7 +81,7 @@
 
         <!--NIGHTTIME THEME-->
         <Label 
-            Text="Day/Nite Mode" 
+            Text="Nite Mode" 
             Grid.Row="2" 
             Grid.Column="0" 
             TextColor="{AppThemeBinding Dark=YELLOW, Light=DarkBlue}" 
@@ -91,7 +91,7 @@
             Padding="70,1,30,0" 
             FontSize="Title"/>
         <Switch 
-            x:Name="Day/Nite Mode" 
+            x:Name="Nite Mode" 
             IsToggled="{Binding NightTheme}" 
             Grid.Row="2" 
             Grid.Column="1" 
@@ -129,7 +129,7 @@
             HorizontalOptions="Start"
             WidthRequest="100"
             Margin="0,0,30,0"
-            BackgroundColor="Gainsboro"/>
+            BackgroundColor="{AppThemeBinding Dark=Gainsboro, Light=Gainsboro}"/>
         <Label
             Text="Bar Or Food"
             Grid.Row="5"
@@ -147,7 +147,7 @@
             HorizontalOptions="Start"
             WidthRequest="100"
             Margin="0,0,30,0"
-            BackgroundColor="Gainsboro"/>
+            BackgroundColor="{AppThemeBinding Dark=Gainsboro, Light=Gainsboro}"/>
 
 
         <!--Next Expansion  Personal Information
