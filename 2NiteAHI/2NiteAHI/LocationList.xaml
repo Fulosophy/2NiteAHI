@@ -51,7 +51,7 @@
         <Label
             Text="2Nite"
             FontSize="Title"
-            TextColor="White"
+            TextColor="{AppThemeBinding Dark=white, Light=black}"
             TextDecorations="Underline"
             FontAttributes="Bold"
             Grid.Row="0"
@@ -64,7 +64,7 @@
             x:Name="UserLocation"
             Text="{Binding MyLocation}"
             FontSize="Medium"
-            TextColor="White"
+            TextColor="{AppThemeBinding Dark=white, Light=black}"
             Grid.Row="0"
             Grid.Column="0"
             Grid.ColumnSpan="2"
@@ -85,19 +85,19 @@
             HasUnevenRows="True"
             SelectionMode="Single"
             CachingStrategy="RecycleElement"
-            BackgroundColor="Black"
-            SeparatorColor="White"/>
+            BackgroundColor="{AppThemeBinding Dark=Black, Light=White}"
+            SeparatorColor="{AppThemeBinding Dark=White, Light=Black}"/>
         <!--Descending order button-->
         <Button
             Text="DESC"
-            TextColor="Yellow"
+            TextColor="{AppThemeBinding Dark=Yellow, Light=Purple}"
             FontSize="Micro"
             FontAttributes="Bold"
             Grid.Row="5"
             Grid.Column="1"
             VerticalOptions="Center"
             HorizontalOptions="End"
-            BackgroundColor="Gray"
+            BackgroundColor="{AppThemeBinding Dark=Gray, Light=Black}"
             HeightRequest="30"
             WidthRequest="90"
             Margin="0,0,20,0"
@@ -106,14 +106,14 @@
         <!--Ascending order button-->
         <Button
             Text="ASC"
-            TextColor="Ivory"
+            TextColor="{AppThemeBinding Dark=Ivory, Light=Black}"
             FontSize="Micro"
             FontAttributes="Bold"
             Grid.Row="5"
             Grid.Column="0"
             VerticalOptions="Center"
             HorizontalOptions="Start"
-            BackgroundColor="Gray"
+            BackgroundColor="{AppThemeBinding Dark=Gray, Light=Black}"
             HeightRequest="30"
             WidthRequest="90"
             Margin="20,0,0,0"
@@ -132,7 +132,7 @@
         <!--Peace out button for checking out of a location-->
         <Button
             Text="PEACE-OUT"
-            TextColor="white"
+            TextColor="{AppThemeBinding Dark=white, Light=Black}"
             FontAttributes="Bold"
             FontSize="Medium"
             Grid.Row="5"
@@ -140,7 +140,7 @@
             Grid.ColumnSpan="2"
             VerticalOptions="Center"
             HorizontalOptions="Center"
-            BackgroundColor="DarkRed"
+            BackgroundColor="{AppThemeBinding Dark=DarkRed, Light=lightred}"
             HeightRequest="50"
             WidthRequest="150"
             Margin="0,0,0,0"

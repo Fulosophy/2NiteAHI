@@ -41,25 +41,25 @@
                 <Label
                     x:Name="Email"
                     Text="Email"
-                    TextColor="White"/>
+                    TextColor="{AppThemeBinding Dark=White, Light=Black}"/>
                 <Entry
                     x:Name="GetEmail"
                     Text="{Binding Email}"
                     Keyboard="Email"
                     WidthRequest="300"
-                    BackgroundColor="#086ef4"/>
+                    BackgroundColor="{AppThemeBinding Dark=#086ef4, Light=cyan}"/>
             </StackLayout>
             <StackLayout>
                 <Label
                     x:Name="Password"
                     Text="Password"
-                    TextColor="White"/>
+                    TextColor="{AppThemeBinding Dark=white, Light=Black}"/>
                 <Entry
                     x:Name="GetPassword"
                     Text="{Binding Password}"
                     WidthRequest="300"
                     IsPassword="True"
-                    BackgroundColor="#086ef4"  />
+                    BackgroundColor="{AppThemeBinding Dark=#086ef4, Light=Cyan}"  />
             </StackLayout>
         </StackLayout>
         <!--Buttons-->
@@ -74,7 +74,7 @@
                 Grid.Row="1"
                 Grid.ColumnSpan="2"
                 Text="Forgot Your Password?"
-                TextColor="White"
+                TextColor="{AppThemeBinding Dark=white, Light=Black}"
                 BackgroundColor="Transparent"
                 HorizontalOptions="Center"
                 HeightRequest="35"
@@ -84,7 +84,7 @@
                 Grid.Row="1"
                 Grid.ColumnSpan="2"
                 Text="Need an Account?"
-                TextColor="White"
+                TextColor="{AppThemeBinding Dark=white, Light=Black}"
                 BackgroundColor="Transparent"
                 HorizontalOptions="Center"
                 HeightRequest="35"
@@ -96,8 +96,8 @@
                 Text="Submit"
                 HorizontalOptions="Center"
                 VerticalOptions="End"
-                BackgroundColor="#086ef4"
-                TextColor="White"
+                BackgroundColor="{AppThemeBinding Dark=#086ef4, Light=Cyan}"
+                TextColor="{AppThemeBinding Dark=white, Light=Black}"
                 Margin="15,10"
                 CornerRadius="10"
                 BorderColor="Transparent"
