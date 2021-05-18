@@ -527,9 +527,6 @@ namespace _2NiteAHI
                         IsSoRefreshing = false;
                         miamiBeachFoodsProx.Clear();
                     }
-
-
-
                 });
             }
         }
@@ -573,52 +570,6 @@ namespace _2NiteAHI
             nycbars.Add("Mom's Kitchen & Bar", rng.Next() % 150);
 
         }
-        private void Buildnycfoods()
-        {
-            nycfoods.Clear();
-            nycfoods.Add("Authentic NYC Street Food", rng.Next() % 150);
-            nycfoods.Add("Cantina Rooftop", rng.Next() % 150);
-            nycfoods.Add("Cook Unity", rng.Next() % 150);
-            nycfoods.Add("Burger Shot Beer", rng.Next() % 150);
-            nycfoods.Add("Taboon", rng.Next() % 150);
-            nycfoods.Add("Mamasita Grill", rng.Next() % 150);
-            nycfoods.Add("Le Soleil", rng.Next() % 150);
-            nycfoods.Add("Justino's Pizza", rng.Next() % 150);
-            nycfoods.Add("Fogon's", rng.Next() % 150);
-
-        }
-        private void BuildnycBarsProx()
-        {
-            nycbarsprox.Clear();
-            nycbarsprox.Add("The Jeffery Craft", "1523 meters away!");
-            nycbarsprox.Add("Mercury Bar West", "1907 meters away!");
-            nycbarsprox.Add("Down The Road Sports Bar", "1735 meters away!");
-            nycbarsprox.Add("The House Of Brews", "1804 meters away!");
-            nycbarsprox.Add("Deacon Brodie's Tavern", "1877 meters away!");
-            nycbarsprox.Add("Wine Escape", "2035 meters away!") ;
-            nycbarsprox.Add("Dalton's Bar & Grill", "2085 meters away!");
-            nycbarsprox.Add("Dave's Tavern", "2223 meters away!");
-            nycbarsprox.Add("Scruffy Duffy's Bar", "2048 meters away!");
-            nycbarsprox.Add("The Press Lounge", "2028 meters away!");
-            nycbarsprox.Add("Mom's Kitchen & Bar", "1709 meters away!");
-
-        }
-        private void BuildnycFoodProx()
-        {
-            nycfoodsprox.Clear();
-            nycfoodsprox.Add("Authentic NYC Street Food", "2172 meters away! ");
-            nycfoodsprox.Add("Cantina Rooftop", "2014 meters away!");
-            nycfoodsprox.Add("Mamasitas Grill", "1314 meters away!");
-            nycfoodsprox.Add("Cook Unity", "1803 meters away!");
-            nycfoodsprox.Add("Burger Shot Beer", "1675 meters away!");
-            nycfoodsprox.Add("Taboon", "1573 meters away! ");
-            nycfoodsprox.Add("Le Soleil", "1395 meters away!");
-            nycfoodsprox.Add("Justino's Pizza", "1247 meters away!");
-            nycfoodsprox.Add("Fogon's", "1174 meters away!");
-
-
-
-        }
         private void BuildBoiseBars()
         {
             boiseBars.Clear();
@@ -657,6 +608,61 @@ namespace _2NiteAHI
             boiseBars.Add("Dirty Little Roddy's", rng.Next() % 150); 
             boiseBars.Add("Amsterdam Lounge", rng.Next() % 150);
         }
+        private void BuildMiamiBeachBars()
+        {
+            miamiBeachBars.Add("Cafe Prima Pasta", rng.Next() % 150);
+            miamiBeachBars.Add("The Tarern", rng.Next() % 150);
+            miamiBeachBars.Add("Bolivar Resturant Bar Lounge", rng.Next() % 150);
+            miamiBeachBars.Add("Maxine's Bistro and Bar", rng.Next() % 150);
+            miamiBeachBars.Add("TGI Fridays", rng.Next() % 150);
+            miamiBeachBars.Add("The Place", rng.Next() % 150);
+            miamiBeachBars.Add("Finnegan's Way", rng.Next() % 150);
+            miamiBeachBars.Add("Monty's Sunset", rng.Next() % 150);
+            miamiBeachBars.Add("Norman's", rng.Next() % 150);
+            miamiBeachBars.Add("Moreno's Cuba", rng.Next() % 150);
+            miamiBeachBars.Add("Yard House", rng.Next() % 150);
+            miamiBeachBars.Add("27 Restaurant & Bar", rng.Next() % 150);
+            miamiBeachBars.Add("Broken Shaker", rng.Next() % 150);
+            miamiBeachBars.Add("Bleau Bar", rng.Next() % 150);
+            miamiBeachBars.Add("Wet Willie's", rng.Next() % 150);
+            miamiBeachBars.Add("Segafredo L'Originale", rng.Next() % 150);
+            miamiBeachBars.Add("Sweet Liberty Drinks & Supply Company", rng.Next() % 150);
+            miamiBeachBars.Add("Clevelander Bar", rng.Next() % 150);
+            miamiBeachBars.Add("Nautilus Bar & Grill ", rng.Next() % 150);
+            miamiBeachBars.Add("Blue Ribbon Sushi Bar & Grill", rng.Next() % 150);
+            miamiBeachBars.Add("Mac’s Club Deuce", rng.Next() % 150);
+            miamiBeachBars.Add("Abbey Brewing Company", rng.Next() % 150);
+            miamiBeachBars.Add("Twist", rng.Next() % 150);
+            miamiBeachBars.Add("Palace Bar LLC", rng.Next() % 150);
+            miamiBeachBars.Add("Kansas Bar & Grill", rng.Next() % 150);
+            miamiBeachBars.Add("Playwright Irish Pub", rng.Next() % 150);
+            miamiBeachBars.Add("Tavern at Oceanside", rng.Next() % 150);
+            miamiBeachBars.Add("Venezia Grill Pizzeria Bar", rng.Next() % 150);
+            miamiBeachBars.Add("Espanola Cigar Bar", rng.Next() % 150);
+            miamiBeachBars.Add("The Regent Cocktail Club", rng.Next() % 150);
+            miamiBeachBars.Add("Vanilla Cafe", rng.Next() % 150);
+            miamiBeachBars.Add("Bungalow By The Sea", rng.Next() % 150);
+            miamiBeachBars.Add("Bar Collins", rng.Next() % 150);
+            miamiBeachBars.Add("Living Room Lounge", rng.Next() % 150);
+            miamiBeachBars.Add("Tantra", rng.Next() % 150);
+            miamiBeachBars.Add("High Tide", rng.Next() % 150);
+            miamiBeachBars.Add("Mike's At Venetia", rng.Next() % 150);
+            miamiBeachBars.Add("Lost Weekend", rng.Next() % 150);
+            miamiBeachBars.Add("Bay Club", rng.Next() % 150);
+            miamiBeachBars.Add("Drunk Bitch", rng.Next() % 150);
+            miamiBeachBars.Add("South Pointe Tavern", rng.Next() % 150);
+            miamiBeachBars.Add("Sky Bar At Shore Club South Beach", rng.Next() % 150);
+            miamiBeachBars.Add("Kill Your Idol ", rng.Next() % 150);
+            miamiBeachBars.Add("Miami Clubs", rng.Next() % 150);
+            miamiBeachBars.Add("Mynt Lounge", rng.Next() % 150);
+            miamiBeachBars.Add("Hyde Beach", rng.Next() % 150);
+            miamiBeachBars.Add("Riki Tiki Bar and Grill", rng.Next() % 150);
+            miamiBeachBars.Add("El Grito", rng.Next() % 150);
+            miamiBeachBars.Add("Margarita Beach Club", rng.Next() % 150);
+            miamiBeachBars.Add("Palace", rng.Next() % 150);
+
+        }
+
             //PROXIMITY OF BARS
         private void BuildWinParkBarsProx()
         {
@@ -718,8 +724,7 @@ namespace _2NiteAHI
             boiseBarsProx.Add("Dirty Little Roddy's", 0.1703); 
             boiseBarsProx.Add("Amsterdam Lounge", 0.1907);
         }
-            //FOODS
-        private void BuildWinterParkFoods()
+        private void BuildnycBarsProx()
         {
             winterParkFoods.Clear();
             winterParkFoods.Add("Chili's Bar & Grill", rng.Next() % 150); 
@@ -957,8 +962,81 @@ namespace _2NiteAHI
 
 
         }
+        private void Buildnycfoods()
+        {
+            nycfoods.Clear();
+            nycfoods.Add("Authentic NYC Street Food", rng.Next() % 150);
+            nycfoods.Add("Cantina Rooftop", rng.Next() % 150);
+            nycfoods.Add("Cook Unity", rng.Next() % 150);
+            nycfoods.Add("Burger Shot Beer", rng.Next() % 150);
+            nycfoods.Add("Taboon", rng.Next() % 150);
+            nycfoods.Add("Mamasita Grill", rng.Next() % 150);
+            nycfoods.Add("Le Soleil", rng.Next() % 150);
+            nycfoods.Add("Justino's Pizza", rng.Next() % 150);
+            nycfoods.Add("Fogon's", rng.Next() % 150);
+
+        }
+
+            //PROXIMITY OF FOODS
+        private void BuildWinParkFoodsProx()
+        {
+            winParkFoodsProx.Clear();
+            winParkFoodsProx.Add(" Chili's Bar & Grill ", 0.5835);
+            winParkFoodsProx.Add("Firehouse Subs", 0.5540);
+            winParkFoodsProx.Add("Arooga's", 0.5303);
+            winParkFoodsProx.Add("Chewy Boba", 0.6737);
+            winParkFoodsProx.Add("Steak 'n Shake", 0.8633);
+            winParkFoodsProx.Add("El Pueblo Mexicqan", 1.4230);
+            winParkFoodsProx.Add("Luke's Kitchen and Bar", 6.7470);
+            winParkFoodsProx.Add("Buffalo Wild WIngs", 6.2890);
+            winParkFoodsProx.Add("BJ's Restaurant and Brewhouse", 9.1900);
+            winParkFoodsProx.Add("Don Julio Mexican Kitchen and Tequila Bar", 7.1960);
+            winParkFoodsProx.Add("Texas Roadhous", 4.8070);
+            winParkFoodsProx.Add("Starbucks", 1.2130);
+            winParkFoodsProx.Add("Sonny's BBQ", 0.1739);
+            winParkFoodsProx.Add("Gator's Dockside", 3.9420);
+            winParkFoodsProx.Add("Cork & Plate", 4.0180);
+            winParkFoodsProx.Add("La Placita 19'", 0.3135);
+            winParkFoodsProx.Add("Rincon Latino", 0.4204);
+            winParkFoodsProx.Add("Fire on the Bayou", 6.2520);
+            winParkFoodsProx.Add("Thirsty Gator", 1.9780);
+        }
+        private void BuildBoiseFoodsProx()
+        {
+            boiseFoodsProx.Clear();
+            boiseFoodsProx.Add("Del Taco",0.9709);
+            boiseFoodsProx.Add("Meraki Greek Street Food",0.2481);
+            boiseFoodsProx.Add("Trillium Restaurant",0.1435);
+            boiseFoodsProx.Add("Boise Fry Company",0.3768);
+            boiseFoodsProx.Add("Bittercreek Alehouse",0.3981);
+            boiseFoodsProx.Add("Eureka",0.4533);
+            boiseFoodsProx.Add("Chandlers Prime Steaks & Seafood",0.4253);
+            boiseFoodsProx.Add("Manfred’s Kitchen",0.6363);
+            boiseFoodsProx.Add("Owyhee Tavern	Steakhouse",0.6258);
+            boiseFoodsProx.Add("Bombay Grill",0.4976);
+            boiseFoodsProx.Add("Txikitea",0.9841);
+            boiseFoodsProx.Add("KIN",0.4279);
+            boiseFoodsProx.Add("Main Street Deli",0.4157);
+            boiseFoodsProx.Add("Fork",0.3662);
+            boiseFoodsProx.Add("Even Stevens Sandwiches",0.4837);
+            boiseFoodsProx.Add("Lucky Fins Seafood Grill",0.2793);
+        }
+        private void BuildnycFoodProx()
+        {
+            nycfoodsprox.Clear();
+            nycfoodsprox.Add("Authentic NYC Street Food", "2172 meters away! ");
+            nycfoodsprox.Add("Cantina Rooftop", "2014 meters away!");
+            nycfoodsprox.Add("Mamasitas Grill", "1314 meters away!");
+            nycfoodsprox.Add("Cook Unity", "1803 meters away!");
+            nycfoodsprox.Add("Burger Shot Beer", "1675 meters away!");
+            nycfoodsprox.Add("Taboon", "1573 meters away! ");
+            nycfoodsprox.Add("Le Soleil", "1395 meters away!");
+            nycfoodsprox.Add("Justino's Pizza", "1247 meters away!");
+            nycfoodsprox.Add("Fogon's", "1174 meters away!");
 
 
+
+        }
         private void BuildMiamiBeachFoodsProx()
         {
             miamiBeachFoodsProx.Clear();
@@ -1011,7 +1089,7 @@ namespace _2NiteAHI
         }
 
         //BUTTONS
-        //ASCENDING
+            //ASCENDING
         private void OnClick_Ascend(object sender, EventArgs e)
         {
             //OrderBy Value
@@ -1327,7 +1405,7 @@ namespace _2NiteAHI
 
             }
         }
-        //PEACE-OUT
+            //PEACE-OUT
         private async void OnClick_Peace(object sender, EventArgs e)
         {
             if(locale == 0 && xlocale == 0)
