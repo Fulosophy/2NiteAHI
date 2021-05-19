@@ -42,7 +42,7 @@ namespace _2NiteAHI
                 fade.RelRotateTo(360, 700, Easing.CubicOut)
             );
             await fade.ScaleTo(0.8, 500, Easing.SpringIn);
-            Application.Current.MainPage = new NavigationPage(new Login()) 
+            Application.Current.MainPage = new NavigationPage(new PrivacyPolicy()) 
             { 
                 BarBackgroundColor = Color.Black,
                 BarTextColor = Color.DarkOrchid

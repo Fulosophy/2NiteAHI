@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using System.IO;
+using System.Linq;
 
 //accidental merges suck.. a lot...
 namespace _2NiteAHI
@@ -9,10 +11,17 @@ namespace _2NiteAHI
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 public partial class Login : ContentPage
 {
-    public string userSel, pwdSel;
+       
+   public string userSel, pwdSel;
+       
+
+
     public Login()
     {
+         
         InitializeComponent();
+        
+
     }
         async void ForgotButtonClicked(object sender, EventArgs e) { await Navigation.PushAsync(new Recovery()); }
         async void RegButtonClicked(object sender, EventArgs e) { await Navigation.PushAsync(new Register()); }
