@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8" ?>
+
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:map="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps" xmlns:maps="clr-namespace:Xamarin.Essentials;assembly=Xamarin.Essentials"
              x:Class="_2NiteAHI.Settings"
              Title="Settings">
-    
+
     <ContentPage.ToolbarItems>
         <ToolbarItem
             IconImageSource="fire"/>
     </ContentPage.ToolbarItems>
-    
+
     <Grid RowSpacing="0" ColumnSpacing="0">
         <Grid.Background>
             <LinearGradientBrush StartPoint="1,0" EndPoint="0,1">
@@ -19,10 +20,9 @@
                 <GradientStop Color="{AppThemeBinding Dark=DarkBlue, Light=White}" Offset="0.70"/>
             </LinearGradientBrush>
         </Grid.Background>
-        
         <StackLayout
             Padding="50,10,50,0">
-        <!--USER-->
+            <!--USER-->
             <Label
                 Text="USER INFO"
                 TextColor="Black"
@@ -30,7 +30,7 @@
                 FontAttributes="Bold"
                 TextDecorations="Underline"
                 HorizontalOptions="CenterAndExpand"/>
-            
+
             <!--USER EMAIL-->
             <Label
                 Text="Email"
@@ -44,7 +44,7 @@
                 HorizontalTextAlignment="Center"
                 FontAttributes="Bold"
                 BackgroundColor="Gainsboro"/>
-            
+
             <!--USER USERNAME-->
             <Label
                 Text="Username"
@@ -65,7 +65,7 @@
                 TextColor="Black"
                 FontSize="Medium"
                 Padding="0,10,0,0"/>
-            <Label    
+            <Label   
                 Text="{Binding _PhoneNumber}"
                 TextColor="Black"
                 FontSize="Medium"
@@ -73,25 +73,66 @@
                 FontAttributes="Bold"
                 BackgroundColor="Gainsboro"/>
 
-            <!--THEME-->
+            <!--OPTIONS TITLE-->
             <Label
                 Text="OPTIONS"
                 TextColor="Black"
                 HorizontalOptions="CenterAndExpand"
-                Padding="0,20,0,0"
+                Padding="0,30,0,0"
                 FontSize="Title"
                 FontAttributes="Bold"
                 TextDecorations="Underline"/>
-            <Label
-                Text="Day/Night Theme"
-                TextColor="{AppThemeBinding Dark=White, Light=Black}"
-                FontSize="Medium"
-                Padding="0,10,0,0"/>
-            <Switch
-                x:Name="ThemeSwitch"
-                IsToggled="{Binding NightTheme}"
-                Toggled="NightTheme_Toggled"/>
 
+            <!--THEME-->
+            <StackLayout Orientation="Horizontal">
+                <Label
+                    Text="Day/Night Theme"
+                    TextColor="{AppThemeBinding Dark=White, Light=Black}"
+                    FontSize="Medium"
+                    Padding="0,10,57,0"/>
+                <Switch
+                    IsToggled="{Binding NightTheme}"
+                    Toggled="NightTheme_Toggled"/>
+            </StackLayout>
+
+            <!--IDAHO-->
+            <StackLayout Orientation="Horizontal">
+                <Label
+                    Text="Boise, Idaho"
+                    TextColor="{AppThemeBinding Dark=White, Light=Black}"
+                    FontSize="Medium"
+                    Padding="0,0,100,0"/>
+                <Switch
+                    x:Name="BoiseIDSwitch"
+                    IsToggled="{Binding BoiseSwitch}"
+                    Toggled="Idaho_Toggled"/>
+            </StackLayout>
+
+            <!--FLORIDA-->
+            <StackLayout Orientation="Horizontal">
+                <Label
+                    Text="Winter Park, Florida"
+                    TextColor="{AppThemeBinding Dark=White, Light=Black}"
+                    FontSize="Medium"
+                    Padding="0,0,43,0"/>
+                <Switch
+                    x:Name="WinParkFLSwitch"
+                    IsToggled="{Binding NightTheme}"
+                    Toggled="Florida_Toggled"/>
+            </StackLayout>
+
+            <!--NEWYORK-->
+            <StackLayout Orientation="Horizontal">
+                <Label
+                    Text="New York, New York"
+                    TextColor="{AppThemeBinding Dark=White, Light=Black}"
+                    FontSize="Medium"
+                    Padding="0,0,40,0"/>
+                <Switch
+                    x:Name="NewYorkNYSwitch"
+                    IsToggled="{Binding NightTheme}"
+                    Toggled="NewYork_Toggled"/>
+            </StackLayout>
         </StackLayout>
     </Grid>
 </ContentPage>

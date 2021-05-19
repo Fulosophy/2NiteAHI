@@ -22,8 +22,44 @@ namespace _2NiteAHI
         }
         public void NightTheme_Toggled(object sender, ToggledEventArgs e)
         {
-            if (e.Value){ App.Current.UserAppTheme = OSAppTheme.Light;}
-            else { App.Current.UserAppTheme = OSAppTheme.Dark; }
+            if (e.Value)
+            {
+                if (App.Current.UserAppTheme == OSAppTheme.Light)
+                {
+                    App.Current.UserAppTheme = OSAppTheme.Dark;
+                }
+                else
+                {
+                    App.Current.UserAppTheme = OSAppTheme.Light;
+                }
+            }
+        }
+        public void Idaho_Toggled(object sender, ToggledEventArgs e)
+        {
+            if (e.Value)
+            {
+                WinParkFLSwitch.IsToggled = false;
+                NewYorkNYSwitch.IsToggled = false;
+                App.isMyLocation = 1;
+            }
+        }
+        public void Florida_Toggled(object sender, ToggledEventArgs e)
+        {
+            if (e.Value)
+            {
+                BoiseIDSwitch.IsToggled = false;
+                NewYorkNYSwitch.IsToggled = false;
+                App.isMyLocation = 2;
+            }
+        }
+        public void NewYork_Toggled(object sender, ToggledEventArgs e)
+        {
+            if (e.Value)
+            {
+                BoiseIDSwitch.IsToggled = false;
+                WinParkFLSwitch.IsToggled = false;
+                App.isMyLocation = 3;
+            }
         }
     }
 }
