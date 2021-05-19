@@ -77,7 +77,7 @@
         <!--Descending order button-->
         <Button
             Text="DESC"
-            TextColor="Yellow"
+            TextColor="White"
             FontSize="Micro"
             FontAttributes="Bold"
             Grid.Row="3"

@@ -810,59 +810,7 @@ namespace _2NiteAHI
             boiseFoodsProx.Add("Even Stevens Sandwiches",0.4837);
             boiseFoodsProx.Add("Lucky Fins Seafood Grill",0.2793);
         }
-        private void BuildMiamiBeachBars()
-        {
-            miamiBeachBars.Add("The Tarern", rng.Next() % 150);
-            miamiBeachBars.Add("Bolivar Resturant Bar Lounge", rng.Next() % 150);
-            miamiBeachBars.Add("Maxine's Bistro and Bar", rng.Next() % 150);
-            miamiBeachBars.Add("TGI Fridays", rng.Next() % 150);
-            miamiBeachBars.Add("The Place", rng.Next() % 150);
-            miamiBeachBars.Add("Finnegan's Way", rng.Next() % 150);
-            miamiBeachBars.Add("Monty's Sunset", rng.Next() % 150);
-            miamiBeachBars.Add("Norman's", rng.Next() % 150);
-            miamiBeachBars.Add("Moreno's Cuba", rng.Next() % 150);
-            miamiBeachBars.Add("Yard House", rng.Next() % 150);
-            miamiBeachBars.Add("27 Restaurant & Bar", rng.Next() % 150);
-            miamiBeachBars.Add("Broken Shaker", rng.Next() % 150);
-            miamiBeachBars.Add("Bleau Bar", rng.Next() % 150);
-            miamiBeachBars.Add("Wet Willie's", rng.Next() % 150);
-            miamiBeachBars.Add("Segafredo L'Originale", rng.Next() % 150);
-            miamiBeachBars.Add("Sweet Liberty Drinks & Supply Company", rng.Next() % 150);
-            miamiBeachBars.Add("Clevelander Bar", rng.Next() % 150);
-            miamiBeachBars.Add("Nautilus Bar & Grill ", rng.Next() % 150);
-            miamiBeachBars.Add("Blue Ribbon Sushi Bar & Grill", rng.Next() % 150);
-            miamiBeachBars.Add("Mac’s Club Deuce", rng.Next() % 150);
-            miamiBeachBars.Add("Abbey Brewing Company", rng.Next() % 150);
-            miamiBeachBars.Add("Twist", rng.Next() % 150);
-            miamiBeachBars.Add("Palace Bar LLC", rng.Next() % 150);
-            miamiBeachBars.Add("Kansas Bar & Grill", rng.Next() % 150);
-            miamiBeachBars.Add("Playwright Irish Pub", rng.Next() % 150);
-            miamiBeachBars.Add("Tavern at Oceanside", rng.Next() % 150);
-            miamiBeachBars.Add("Venezia Grill Pizzeria Bar", rng.Next() % 150);
-            miamiBeachBars.Add("Espanola Cigar Bar", rng.Next() % 150);
-            miamiBeachBars.Add("The Regent Cocktail Club", rng.Next() % 150);
-            miamiBeachBars.Add("Vanilla Cafe", rng.Next() % 150);
-            miamiBeachBars.Add("Bungalow By The Sea", rng.Next() % 150);
-            miamiBeachBars.Add("Bar Collins", rng.Next() % 150);
-            miamiBeachBars.Add("Living Room Lounge", rng.Next() % 150);
-            miamiBeachBars.Add("Tantra", rng.Next() % 150);
-            miamiBeachBars.Add("High Tide", rng.Next() % 150);
-            miamiBeachBars.Add("Mike's At Venetia", rng.Next() % 150);
-            miamiBeachBars.Add("Lost Weekend", rng.Next() % 150);
-            miamiBeachBars.Add("Bay Club", rng.Next() % 150);
-            miamiBeachBars.Add("Drunk Bitch", rng.Next() % 150);
-            miamiBeachBars.Add("South Pointe Tavern", rng.Next() % 150);
-            miamiBeachBars.Add("Sky Bar At Shore Club South Beach", rng.Next() % 150);
-            miamiBeachBars.Add("Kill Your Idol ", rng.Next() % 150);
-            miamiBeachBars.Add("Miami Clubs", rng.Next() % 150);
-            miamiBeachBars.Add("Mynt Lounge", rng.Next() % 150);
-            miamiBeachBars.Add("Hyde Beach", rng.Next() % 150);
-            miamiBeachBars.Add("Riki Tiki Bar and Grill", rng.Next() % 150);
-            miamiBeachBars.Add("El Grito", rng.Next() % 150);
-            miamiBeachBars.Add("Margarita Beach Club", rng.Next() % 150);
-            miamiBeachBars.Add("Palace", rng.Next() % 150);
-
-        }
+       
         private void BuildMiamiBeachBarsProx()
         {
             miamiBeachBarsProx.Add("The Tarern", 0.130);
@@ -962,6 +910,29 @@ namespace _2NiteAHI
 
 
         }
+        private void BuildWinterParkFoods()
+        {
+            winterParkFoods.Clear();
+            winterParkFoods.Add("Chili's Bar & Grill", rng.Next() % 150);
+            winterParkFoods.Add("Firehouse Subs", rng.Next() % 150);
+            winterParkFoods.Add("Arooga's", rng.Next() % 150);
+            winterParkFoods.Add("Chewy Boba", rng.Next() % 150);
+            winterParkFoods.Add("Steak 'n Shake", rng.Next() % 150);
+            winterParkFoods.Add("El Pueblo Mexicqan", rng.Next() % 150);
+            winterParkFoods.Add("Luke's Kitchen and Bar", rng.Next() % 150);
+            winterParkFoods.Add("Buffalo Wild WIngs", rng.Next() % 150);
+            winterParkFoods.Add("BJ's Restaurant and Brewhouse", rng.Next() % 150);
+            winterParkFoods.Add("Don Julio Mexican Kitchen and Tequila Bar", rng.Next() % 150);
+            winterParkFoods.Add("Texas Roadhous", rng.Next() % 150);
+            winterParkFoods.Add("Starbucks", rng.Next() % 150);
+            winterParkFoods.Add("Sonny's BBQ", rng.Next() % 150);
+            winterParkFoods.Add("Gator's Dockside", rng.Next() % 150);
+            winterParkFoods.Add("Cork & Plate", rng.Next() % 150);
+            winterParkFoods.Add("La Placita 19'", rng.Next() % 150);
+            winterParkFoods.Add("Rincon Latino", rng.Next() % 150);
+            winterParkFoods.Add("Thirsty Gator", rng.Next() % 150);
+            winterParkFoods.Add("Fire on the Bayou", rng.Next() % 150);
+        }
         private void Buildnycfoods()
         {
             nycfoods.Clear();
@@ -978,49 +949,8 @@ namespace _2NiteAHI
         }
 
             //PROXIMITY OF FOODS
-        private void BuildWinParkFoodsProx()
-        {
-            winParkFoodsProx.Clear();
-            winParkFoodsProx.Add(" Chili's Bar & Grill ", 0.5835);
-            winParkFoodsProx.Add("Firehouse Subs", 0.5540);
-            winParkFoodsProx.Add("Arooga's", 0.5303);
-            winParkFoodsProx.Add("Chewy Boba", 0.6737);
-            winParkFoodsProx.Add("Steak 'n Shake", 0.8633);
-            winParkFoodsProx.Add("El Pueblo Mexicqan", 1.4230);
-            winParkFoodsProx.Add("Luke's Kitchen and Bar", 6.7470);
-            winParkFoodsProx.Add("Buffalo Wild WIngs", 6.2890);
-            winParkFoodsProx.Add("BJ's Restaurant and Brewhouse", 9.1900);
-            winParkFoodsProx.Add("Don Julio Mexican Kitchen and Tequila Bar", 7.1960);
-            winParkFoodsProx.Add("Texas Roadhous", 4.8070);
-            winParkFoodsProx.Add("Starbucks", 1.2130);
-            winParkFoodsProx.Add("Sonny's BBQ", 0.1739);
-            winParkFoodsProx.Add("Gator's Dockside", 3.9420);
-            winParkFoodsProx.Add("Cork & Plate", 4.0180);
-            winParkFoodsProx.Add("La Placita 19'", 0.3135);
-            winParkFoodsProx.Add("Rincon Latino", 0.4204);
-            winParkFoodsProx.Add("Fire on the Bayou", 6.2520);
-            winParkFoodsProx.Add("Thirsty Gator", 1.9780);
-        }
-        private void BuildBoiseFoodsProx()
-        {
-            boiseFoodsProx.Clear();
-            boiseFoodsProx.Add("Del Taco",0.9709);
-            boiseFoodsProx.Add("Meraki Greek Street Food",0.2481);
-            boiseFoodsProx.Add("Trillium Restaurant",0.1435);
-            boiseFoodsProx.Add("Boise Fry Company",0.3768);
-            boiseFoodsProx.Add("Bittercreek Alehouse",0.3981);
-            boiseFoodsProx.Add("Eureka",0.4533);
-            boiseFoodsProx.Add("Chandlers Prime Steaks & Seafood",0.4253);
-            boiseFoodsProx.Add("Manfred’s Kitchen",0.6363);
-            boiseFoodsProx.Add("Owyhee Tavern	Steakhouse",0.6258);
-            boiseFoodsProx.Add("Bombay Grill",0.4976);
-            boiseFoodsProx.Add("Txikitea",0.9841);
-            boiseFoodsProx.Add("KIN",0.4279);
-            boiseFoodsProx.Add("Main Street Deli",0.4157);
-            boiseFoodsProx.Add("Fork",0.3662);
-            boiseFoodsProx.Add("Even Stevens Sandwiches",0.4837);
-            boiseFoodsProx.Add("Lucky Fins Seafood Grill",0.2793);
-        }
+       
+       
         private void BuildnycFoodProx()
         {
             nycfoodsprox.Clear();
@@ -1240,13 +1170,13 @@ namespace _2NiteAHI
             }
             else if (locale == 2 && xlocale == 0)
             {
-                BuildMiamiBeachBarsProx();
-                miamiBeachBarsProx = miamiBeachBarsProx.OrderBy(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
-                barListView.ItemsSource = miamiBeachBarsProx;
+                BuildMiamiBeachFoodsProx();
+                miamiBeachFoodsProx = miamiBeachBarsProx.OrderBy(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
+                barListView.ItemsSource = miamiBeachFoodsProx;
             }
             else if (locale == 3 && xlocale == 0)
             {
-                BuildMiamiBeachBars();
+                BuildMiamiBeachBarsProx();
                 miamiBeachBarsProx = miamiBeachBarsProx.OrderBy(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
                 barListView.ItemsSource = miamiBeachBarsProx;
             }
