@@ -294,43 +294,53 @@ namespace _2NiteAHI
             var location = await Geolocation.GetLocationAsync(new GeolocationRequest(GeolocationAccuracy.Default, TimeSpan.FromMinutes(1)));
             var GetAddy = await Geocoding.GetPlacemarksAsync(location.Latitude, location.Longitude); // Grabbing the users location details as a placemark.
             var addy = GetAddy?.FirstOrDefault();
-            if (App.isMyLocation == 0) { MyLocation = $"{addy.Locality},  {addy.AdminArea}"; }
-            else if (App.isMyLocation == 1)
+
+            if (App.isMyLocation == 0) 
             {
-                MyLocation = "Boise, Idaho";
-                locale = 1;
-            }
-            else if (App.isMyLocation == 2)
-            {
-                MyLocation = "Winter Park, Florida";
-                locale = 0;
-            }
-            else if (App.isMyLocation == 3)
-            {
-                MyLocation = "New York, New York";
-                locale = 2;
+                MyLocation = $"{addy.Locality},  {addy.AdminArea}";
+
+                if (MyLocation == "Boise, Idaho")
+                {
+                    App.isMyLocation = 1;
+                    locale = 1;
+                }
+                else if (MyLocation == "Winter Park, Florida")
+                {
+                    App.isMyLocation = 2;
+                    locale = 0;
+                }
+                else if (MyLocation == "New York, New York")
+                {
+                    App.isMyLocation = 3;
+                    locale = 2;
+                }
             }
 
-            if (locale == 0 || App.isMyLocation == 2)
+            if (addy.Locality == "Winter Park" || App.isMyLocation == 2)
             {
                 locale = 0;
                 BuildWinterParkBars();
                 winterParkBars = winterParkBars.OrderByDescending(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
                 barListView.ItemsSource = winterParkBars;
+                MyLocation = "Winter Park, Florida";
             }
-            else if (locale == 1 || App.isMyLocation == 1)
+            else if (addy.Locality == "Boise" || App.isMyLocation == 1)
             {
                 locale = 1;
                 BuildBoiseBars();
                 boiseBars = boiseBars.OrderByDescending(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
                 barListView.ItemsSource = boiseBars;
+                MyLocation = "Boise, Idaho";
+
             }
-            else if (locale == 2 || App.isMyLocation == 3)
+            else if (addy.Locality == "New York" || App.isMyLocation == 3)
             {
                 locale = 2;
                 BuildnycBars();
                 nycbars = nycbars.OrderByDescending(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
                 barListView.ItemsSource = nycbars;
+                MyLocation = "New York, New York";
+
             }
         }
         public string MyLocation
@@ -915,11 +925,15 @@ namespace _2NiteAHI
             }
             else if (locale == 1 && xlocale == 0)
             {
-                usercount = boiseBars[temp];
+
+                try { usercount = boiseBars[temp]; }
+                catch { System.ArgumentNullException ex; }
+
                 var excode = await DisplayAlert("Leaving So Soon?", "Would You Like To Close The App?", "Yes", "No");
                 if (excode == true)
                 {
-                    boiseBars[temp] = usercount - 1; // decrementing old bar // only if true
+                    try{boiseBars[temp] = usercount - 1; } // decrementing old bar // only if true
+                    catch { System.ArgumentNullException ex; }
                     Thread.Sleep(3000);
                     Environment.FailFast("");
                 }
