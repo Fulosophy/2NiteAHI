@@ -863,7 +863,7 @@ namespace _2NiteAHI
                 else if (barPressed == false)
                 {
                     App.xlocale = 0;
-                    BuildWinParkFoodsProx();
+                    BuildWinParkBarsProx();
                     winterParkBars = winterParkBars.OrderByDescending(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
                     barListView.ItemsSource = winterParkBars;
                     barPressed = true;
