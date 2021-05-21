@@ -104,7 +104,6 @@
                     Padding="0,0,100,0"/>
                 <Switch
                     x:Name="BoiseIDSwitch"
-                    IsToggled="{Binding BoiseSwitch}"
                     Toggled="Idaho_Toggled"/>
             </StackLayout>
 
@@ -117,7 +116,6 @@
                     Padding="0,0,43,0"/>
                 <Switch
                     x:Name="WinParkFLSwitch"
-                    IsToggled="{Binding NightTheme}"
                     Toggled="Florida_Toggled"/>
             </StackLayout>
 
@@ -130,7 +128,6 @@
                     Padding="0,0,40,0"/>
                 <Switch
                     x:Name="NewYorkNYSwitch"
-                    IsToggled="{Binding NightTheme}"
                     Toggled="NewYork_Toggled"/>
             </StackLayout>
         </StackLayout>

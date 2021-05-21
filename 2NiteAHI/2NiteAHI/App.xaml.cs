@@ -6,6 +6,11 @@ namespace _2NiteAHI
     {
         public static string username, pwd, email, phoneNumber, MyLocation;
         public static int isMyLocation = 0;
+
+        public static int locale; 
+        public static int xlocale;
+
+        public static Command RefreshCommand;
         public App()
         {
             App.Current.UserAppTheme = OSAppTheme.Dark;

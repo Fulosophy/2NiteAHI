@@ -33,8 +33,7 @@ namespace _2NiteAHI
 
         //VARIABLES
         private string myloc;
-        private int locale;
-        private int xlocale = 0;
+
         private string selecteditem;
         private int usercount;
         private bool hasbeen;
@@ -62,7 +61,7 @@ namespace _2NiteAHI
             barListView.ItemSelected += async (object sender, SelectedItemChangedEventArgs e) =>
             {
                 //WINTER PARK INITIAL SELECT
-                if (hasbeen == false && locale == 0 && xlocale == 0)
+                if (hasbeen == false && App.locale == 0 && App.xlocale == 0)
                 {
                     var ans = await DisplayAlert("Yo! Checking in?", "Have fun!", "Yes", "Cancel");
                     if (ans == true) // pressing OK
@@ -81,7 +80,7 @@ namespace _2NiteAHI
                 }
 
                 //WINTER PARK NEXT SELECT
-                else if (hasbeen == true && locale == 0 && xlocale == 0)
+                else if (hasbeen == true && App.locale == 0 && App.xlocale == 0)
                 {
                     var anss = await DisplayAlert("Changing bars???", "Would You Like To Check In?", "Yes", "Cancel");
                     if (anss == true) // pressing OK
@@ -100,7 +99,7 @@ namespace _2NiteAHI
                 }
 
                 //BOISE INITIAL SELECT
-                else if (hasbeen == false && locale == 1 && xlocale == 0)
+                else if (hasbeen == false && App.locale == 1 && App.xlocale == 0)
                 {
                     var ansb = await DisplayAlert("Yo! Checking in??", "Have fun!", "Yes", "Cancel");
                     if (ansb == true)
@@ -118,7 +117,7 @@ namespace _2NiteAHI
                 }
 
                 //BOISE NEXT SELECT
-                else if (hasbeen == true && locale == 1 && xlocale == 0)
+                else if (hasbeen == true && App.locale == 1 && App.xlocale == 0)
                 {
                     var ansbb = await DisplayAlert("Yo New Bar?", "Would You Like To Check In?", "Yes", "Cancel");
                     if (ansbb == true)
@@ -137,7 +136,7 @@ namespace _2NiteAHI
                 }
 
                 //WINTER PARK FOOD SELECT
-                else if (hasbeen == false && locale == 0 && xlocale == 2)
+                else if (hasbeen == false && App.locale == 0 && App.xlocale == 2)
                 {
                     var ansb = await DisplayAlert("Yo! Checking in?", "Have fun!", "Yes", "Cancel");
                     if (ansb == true)
@@ -155,7 +154,7 @@ namespace _2NiteAHI
                 }
 
                 //WINTER PARK FOOD NEXT SELECT
-                else if (hasbeen == true && locale == 0 && xlocale == 2)
+                else if (hasbeen == true && App.locale == 0 && App.xlocale == 2)
                 {
                     var ansbb = await DisplayAlert("Yo New Restaurant?", "Would You Like To Check In?", "Yes", "Cancel");
                     if (ansbb == true)
@@ -174,7 +173,7 @@ namespace _2NiteAHI
                 }
 
                 //BOISE FOOD SELECT
-                else if (hasbeen == false && locale == 1 && xlocale == 3)
+                else if (hasbeen == false && App.locale == 1 && App.xlocale == 3)
                 {
                     var ansb = await DisplayAlert("Yo! Checking in?", "Have fun!", "Yes", "Cancel");
                     if (ansb == true)
@@ -192,7 +191,7 @@ namespace _2NiteAHI
                 }
 
                 //BOISE FOOD NEXT SELECT
-                else if (hasbeen == true && locale == 1 && xlocale == 3)
+                else if (hasbeen == true && App.locale == 1 && App.xlocale == 3)
                 {
                     var ansbb = await DisplayAlert("Yo New Restaurant?", "Would You Like To Check In?", "Yes", "Cancel");
                     if (ansbb == true)
@@ -211,7 +210,7 @@ namespace _2NiteAHI
                 }
 
                 // Nyc INITIAL SELECT Bars
-                else if (hasbeen == false && locale == 2 && xlocale == 0)
+                else if (hasbeen == false && App.locale == 2 && App.xlocale == 0)
                 {
                     var ans = await DisplayAlert("Yo! Checking in?", "Have fun!", "Yes", "Cancel");
                     if (ans == true) // pressing OK
@@ -229,7 +228,7 @@ namespace _2NiteAHI
                 }
 
                 // Nyc NEXT SELECT bar
-                else if (hasbeen == true && locale == 2 && xlocale == 0)
+                else if (hasbeen == true && App.locale == 2 && App.xlocale == 0)
                 {
                     var anss = await DisplayAlert("Changing bars???", "Would You Like To Check In?", "Yes", "Cancel");
                     if (anss == true) // pressing OK
@@ -248,7 +247,7 @@ namespace _2NiteAHI
                 }
 
                 // nyc food intial select
-                else if (hasbeen == false && locale == 2 && xlocale == 4)
+                else if (hasbeen == false && App.locale == 2 && App.xlocale == 4)
                 {
                     var ansb = await DisplayAlert("Yo! Checking in?", "Have fun!", "Yes", "Cancel");
                     if (ansb == true)
@@ -266,7 +265,7 @@ namespace _2NiteAHI
                 }
 
                 // nyc food next select
-                else if (hasbeen == true && locale == 2 && xlocale == 4)
+                else if (hasbeen == true && App.locale == 2 && App.xlocale == 4)
                 {
                     var ansbb = await DisplayAlert("Yo New Restaurant?", "Would You Like To Check In?", "Yes", "Cancel");
                     if (ansbb == true)
@@ -291,56 +290,58 @@ namespace _2NiteAHI
         //LOCATION FUNCTIONS
         async private void GetUserLoc()
         {
-            var location = await Geolocation.GetLocationAsync(new GeolocationRequest(GeolocationAccuracy.Default, TimeSpan.FromMinutes(1)));
-            var GetAddy = await Geocoding.GetPlacemarksAsync(location.Latitude, location.Longitude); // Grabbing the users location details as a placemark.
-            var addy = GetAddy?.FirstOrDefault();
-
             if (App.isMyLocation == 0) 
             {
+                var location = await Geolocation.GetLocationAsync(new GeolocationRequest(GeolocationAccuracy.Default, TimeSpan.FromMinutes(1)));
+                var GetAddy = await Geocoding.GetPlacemarksAsync(location.Latitude, location.Longitude); // Grabbing the users location details as a placemark.
+                var addy = GetAddy?.FirstOrDefault();
                 MyLocation = $"{addy.Locality},  {addy.AdminArea}";
+                App.MyLocation = MyLocation;
 
                 if (MyLocation == "Boise, Idaho")
                 {
                     App.isMyLocation = 1;
-                    locale = 1;
+                    App.locale = 1;
                 }
                 else if (MyLocation == "Winter Park, Florida")
                 {
                     App.isMyLocation = 2;
-                    locale = 0;
+                    App.locale = 0;
                 }
                 else if (MyLocation == "New York, New York")
                 {
                     App.isMyLocation = 3;
-                    locale = 2;
+                    App.locale = 2;
                 }
             }
 
-            if (addy.Locality == "Winter Park" || App.isMyLocation == 2)
+            if (App.locale == 0 || App.isMyLocation == 2)
             {
-                locale = 0;
+                App.MyLocation = "Winter Park, Florida";
+                App.locale = 0;
                 BuildWinterParkBars();
                 winterParkBars = winterParkBars.OrderByDescending(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
                 barListView.ItemsSource = winterParkBars;
                 MyLocation = "Winter Park, Florida";
             }
-            else if (addy.Locality == "Boise" || App.isMyLocation == 1)
+            else if (App.locale == 1 || App.isMyLocation == 1)
             {
-                locale = 1;
+                App.MyLocation = "Boise, Idaho";
+                App.locale = 1;
                 BuildBoiseBars();
                 boiseBars = boiseBars.OrderByDescending(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
                 barListView.ItemsSource = boiseBars;
                 MyLocation = "Boise, Idaho";
 
             }
-            else if (addy.Locality == "New York" || App.isMyLocation == 3)
+            else if (App.locale == 2 || App.isMyLocation == 3)
             {
-                locale = 2;
+                App.MyLocation = "New York, New York";
+                App.locale = 2;
                 BuildnycBars();
                 nycbars = nycbars.OrderByDescending(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
                 barListView.ItemsSource = nycbars;
                 MyLocation = "New York, New York";
-
             }
         }
         public string MyLocation
@@ -370,42 +371,42 @@ namespace _2NiteAHI
             {
                 return new Command(() =>
                 {
-                    if (locale == 0 && xlocale == 0)
+                    if (App.locale == 0 && App.xlocale == 0)
                     {
                         barListView.ItemsSource = null; // resets the list back to null
                         barListView.ItemsSource = winterParkBars; // refactors updated list
                         IsSoRefreshing = false;
                         winParkBarsProx.Clear();
                     }
-                    else if (locale == 1 && xlocale == 0)
+                    else if (App.locale == 1 && App.xlocale == 0)
                     {
                         barListView.ItemsSource = null; // resets the list back to null
                         barListView.ItemsSource = boiseBars; // refactors updated list
                         IsSoRefreshing = false;
                         boiseBarsProx.Clear();
                     }
-                    else if (locale == 2 && xlocale == 0)
+                    else if (App.locale == 2 && App.xlocale == 0)
                     {
                         barListView.ItemsSource = null; // resets the list back to null
                         barListView.ItemsSource = nycbars; // refactors updated list
                         IsSoRefreshing = false;
                         nycbarsprox.Clear();
                     }
-                    else if (locale == 0 && xlocale == 2)
+                    else if (App.locale == 0 && App.xlocale == 2)
                     {
                         barListView.ItemsSource = null; // resets the list back to null
                         barListView.ItemsSource = winterParkFoods; // refactors updated list
                         IsSoRefreshing = false;
                         winParkFoodsProx.Clear();
                     }
-                    else if (locale == 1 && xlocale == 3)
+                    else if (App.locale == 1 && App.xlocale == 3)
                     {
                         barListView.ItemsSource = null; // resets the list back to null
                         barListView.ItemsSource = boiseFoods; // refactors updated list
                         IsSoRefreshing = false;
                         boiseFoodsProx.Clear();
                     }
-                    else if (locale == 2 && xlocale == 4)
+                    else if (App.locale == 2 && App.xlocale == 4)
                     {
                         barListView.ItemsSource = null; // resets the list back to null
                         barListView.ItemsSource = nycfoods; // refactors updated list
@@ -688,37 +689,37 @@ namespace _2NiteAHI
         private void OnClick_Ascend(object sender, EventArgs e)
         {
             //OrderBy Value
-            if (locale == 0 && xlocale == 0)
+            if (App.locale == 0 && App.xlocale == 0)
             {
                 winterParkBars = winterParkBars.OrderBy(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
                 barListView.ItemsSource = winterParkBars;
                 winParkBarsProx.Clear();
             }
-            else if (locale == 1 && xlocale == 0)
+            else if (App.locale == 1 && App.xlocale == 0)
             {
                 boiseBars = boiseBars.OrderBy(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
                 barListView.ItemsSource = boiseBars;
                 boiseBarsProx.Clear();
             }
-            else if (locale == 2 && xlocale == 0)
+            else if (App.locale == 2 && App.xlocale == 0)
             {
                 nycbars = nycbars.OrderBy(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
                 barListView.ItemsSource = nycbars;
                 nycbarsprox.Clear();
             }
-            else if (locale == 0 && xlocale == 2)
+            else if (App.locale == 0 && App.xlocale == 2)
             {
                 winterParkFoods = winterParkFoods.OrderBy(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
                 barListView.ItemsSource = winterParkFoods;
                 winParkFoodsProx.Clear();
             }
-            else if (locale == 1 && xlocale == 3)
+            else if (App.locale == 1 && App.xlocale == 3)
             {
                 boiseFoods = boiseFoods.OrderBy(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
                 barListView.ItemsSource = boiseFoods;
                 boiseFoodsProx.Clear();
             }
-            else if (locale == 2 && xlocale == 4)
+            else if (App.locale == 2 && App.xlocale == 4)
             {
                 nycfoods = nycfoods.OrderBy(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
                 barListView.ItemsSource = nycfoods;
@@ -729,37 +730,37 @@ namespace _2NiteAHI
         private void OnClick_Descend(object sender, EventArgs e)
         {
             //OrderBy Value
-            if (locale == 0 && xlocale == 0)
+            if (App.locale == 0 && App.xlocale == 0)
             {
                 winterParkBars = winterParkBars.OrderByDescending(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
                 barListView.ItemsSource = winterParkBars;
                 winParkBarsProx.Clear();
             }
-            else if (locale == 1 && xlocale == 0)
+            else if (App.locale == 1 && App.xlocale == 0)
             {
                 boiseBars = boiseBars.OrderByDescending(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
                 barListView.ItemsSource = boiseBars;
                 boiseBarsProx.Clear();
             }
-            else if (locale == 2 && xlocale == 0)
+            else if (App.locale == 2 && App.xlocale == 0)
             {
                 nycbars = nycbars.OrderByDescending(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
                 barListView.ItemsSource = nycbars;
                 nycbarsprox.Clear();
             }
-            else if (locale == 0 && xlocale == 2)
+            else if (App.locale == 0 && App.xlocale == 2)
             {
                 winterParkFoods = winterParkFoods.OrderByDescending(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
                 barListView.ItemsSource = winterParkFoods;
                 winParkFoodsProx.Clear();
             }
-            else if (locale == 1 && xlocale == 3)
+            else if (App.locale == 1 && App.xlocale == 3)
             {
                 boiseFoods = boiseFoods.OrderByDescending(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
                 barListView.ItemsSource = boiseFoods;
                 boiseFoodsProx.Clear();
             }
-            else if (locale == 2 && xlocale == 4)
+            else if (App.locale == 2 && App.xlocale == 4)
             {
                 nycfoods = nycfoods.OrderByDescending(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
                 barListView.ItemsSource = nycfoods;
@@ -769,37 +770,37 @@ namespace _2NiteAHI
         //PROXIMITY
         private void OnClick_Proximity(object sender, EventArgs e)
         {
-            if (locale == 0 && xlocale == 0)
+            if (App.locale == 0 && App.xlocale == 0)
             {
                 BuildWinParkBarsProx();
                 winParkBarsProx = winParkBarsProx.OrderBy(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
                 barListView.ItemsSource = winParkBarsProx;
             }
-            else if (locale == 1 && xlocale == 0)
+            else if (App.locale == 1 && App.xlocale == 0)
             {
                 BuildBoiseBarsProx();
                 boiseBarsProx = boiseBarsProx.OrderBy(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
                 barListView.ItemsSource = boiseBarsProx;
             }
-            else if (locale == 0 && xlocale == 2)
+            else if (App.locale == 0 && App.xlocale == 2)
             {
                 BuildWinParkFoodsProx();
                 winParkFoodsProx = winParkFoodsProx.OrderBy(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
                 barListView.ItemsSource = winParkFoodsProx;
             }
-            else if (locale == 1 && xlocale == 3)
+            else if (App.locale == 1 && App.xlocale == 3)
             {
                 BuildBoiseFoodsProx();
                 boiseFoodsProx = boiseFoodsProx.OrderBy(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
                 barListView.ItemsSource = boiseFoodsProx;
             }
-            else if (locale == 2 && xlocale == 0)
+            else if (App.locale == 2 && App.xlocale == 0)
             {
                 BuildnycBarsProx();
                 nycbarsprox = nycbarsprox.OrderBy(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
                 barListView.ItemsSource = nycbarsprox;
             }
-            else if (locale == 2 && xlocale == 4)
+            else if (App.locale == 2 && App.xlocale == 4)
             {
                 BuildnycFoodProx();
                 nycfoodsprox = nycfoodsprox.OrderBy(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
@@ -809,13 +810,13 @@ namespace _2NiteAHI
         //RESTAURANTS
         private void OnClick_Restaurants(object sender, EventArgs e)
         {
-            if (locale == 0)
+            if (App.locale == 0)
             {
                 if (restPressed == true) { return; }
                 else
                 {
                     hasbeen = false;
-                    xlocale = 2;
+                    App.xlocale = 2;
                     BuildWinterParkFoods();
                     winterParkFoods = winterParkFoods.OrderBy(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
                     barListView.ItemsSource = winterParkFoods;
@@ -823,13 +824,13 @@ namespace _2NiteAHI
                     barPressed = false;
                 }
             }
-            else if (locale == 1)
+            else if (App.locale == 1)
             {
                 if (restPressed == true) { return; }
                 else
                 {
                     hasbeen = false;
-                    xlocale = 3;
+                    App.xlocale = 3;
                     BuildBoiseFoods();
                     boiseFoods = boiseFoods.OrderBy(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
                     barListView.ItemsSource = boiseFoods;
@@ -837,13 +838,13 @@ namespace _2NiteAHI
                     barPressed = false;
                 }
             }
-            else if (locale == 2)
+            else if (App.locale == 2)
             {
                 if (restPressed == true) { return; }
                 else
                 {
                     hasbeen = false;
-                    xlocale = 4;
+                    App.xlocale = 4;
                     Buildnycfoods();
                     nycfoods = nycfoods.OrderBy(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
                     barListView.ItemsSource = nycfoods;
@@ -856,12 +857,12 @@ namespace _2NiteAHI
         private void OnClick_Bars(object sender, EventArgs e)
         {
             GetUserLoc();
-            if (locale == 0)
+            if (App.locale == 0 && App.isMyLocation == 2)
             {
                 if (barPressed == true) { return; }
-                else
+                else if (barPressed == false)
                 {
-                    xlocale = 0;
+                    App.xlocale = 0;
                     BuildWinParkFoodsProx();
                     winterParkBars = winterParkBars.OrderByDescending(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
                     barListView.ItemsSource = winterParkBars;
@@ -869,12 +870,12 @@ namespace _2NiteAHI
                     restPressed = false;
                 }
             }
-            else if (locale == 1)
+            else if (App.locale == 1 && App.isMyLocation == 1)
             {
                 if (barPressed == true) { return; }
-                else
+                else if(barPressed == false)
                 {
-                    xlocale = 0;
+                    App.xlocale = 0;
                     BuildBoiseBars();
                     boiseBars = boiseBars.OrderByDescending(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
                     barListView.ItemsSource = boiseBars;
@@ -882,12 +883,12 @@ namespace _2NiteAHI
                     restPressed = false;
                 }
             }
-            else if (locale == 2)
+            else if (App.locale == 2 && App.isMyLocation == 3)
             {
                 if (barPressed == true) { return; }
-                else
+                else if(barPressed == false)
                 {
-                    xlocale = 0;
+                    App.xlocale = 0;
                     BuildnycBars();
                     nycbars = nycbars.OrderByDescending(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
                     barListView.ItemsSource = nycbars;
@@ -899,7 +900,7 @@ namespace _2NiteAHI
         //PEACE-OUT
         private async void OnClick_Peace(object sender, EventArgs e)
         {
-            if (locale == 0 && xlocale == 0)
+            if (App.locale == 0 && App.xlocale == 0)
             {
                 usercount = winterParkBars[temp];
                 var excode = await DisplayAlert("Leaving So Soon?", "Would You Like To Close The App?", "Yes", "No");
@@ -911,7 +912,7 @@ namespace _2NiteAHI
                 }
                 else { return; }
             }
-            else if (locale == 0 && xlocale == 2)
+            else if (App.locale == 0 && App.xlocale == 2)
             {
                 usercount = winterParkFoods[temp];
                 var excode = await DisplayAlert("Leaving So Soon?", "Would You Like To Close The App?", "Yes", "No");
@@ -923,7 +924,7 @@ namespace _2NiteAHI
                 }
                 else { return; }
             }
-            else if (locale == 1 && xlocale == 0)
+            else if (App.locale == 1 && App.xlocale == 0)
             {
 
                 try { usercount = boiseBars[temp]; }
@@ -939,7 +940,7 @@ namespace _2NiteAHI
                 }
                 else { return; }
             }
-            else if (locale == 1 && xlocale == 3)
+            else if (App.locale == 1 && App.xlocale == 3)
             {
                 usercount = boiseFoods[temp];
                 var excode = await DisplayAlert("Leaving So Soon?", "Would You Like To Close The App?", "Yes", "No");
@@ -951,7 +952,7 @@ namespace _2NiteAHI
                 }
                 else { return; }
             }
-            else if (locale == 2 && xlocale == 0)
+            else if (App.locale == 2 && App.xlocale == 0)
             {
                 usercount = nycbars[temp];
                 var excode = await DisplayAlert("Leaving So Soon?", "Would You Like To Close The App?", "Yes", "No");
@@ -963,7 +964,7 @@ namespace _2NiteAHI
                 }
                 else { return; }
             }
-            else if (locale == 2 && xlocale == 4)
+            else if (App.locale == 2 && App.xlocale == 4)
             {
                 usercount = nycfoods[temp];
                 var excode = await DisplayAlert("Leaving So Soon?", "Would You Like To Close The App?", "Yes", "No");

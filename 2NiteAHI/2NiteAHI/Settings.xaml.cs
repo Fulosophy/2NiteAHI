@@ -41,6 +41,8 @@ namespace _2NiteAHI
                 WinParkFLSwitch.IsToggled = false;
                 NewYorkNYSwitch.IsToggled = false;
                 App.isMyLocation = 1;
+                App.MyLocation = "Boise, Idaho";
+                App.locale = 1;
             }
         }
         public void Florida_Toggled(object sender, ToggledEventArgs e)
@@ -50,6 +52,8 @@ namespace _2NiteAHI
                 BoiseIDSwitch.IsToggled = false;
                 NewYorkNYSwitch.IsToggled = false;
                 App.isMyLocation = 2;
+                App.MyLocation = "Winter Park, Florida";
+                App.locale = 0;
             }
         }
         public void NewYork_Toggled(object sender, ToggledEventArgs e)
@@ -59,6 +63,8 @@ namespace _2NiteAHI
                 BoiseIDSwitch.IsToggled = false;
                 WinParkFLSwitch.IsToggled = false;
                 App.isMyLocation = 3;
+                App.MyLocation = "New York, New York";
+                App.locale = 2;
             }
         }
     }
