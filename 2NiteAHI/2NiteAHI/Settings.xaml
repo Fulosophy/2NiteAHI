@@ -82,6 +82,7 @@
                 FontSize="Title"
                 FontAttributes="Bold"
                 TextDecorations="Underline"/>
+            
 
             <!--THEME-->
             <StackLayout Orientation="Horizontal">
@@ -130,6 +131,16 @@
                     x:Name="NewYorkNYSwitch"
                     Toggled="NewYork_Toggled"/>
             </StackLayout>
+            <Button
+                Text="Help"
+                TextColor="Black"
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="CenterAndExpand"
+                Padding="0,0,0,0"
+                FontSize="Title"
+                FontAttributes="Bold"
+                Clicked="Button_Clicked"
+                />
         </StackLayout>
     </Grid>
 </ContentPage>

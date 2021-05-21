@@ -1,3 +1,4 @@
+using _2NiteAHI;
 using System;
 using System.Collections.Generic;
 using Xamarin.Forms;
@@ -19,7 +20,12 @@ namespace _2NiteAHI
             _Username = App.username;
             _PhoneNumber = App.phoneNumber;
             BindingContext = this;
+
         }
+
+
+
+        async private void ToolbarItem_Clicked(object sender, EventArgs e) { await Navigation.PushAsync(new HelpPage()); }
         public void NightTheme_Toggled(object sender, ToggledEventArgs e)
         {
             if (e.Value)
@@ -66,6 +72,10 @@ namespace _2NiteAHI
                 App.MyLocation = "New York, New York";
                 App.locale = 2;
             }
+        }
+        private async void Button_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new HelpPage());
         }
     }
 }

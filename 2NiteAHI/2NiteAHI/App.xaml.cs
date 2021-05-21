@@ -11,6 +11,8 @@ namespace _2NiteAHI
         public static int xlocale;
 
         public static Command RefreshCommand;
+
+
         public App()
         {
             App.Current.UserAppTheme = OSAppTheme.Dark;

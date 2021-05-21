@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="_2NiteAHI.HelpPage"
+             Title="Help">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            IconImageSource="fire"/>
+    </ContentPage.ToolbarItems>
+
+    <Grid RowSpacing="0" ColumnSpacing="0">
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="1,0" EndPoint="0,1">
+                <!--<GradientStop Color="Aquamarine" Offset="0.0"/>-->
+                <GradientStop Color="{AppThemeBinding Dark=CadetBlue, Light=White}" Offset="0.2"/>
+                <GradientStop Color="{AppThemeBinding Dark=Cyan, Light=Violet}" Offset="0.5"/>
+                <GradientStop Color="{AppThemeBinding Dark=DarkBlue, Light=White}" Offset="0.70"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Label
+                Text="Proximity "
+                TextColor="Black"
+                HorizontalOptions="CenterAndExpand"
+                Padding="0,45,0,0"
+                FontSize="Large"
+                FontAttributes="Bold"
+                TextDecorations="Underline"
+           />
+        <Label
+                Text="The Distance from Your Location"
+                TextColor="White"
+                HorizontalOptions="CenterAndExpand"
+                Padding="0,70,0,0"
+                FontSize="Large"
+                FontAttributes="None"
+                TextDecorations="None"/>
+        <Label
+                Text="BARS "
+                TextColor="RED"
+                HorizontalOptions="CenterAndExpand"
+                Padding="0,110,0,0"
+                FontSize="Large"
+                FontAttributes="Bold"
+                TextDecorations="Underline"
+           />
+        <Label
+                Text="Bar List"
+                TextColor="White"
+                HorizontalOptions="CenterAndExpand"
+                Padding="0,135,0,0"
+                FontSize="Large"
+                FontAttributes="None"
+                TextDecorations="None"/>
+        <Label
+                Text="RESTAURANTS"
+                TextColor="Green"
+                HorizontalOptions="CenterAndExpand"
+                Padding="0,170,0,0"
+                FontSize="Large"
+                FontAttributes="Bold"
+                TextDecorations="Underline"
+           />
+        <Label
+                Text="Restuarant Lists"
+                TextColor="White"
+                HorizontalOptions="CenterAndExpand"
+                Padding="0,195,0,0"
+                FontSize="Large"
+                FontAttributes="None"
+                TextDecorations="None"/>
+        <Label
+                Text="ASC"
+                TextColor="White"
+                HorizontalOptions="CenterAndExpand"
+                Padding="0,230,0,0"
+                FontSize="Large"
+                FontAttributes="Bold"
+                TextDecorations="Underline"
+           />
+        <Label
+                Text="Ascend List"
+                TextColor="White"
+                HorizontalOptions="CenterAndExpand"
+                Padding="0,255,0,0"
+                FontSize="Large"
+                FontAttributes="None"
+                TextDecorations="None"/>
+        <Label
+                Text="DESC"
+                TextColor="Yellow"
+                HorizontalOptions="CenterAndExpand"
+                Padding="0,295,0,0"
+                FontSize="Large"
+                FontAttributes="Bold"
+                TextDecorations="Underline"
+           />
+        <Label
+                Text="Descend List"
+                TextColor="White"
+                HorizontalOptions="CenterAndExpand"
+                Padding="0,320,0,0"
+                FontSize="Large"
+                FontAttributes="None"
+                TextDecorations="None"/>
+        <Label
+                Text="PEACE-OUT"
+                TextColor="OrangeRed" 
+                HorizontalOptions="CenterAndExpand"
+                Padding="0,360,0,0"
+                FontSize="Large"
+                FontAttributes="Bold"
+                TextDecorations="Underline"
+           />
+        <Label
+                Text="Leave Location"
+                TextColor="White"
+                HorizontalOptions="CenterAndExpand"
+                Padding="0,385,0,0"
+                FontSize="Large"
+                FontAttributes="None"
+                TextDecorations="None"/>
+
+
+
+    </Grid> 
+</ContentPage>
