@@ -54,6 +54,14 @@ namespace _2NiteAHI
         public LocationList()
         {
             InitializeComponent();
+            DisplayAlert("Yo! Welcome to 2Nite!",
+                "The list in this view displays local Bars or Restaurants depending on which button you click.\n\n" +
+                "The number below each place represents how many users are at that location.\n\n" +
+                "The Peace-Out button is used to remove yourself from the list and exit the app.\n\n" +
+                "The ASC/DESC buttons are used to reorder the lists.\n\n" +
+                "The Proximity button shows the distance in meters to each location with the closest at top.\n\n" +
+                "Use Settings to see your personal info or change from Day & Night mode, and location\n\n",
+                "OK");
             BindingContext = this;
             GetUserLoc();
 
