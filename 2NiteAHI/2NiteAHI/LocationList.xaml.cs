@@ -15,15 +15,15 @@ namespace _2NiteAHI
         //CONTAINERS
         // 1st Location
         public Dictionary<string, int> winterParkBars = new Dictionary<string, int>();
-        public Dictionary<string, string> winParkBarsProx = new Dictionary<string, double>();
+        public Dictionary<string, string> winParkBarsProx = new Dictionary<string, string>();
         public Dictionary<string, int> winterParkFoods = new Dictionary<string, int>();
-        public Dictionary<string, string> winParkFoodsProx = new Dictionary<string, double>();
+        public Dictionary<string, string> winParkFoodsProx = new Dictionary<string, string>();
 
         // 2nd Location
         public Dictionary<string, int> boiseBars = new Dictionary<string, int>();
-        public Dictionary<string, string> boiseBarsProx = new Dictionary<string, double>();
+        public Dictionary<string, string> boiseBarsProx = new Dictionary<string, string>();
         public Dictionary<string, int> boiseFoods = new Dictionary<string, int>();
-        public Dictionary<string, string> boiseFoodsProx = new Dictionary<string, double>();
+        public Dictionary<string, string> boiseFoodsProx = new Dictionary<string, string>();
 
         // 3rd Location Manhattan
         public Dictionary<string, int> nycbars = new Dictionary<string, int>();
